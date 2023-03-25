@@ -1,0 +1,7 @@
+C:\Users\HP\source\repos\C-sharp-Basics\C-sharp-Basics\bin\Debug\C-sharp-Basics.exe.config
+C:\Users\HP\source\repos\C-sharp-Basics\C-sharp-Basics\bin\Debug\C-sharp-Basics.exe
+C:\Users\HP\source\repos\C-sharp-Basics\C-sharp-Basics\bin\Debug\C-sharp-Basics.pdb
+C:\Users\HP\source\repos\C-sharp-Basics\C-sharp-Basics\obj\Debug\C-sharp-Basics.csproj.AssemblyReference.cache
+C:\Users\HP\source\repos\C-sharp-Basics\C-sharp-Basics\obj\Debug\C-sharp-Basics.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\C-sharp-Basics\C-sharp-Basics\obj\Debug\C-sharp-Basics.exe
+C:\Users\HP\source\repos\C-sharp-Basics\C-sharp-Basics\obj\Debug\C-sharp-Basics.pdb
