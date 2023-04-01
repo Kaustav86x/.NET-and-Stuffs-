@@ -34,12 +34,28 @@ namespace List_Basics_1
 
         public string GetStudentName(long phone)
         {
-
+            string result = "";
+            foreach(var getname in Program.StudentList) 
+            {
+                if(phone == getname.PhoneNo)
+                {
+                    result =  getname.StudentName;
+                    break;
+                }
+            }
+            return result;
         }
 
         public List<Student> RemoveStudentDetails(long phone)
         {
-
+            for(int i=0; i<Program.StudentList.Count; i++) 
+            {
+                if(Program.StudentList[i].PhoneNo == phone)
+                {
+                    Program.StudentList.RemoveAt(i);
+                }
+            }
+            return Program.StudentList;
         }
 
 

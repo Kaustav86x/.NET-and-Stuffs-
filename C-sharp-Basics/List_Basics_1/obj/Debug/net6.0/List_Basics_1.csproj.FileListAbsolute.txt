@@ -1,0 +1,15 @@
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\bin\Debug\net6.0\List_Basics_1.exe
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\bin\Debug\net6.0\List_Basics_1.deps.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\bin\Debug\net6.0\List_Basics_1.runtimeconfig.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\bin\Debug\net6.0\List_Basics_1.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\bin\Debug\net6.0\List_Basics_1.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\obj\Debug\net6.0\List_Basics_1.csproj.AssemblyReference.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\obj\Debug\net6.0\List_Basics_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\obj\Debug\net6.0\List_Basics_1.AssemblyInfoInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\obj\Debug\net6.0\List_Basics_1.AssemblyInfo.cs
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\obj\Debug\net6.0\List_Basics_1.csproj.CoreCompileInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\obj\Debug\net6.0\List_Basics_1.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\obj\Debug\net6.0\refint\List_Basics_1.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\obj\Debug\net6.0\List_Basics_1.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\obj\Debug\net6.0\List_Basics_1.genruntimeconfig.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\List_Basics_1\obj\Debug\net6.0\ref\List_Basics_1.dll

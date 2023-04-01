@@ -32,16 +32,27 @@
                         Console.WriteLine("Enter the city");
                         string city = Console.ReadLine();
 
-                        /*Student student = new Student(name, dob, phone, city);*/
-
                         st.AddStudentDetails(name,dob,phone,city);
 
-                        /*Console.WriteLine("{0} {1} {2} {3}",name,dob,phone,city);*/
                         break;
 
                     case 2: Console.WriteLine("Enter the phone number");
                             long pnum = Convert.ToInt64(Console.ReadLine());
+
+                            string sname = st.GetStudentName(pnum);
+                            Console.WriteLine("{0}", sname);
+                            break;
+                    case 3: Console.WriteLine("Enter the phone number");
+                            pnum = Convert.ToInt64(Console.ReadLine());
                             
+                            List<Student> list = new List<Student>();
+                            list = st.RemoveStudentDetails(pnum);
+                            foreach (Student student in list)
+                            {
+                                Console.WriteLine("{0} {1} {2} {3}",student.StudentName, student.DOB, student.PhoneNo, student.City);
+                            }
+                            break;
+                    case 4: return ;
                 }
             }
             
