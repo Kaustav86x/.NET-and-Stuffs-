@@ -1,0 +1,15 @@
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\bin\Debug\net6.0\OOPS_5.exe
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\bin\Debug\net6.0\OOPS_5.deps.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\bin\Debug\net6.0\OOPS_5.runtimeconfig.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\bin\Debug\net6.0\OOPS_5.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\bin\Debug\net6.0\OOPS_5.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\obj\Debug\net6.0\OOPS_5.csproj.AssemblyReference.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\obj\Debug\net6.0\OOPS_5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\obj\Debug\net6.0\OOPS_5.AssemblyInfoInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\obj\Debug\net6.0\OOPS_5.AssemblyInfo.cs
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\obj\Debug\net6.0\OOPS_5.csproj.CoreCompileInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\obj\Debug\net6.0\OOPS_5.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\obj\Debug\net6.0\refint\OOPS_5.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\obj\Debug\net6.0\OOPS_5.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\obj\Debug\net6.0\OOPS_5.genruntimeconfig.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\OOPS_5\obj\Debug\net6.0\ref\OOPS_5.dll
