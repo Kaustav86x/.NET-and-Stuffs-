@@ -8,5 +8,7 @@
         Console.WriteLine(span.ToString()); // gives a sting of days, hour, minutes etc :)
         Console.WriteLine(span.Days); // 8165 days 
         Console.WriteLine("My age is {0} years !", span.Days/365);
+        DateTime d3 = DateTime.Today; // gives out the current date without the current time (only the current date) 
+        Console.WriteLine(d3.ToString());
     }
 }
