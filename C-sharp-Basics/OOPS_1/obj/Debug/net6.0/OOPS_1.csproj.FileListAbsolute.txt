@@ -1,0 +1,15 @@
+C:\Users\HP\C# codes\OOPS_1\bin\Debug\net6.0\OOPS_1.exe
+C:\Users\HP\C# codes\OOPS_1\bin\Debug\net6.0\OOPS_1.deps.json
+C:\Users\HP\C# codes\OOPS_1\bin\Debug\net6.0\OOPS_1.runtimeconfig.json
+C:\Users\HP\C# codes\OOPS_1\bin\Debug\net6.0\OOPS_1.dll
+C:\Users\HP\C# codes\OOPS_1\bin\Debug\net6.0\OOPS_1.pdb
+C:\Users\HP\C# codes\OOPS_1\obj\Debug\net6.0\OOPS_1.csproj.AssemblyReference.cache
+C:\Users\HP\C# codes\OOPS_1\obj\Debug\net6.0\OOPS_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\C# codes\OOPS_1\obj\Debug\net6.0\OOPS_1.AssemblyInfoInputs.cache
+C:\Users\HP\C# codes\OOPS_1\obj\Debug\net6.0\OOPS_1.AssemblyInfo.cs
+C:\Users\HP\C# codes\OOPS_1\obj\Debug\net6.0\OOPS_1.csproj.CoreCompileInputs.cache
+C:\Users\HP\C# codes\OOPS_1\obj\Debug\net6.0\OOPS_1.dll
+C:\Users\HP\C# codes\OOPS_1\obj\Debug\net6.0\refint\OOPS_1.dll
+C:\Users\HP\C# codes\OOPS_1\obj\Debug\net6.0\OOPS_1.pdb
+C:\Users\HP\C# codes\OOPS_1\obj\Debug\net6.0\OOPS_1.genruntimeconfig.cache
+C:\Users\HP\C# codes\OOPS_1\obj\Debug\net6.0\ref\OOPS_1.dll
