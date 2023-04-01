@@ -1,0 +1,15 @@
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\bin\Debug\net6.0\Age_Calculation.exe
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\bin\Debug\net6.0\Age_Calculation.deps.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\bin\Debug\net6.0\Age_Calculation.runtimeconfig.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\bin\Debug\net6.0\Age_Calculation.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\bin\Debug\net6.0\Age_Calculation.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\obj\Debug\net6.0\Age_Calculation.csproj.AssemblyReference.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\obj\Debug\net6.0\Age_Calculation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\obj\Debug\net6.0\Age_Calculation.AssemblyInfoInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\obj\Debug\net6.0\Age_Calculation.AssemblyInfo.cs
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\obj\Debug\net6.0\Age_Calculation.csproj.CoreCompileInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\obj\Debug\net6.0\Age_Calculation.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\obj\Debug\net6.0\refint\Age_Calculation.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\obj\Debug\net6.0\Age_Calculation.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\obj\Debug\net6.0\Age_Calculation.genruntimeconfig.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\DateTime_1\Age calculation using DateTime operator\Age_Calculation\obj\Debug\net6.0\ref\Age_Calculation.dll
