@@ -23,9 +23,13 @@ namespace List_Basics_1
             City = city;
         }
 
+        /*Program prog = new Program();*/
+
         public List<Student> AddStudentDetails(string name, string dob, long phone, string city)
         {
-
+            Student student = new Student(name,dob,phone,city);
+            Program.StudentList.Add(student);
+            return Program.StudentList;
         }
 
         public string GetStudentName(long phone)
@@ -37,5 +41,7 @@ namespace List_Basics_1
         {
 
         }
+
+
     }
 }

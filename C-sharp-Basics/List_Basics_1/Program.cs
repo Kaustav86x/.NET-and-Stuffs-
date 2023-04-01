@@ -5,6 +5,8 @@
         public static List<Student> StudentList { get; set; } = new List<Student>(); // most important line
         public static void Main(string[] args)
         {
+            Program prog = new Program();
+            Student st = new Student();
             while (true) 
             {
                 Console.WriteLine("Choose the option");
@@ -30,11 +32,11 @@
                         Console.WriteLine("Enter the city");
                         string city = Console.ReadLine();
 
-                        Student student = new Student(name, dob, phone, city);
+                        /*Student student = new Student(name, dob, phone, city);*/
 
-                        StudentList.Add(student);
+                        st.AddStudentDetails(name,dob,phone,city);
 
-                        Console.WriteLine("{0} {1} {2} {3}",name,dob,phone,city);
+                        /*Console.WriteLine("{0} {1} {2} {3}",name,dob,phone,city);*/
                         break;
 
                     case 2: Console.WriteLine("Enter the phone number");
