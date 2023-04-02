@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\.NET-and-Stuffs-\\C-sharp-Basics\\C-sharp-Basics\\OOPS_6\\OOPS_6.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\.NET-and-Stuffs-\\C-sharp-Basics\\OOPS_6\\OOPS_6.csproj",
       "projectName": "OOPS_6",
-      "projectPath": "C:\\Users\\HP\\.NET-and-Stuffs-\\C-sharp-Basics\\C-sharp-Basics\\OOPS_6\\OOPS_6.csproj",
+      "projectPath": "C:\\Users\\HP\\.NET-and-Stuffs-\\C-sharp-Basics\\OOPS_6\\OOPS_6.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\.NET-and-Stuffs-\\C-sharp-Basics\\C-sharp-Basics\\OOPS_6\\obj\\",
+      "outputPath": "C:\\Users\\HP\\.NET-and-Stuffs-\\C-sharp-Basics\\OOPS_6\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
