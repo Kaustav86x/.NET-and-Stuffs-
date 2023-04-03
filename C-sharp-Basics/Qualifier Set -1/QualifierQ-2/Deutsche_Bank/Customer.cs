@@ -14,5 +14,7 @@ namespace Deutsche_Bank
         public double LoanAmount { get; set; }
         public int NoOfYears { get; set; }
 
+        public Customer() { }
+
     }
 }

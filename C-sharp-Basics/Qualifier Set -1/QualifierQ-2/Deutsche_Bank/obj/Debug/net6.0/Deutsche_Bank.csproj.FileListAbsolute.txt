@@ -1,0 +1,15 @@
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\bin\Debug\net6.0\Deutsche_Bank.exe
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\bin\Debug\net6.0\Deutsche_Bank.deps.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\bin\Debug\net6.0\Deutsche_Bank.runtimeconfig.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\bin\Debug\net6.0\Deutsche_Bank.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\bin\Debug\net6.0\Deutsche_Bank.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\obj\Debug\net6.0\Deutsche_Bank.csproj.AssemblyReference.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\obj\Debug\net6.0\Deutsche_Bank.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\obj\Debug\net6.0\Deutsche_Bank.AssemblyInfoInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\obj\Debug\net6.0\Deutsche_Bank.AssemblyInfo.cs
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\obj\Debug\net6.0\Deutsche_Bank.csproj.CoreCompileInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\obj\Debug\net6.0\Deutsche_Bank.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\obj\Debug\net6.0\refint\Deutsche_Bank.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\obj\Debug\net6.0\Deutsche_Bank.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\obj\Debug\net6.0\Deutsche_Bank.genruntimeconfig.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-2\Deutsche_Bank\obj\Debug\net6.0\ref\Deutsche_Bank.dll
