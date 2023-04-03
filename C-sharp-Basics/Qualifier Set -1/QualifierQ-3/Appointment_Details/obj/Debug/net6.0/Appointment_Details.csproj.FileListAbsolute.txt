@@ -1,0 +1,15 @@
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\bin\Debug\net6.0\Appointment_Details.exe
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\bin\Debug\net6.0\Appointment_Details.deps.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\bin\Debug\net6.0\Appointment_Details.runtimeconfig.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\bin\Debug\net6.0\Appointment_Details.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\bin\Debug\net6.0\Appointment_Details.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\obj\Debug\net6.0\Appointment_Details.csproj.AssemblyReference.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\obj\Debug\net6.0\Appointment_Details.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\obj\Debug\net6.0\Appointment_Details.AssemblyInfoInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\obj\Debug\net6.0\Appointment_Details.AssemblyInfo.cs
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\obj\Debug\net6.0\Appointment_Details.csproj.CoreCompileInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\obj\Debug\net6.0\Appointment_Details.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\obj\Debug\net6.0\refint\Appointment_Details.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\obj\Debug\net6.0\Appointment_Details.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\obj\Debug\net6.0\Appointment_Details.genruntimeconfig.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-3\Appointment_Details\obj\Debug\net6.0\ref\Appointment_Details.dll
