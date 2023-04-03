@@ -1,0 +1,15 @@
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\bin\Debug\net6.0\IssacUniversity.exe
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\bin\Debug\net6.0\IssacUniversity.deps.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\bin\Debug\net6.0\IssacUniversity.runtimeconfig.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\bin\Debug\net6.0\IssacUniversity.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\bin\Debug\net6.0\IssacUniversity.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\obj\Debug\net6.0\IssacUniversity.csproj.AssemblyReference.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\obj\Debug\net6.0\IssacUniversity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\obj\Debug\net6.0\IssacUniversity.AssemblyInfoInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\obj\Debug\net6.0\IssacUniversity.AssemblyInfo.cs
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\obj\Debug\net6.0\IssacUniversity.csproj.CoreCompileInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\obj\Debug\net6.0\IssacUniversity.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\obj\Debug\net6.0\refint\IssacUniversity.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\obj\Debug\net6.0\IssacUniversity.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\obj\Debug\net6.0\IssacUniversity.genruntimeconfig.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Qualifier Set -1\QualifierQ-1\IssacUniversity\obj\Debug\net6.0\ref\IssacUniversity.dll
