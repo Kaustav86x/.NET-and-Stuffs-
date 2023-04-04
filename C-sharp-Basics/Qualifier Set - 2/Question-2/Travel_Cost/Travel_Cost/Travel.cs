@@ -15,13 +15,5 @@ namespace Travel_Cost
         public double CostPerDay { get; set; }
 
         public Travel() { }
-        /*public Travel(string travelID, string departureId, string destinationPlace, int noOfDays, double costPerDay)
-        {
-            TravelId = travelID;
-            DeparturePlace = departureId;
-            DestinationPlace = destinationPlace;
-            NoOfDays = noOfDays;
-            CostPerDay = costPerDay;
-        }*/
     }
 }

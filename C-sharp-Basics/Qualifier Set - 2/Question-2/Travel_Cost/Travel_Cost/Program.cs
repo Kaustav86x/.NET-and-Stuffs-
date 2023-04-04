@@ -6,6 +6,7 @@ namespace Travel_Cost
 
         public static void Main(string[] args)
         {
+            double result = 0.0;
             /*Console.WriteLine("Hello, World!");*/
             Console.WriteLine("Enter the travel id");
             string tid = Console.ReadLine();
@@ -18,7 +19,16 @@ namespace Travel_Cost
             Console.WriteLine("Enter the cost per day");
             double cost = Convert.ToDouble(Console.ReadLine());
 
-            Travel trv = new Travel(tid, depplace, despalce, noofdays, cost);
+            Service srvc = new Service(tid, depplace, despalce, noofdays, cost);
+            if(srvc.ValidateTravelId(tid)) 
+            {
+                result = srvc.CalculateDiscountCost();
+                Console.WriteLine("Discounted Cost {0}", result);
+            }
+            else
+            {
+                Console.WriteLine("Invalid travel id");
+            }
         }
     }
 }
