@@ -24,13 +24,18 @@ namespace Vegetable_Cost
             bool digi_check = false;
             if (BillId.Length == 7)
             {
-                for(int i = 0; i < BillId.Substring(0, 3).Length; i++)
+                /*for(int i = 0; i < BillId.Substring(0, 3).Length; i++)
                 {
                     if (char.IsNumber(BillId.Substring(0, 3).ElementAt(i)))
                         digi_check = true;
                     else
                         digi_check = false;
-                }
+                }*/
+                if(Regex.IsMatch(BillId.Substring(0,3), "^[0-9]*$"))
+                    digi_check = true;
+                else
+                    digi_check = false;
+
                 bool char_check = false;
                 if (Regex.IsMatch(BillId.Substring(4, 3), "^[A-Z]*$"))
                     char_check = true;
