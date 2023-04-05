@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phoenix_Club", "Phoenix_Club.csproj", "{ABF05FCD-DD5C-4CBF-8007-FA1405F43F90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABF05FCD-DD5C-4CBF-8007-FA1405F43F90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABF05FCD-DD5C-4CBF-8007-FA1405F43F90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABF05FCD-DD5C-4CBF-8007-FA1405F43F90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABF05FCD-DD5C-4CBF-8007-FA1405F43F90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE0CF1DB-C095-4A10-9FBF-E2AA59B27164}
+	EndGlobalSection
+EndGlobal
