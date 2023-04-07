@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Mystic_Beauty_Parlour/1.0.0": {
+        "runtime": {
+          "Mystic_Beauty_Parlour.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Mystic_Beauty_Parlour/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
