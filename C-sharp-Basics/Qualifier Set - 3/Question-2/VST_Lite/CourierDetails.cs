@@ -27,9 +27,9 @@ namespace VST_Lite
             if (ServiceType == "Same Day")
                 Cost += (0.5 * Cost);
             else if (ServiceType == "Express")
-                Cost -= (0.3 * Cost);
+                Cost += (0.3 * Cost);
             else if (ServiceType == "Standard")
-                Cost += (0.1 * Cost);
+                Cost = Cost + 0;
 
             return Cost;
         }
