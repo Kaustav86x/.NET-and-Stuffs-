@@ -27,34 +27,26 @@ public class Program
                     string ct = Console.ReadLine();
                     Console.WriteLine("Enter the service");
                     string srvc = Console.ReadLine();
+                    /*Customer cust = new Customer()*/
                     bool conf = cust.AddCustomer(cname, mno, ct, srvc);
                     if(conf)
                         Console.WriteLine("Customer details added successfully");
                     break;
                 case 2:
-                    Console.WriteLine("Enter the customer name with service");
-                    string srv = Console.ReadLine();
                     string result = cust.GetCustomerNameWithService();
                     Console.WriteLine(result);
                     break;
                 case 3:
                     Console.WriteLine("Enter the mobile number");
                     long mnum = Convert.ToInt64(Console.ReadLine());
-                    Queue<Customer> temp = new Queue<Customer>(); // temporary queue
-                    _ = cust.RemoveCustomerDetails(mnum);
-                    /*Console.WriteLine(temp.Dequeue().CustomerName, temp.Dequeue().MobileNumber, temp.Dequeue().City, temp.Dequeue().Service);*/
-                    /*foreach( Customer customer in temp )
-                    {
-                        Console.WriteLine(customer.CustomerName, customer.MobileNumber, customer.City, customer.Service);
-                    }*/
-                    if (CustomerQueue.Count == 0)
-                        System.Console.WriteLine("No data found");
+                    Queue<Customer> val = new Queue<Customer>();
+                    val = cust.RemoveCustomerDetails(mnum);
+                    if (val.Count == 0)
+                        Console.WriteLine("No data found");
                     else
                     {
-                        foreach (Customer item in CustomerQueue)
-                        {
-                            System.Console.WriteLine("{0} {1} {2} {3}",item.CustomerName, item.MobileNumber, item.City, item.Service);
-                        }
+                        foreach (Customer item in val.ToList())
+                            Console.WriteLine("{0} {1} {2} {3}",item.CustomerName, item.MobileNumber, item.City, item.Service);
                     }
                     break;
                 case 4:

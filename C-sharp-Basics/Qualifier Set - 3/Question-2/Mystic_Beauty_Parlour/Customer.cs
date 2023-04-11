@@ -14,7 +14,7 @@ namespace Mystic_Beauty_Parlour
         public string Service { get; set; }
 
 
-        public Customer() { }   
+        public Customer() { }
         public Customer(string customerName, long mobileNumber, string city, string service)
         {
             CustomerName = customerName;
@@ -22,7 +22,6 @@ namespace Mystic_Beauty_Parlour
             City = city;
             Service = service;
         }
-
         public bool AddCustomer(string name, long mobileNo, string city, string service)
         {
             /*Program pr = new Program();*/
@@ -46,18 +45,12 @@ namespace Mystic_Beauty_Parlour
 
         public Queue<Customer> RemoveCustomerDetails(long mobileNo)
         {
-            /*Queue<Customer> cstdetails = new Queue<Customer>();*/
-            /*Customer cst = new Customer();*/
-            foreach(Customer c in Program.CustomerQueue)
-            {
-                if (c.MobileNumber == mobileNo)
-                    /*cst = Program.CustomerQueue.Dequeue();*/
-                    /*cstdetails.Enqueue(c);*/
-                    /*cstdetails.Enqueue(Program.CustomerQueue.Dequeue());*/
-                    Program.CustomerQueue.Dequeue();
-            }
-            /*cstdetails.Enqueue(cst);*/
-            return Program.CustomerQueue;
+            Queue<Customer> cust = new Queue<Customer>();
+            foreach (Customer c in Program.CustomerQueue.ToList())
+                if (c.MobileNumber != mobileNo)
+                    cust.Enqueue(c);
+            return cust;
         }
+        
     }
 }
