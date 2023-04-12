@@ -1,0 +1,15 @@
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\bin\Debug\net6.0\Home_Appliance.exe
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\bin\Debug\net6.0\Home_Appliance.deps.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\bin\Debug\net6.0\Home_Appliance.runtimeconfig.json
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\bin\Debug\net6.0\Home_Appliance.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\bin\Debug\net6.0\Home_Appliance.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\obj\Debug\net6.0\Home_Appliance.csproj.AssemblyReference.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\obj\Debug\net6.0\Home_Appliance.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\obj\Debug\net6.0\Home_Appliance.AssemblyInfoInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\obj\Debug\net6.0\Home_Appliance.AssemblyInfo.cs
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\obj\Debug\net6.0\Home_Appliance.csproj.CoreCompileInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\obj\Debug\net6.0\Home_Appliance.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\obj\Debug\net6.0\refint\Home_Appliance.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\obj\Debug\net6.0\Home_Appliance.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\obj\Debug\net6.0\Home_Appliance.genruntimeconfig.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Home_Appliance\obj\Debug\net6.0\ref\Home_Appliance.dll
