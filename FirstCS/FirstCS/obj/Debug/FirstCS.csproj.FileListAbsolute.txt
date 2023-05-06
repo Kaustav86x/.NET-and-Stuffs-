@@ -1,7 +1,0 @@
-C:\Users\HP\source\repos\FirstCS\FirstCS\bin\Debug\FirstCS.exe.config
-C:\Users\HP\source\repos\FirstCS\FirstCS\bin\Debug\FirstCS.exe
-C:\Users\HP\source\repos\FirstCS\FirstCS\bin\Debug\FirstCS.pdb
-C:\Users\HP\source\repos\FirstCS\FirstCS\obj\Debug\FirstCS.csproj.AssemblyReference.cache
-C:\Users\HP\source\repos\FirstCS\FirstCS\obj\Debug\FirstCS.csproj.CoreCompileInputs.cache
-C:\Users\HP\source\repos\FirstCS\FirstCS\obj\Debug\FirstCS.exe
-C:\Users\HP\source\repos\FirstCS\FirstCS\obj\Debug\FirstCS.pdb
