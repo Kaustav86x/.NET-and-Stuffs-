@@ -1,0 +1,15 @@
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\obj\Debug\CodeFirstDemo1.csproj.AssemblyReference.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\obj\Debug\CodeFirstDemo1.csproj.SuggestedBindingRedirects.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\obj\Debug\CodeFirstDemo1.csproj.CoreCompileInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\bin\Debug\CodeFirstDemo1.exe.config
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\bin\Debug\CodeFirstDemo1.exe
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\bin\Debug\CodeFirstDemo1.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\bin\Debug\EntityFramework.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\bin\Debug\EntityFramework.xml
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\obj\Debug\CodeFirstDemo1.csproj.CopyComplete
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\obj\Debug\CodeFirstDemo1.exe
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\obj\Debug\CodeFirstDemo1.pdb
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\obj\Debug\CodeFirstDemo1.Migrations.CreateEmp.resources
+C:\Users\HP\.NET-and-Stuffs-\C-sharp-Basics\Mock_Qualifier\Applications of Entity Framework\Code-first Approach\CodeFirstDemo1\obj\Debug\CodeFirstDemo1.csproj.GenerateResource.cache
