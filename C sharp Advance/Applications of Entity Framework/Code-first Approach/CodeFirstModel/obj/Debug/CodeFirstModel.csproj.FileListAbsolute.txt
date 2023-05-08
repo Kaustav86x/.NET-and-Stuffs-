@@ -1,0 +1,15 @@
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\bin\Debug\CodeFirstModel.exe.config
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\bin\Debug\CodeFirstModel.exe
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\bin\Debug\CodeFirstModel.pdb
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\bin\Debug\EntityFramework.dll
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\bin\Debug\EntityFramework.xml
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.csproj.AssemblyReference.cache
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.csproj.SuggestedBindingRedirects.cache
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.csproj.CoreCompileInputs.cache
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.csproj.CopyComplete
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.exe
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.pdb
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.Migrations.InitialCodeFirstDemo.resources
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.csproj.GenerateResource.cache
