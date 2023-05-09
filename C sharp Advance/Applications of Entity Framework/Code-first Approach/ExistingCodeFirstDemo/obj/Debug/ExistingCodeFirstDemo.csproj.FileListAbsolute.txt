@@ -1,6 +1,3 @@
-C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\obj\Debug\ExistingCodeFirstDemo.csproj.AssemblyReference.cache
-C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\obj\Debug\ExistingCodeFirstDemo.csproj.SuggestedBindingRedirects.cache
-C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\obj\Debug\ExistingCodeFirstDemo.csproj.CoreCompileInputs.cache
 C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\bin\Debug\ExistingCodeFirstDemo.exe.config
 C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\bin\Debug\ExistingCodeFirstDemo.exe
 C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\bin\Debug\ExistingCodeFirstDemo.pdb
@@ -8,6 +5,9 @@ C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Co
 C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\bin\Debug\EntityFramework.xml
 C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\obj\Debug\ExistingCodeFirstDemo.csproj.AssemblyReference.cache
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\obj\Debug\ExistingCodeFirstDemo.csproj.SuggestedBindingRedirects.cache
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\obj\Debug\ExistingCodeFirstDemo.csproj.CoreCompileInputs.cache
 C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\obj\Debug\ExistingCodeFirstDemo.csproj.CopyComplete
 C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\obj\Debug\ExistingCodeFirstDemo.exe
 C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\ExistingCodeFirstDemo\obj\Debug\ExistingCodeFirstDemo.pdb

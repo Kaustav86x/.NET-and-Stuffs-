@@ -13,7 +13,7 @@ namespace ORMp_1
             var context = new DOTNETFSE2270345Entities();
             var emp = new Emp()
             {
-                EmpID = 1,
+                EmpID = 10,
                 fname = "Kaustav",
                 lname = "Dey",
                 jobd = "Full Stack Developer",
