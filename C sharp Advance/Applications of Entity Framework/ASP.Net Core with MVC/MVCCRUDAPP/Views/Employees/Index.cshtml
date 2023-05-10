@@ -1,0 +1,34 @@
+﻿@*we need to specify the model the controller will get the data from*@
+@*we're getting the data via DbContext, that's why we need to mention the database*@
+@model List<MVCCRUDAPP.Models.Domain.Employee> 
+@{
+}
+
+<h1>Employees</h1>
+<table class="mt-10">
+    <thead>
+        <tr class="mr-10">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>Date of Birth</th>
+            <th>Department</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var val in Model)
+        {
+            <tr class="mr-10">
+                <td>@val.Id</td>
+                <td>@val.Name</td>
+                <td>@val.Email</td>
+                <td>@val.Salary</td>
+                <td>@val.DateOfBirth.ToString("dd-MM-yyyy")</td>
+                <td>@val.Department</td>
+                <td><a href="Employees\View\@val.Id"></a>View</td>
+            </tr>
+        }
+    </tbody>
+</table>

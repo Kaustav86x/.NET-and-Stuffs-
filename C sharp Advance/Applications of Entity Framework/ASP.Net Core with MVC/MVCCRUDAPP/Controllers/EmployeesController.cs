@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MVCCRUDAPP.Data;
 using MVCCRUDAPP.Models;
 using MVCCRUDAPP.Models.Domain;
@@ -18,6 +19,13 @@ namespace MVCCRUDAPP.Controllers
         {
             return View();
         }
+        // to show something we need a view
+        [HttpGet]
+        public async Task<IActionResult> Index() 
+        {
+            var emp = await demoDbContext.Employees.ToListAsync();
+            return View(emp);
+        }
         // when we are submitting the form this method will be called
         [HttpPost]
         public async Task<IActionResult> Add(AddEmployeeViewModel addEmp)
@@ -36,7 +44,14 @@ namespace MVCCRUDAPP.Controllers
             await demoDbContext.Employees.AddAsync(employee);
             await demoDbContext.SaveChangesAsync();
             // we'll get back to the Add method
-            return RedirectToAction("Add");
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult View(Guid Id) 
+        { 
+            var empId = demoDbContext.Employees.FirstOrDefaultAsync(x => x.Id == Id);
+            return View(empId);
         }
     }
 }
