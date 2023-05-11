@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KbqWVYYUSKvz4f+wzUjVu+cKl/wfEWToPFO2dRVgzg5f3Ep+no/LR/ArVrlQOYdNRuXL3dYYfwBJ/XSJTArgjQ==",
+  "dgSpecHash": "8mkgd32A0oA+m3SaWwM5luCjX2MhP90NtKYdWzOGZ17y7FGr/OaeAB5FP1pJGufRhvwrThXEQ5AeFkqxvvtcbg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\2270345\\source\\repos\\MVCNETCORE\\MVCNETCORE.csproj",
+  "projectFilePath": "C:\\Users\\2270345\\OneDrive - Cognizant\\.NET-and-Stuffs-\\C sharp Advance\\Applications of Entity Framework\\ASP.Net Core with MVC\\MVCNETCORE\\MVCNETCORE.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\2270345\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\2270345\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

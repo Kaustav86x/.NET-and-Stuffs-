@@ -3514,11 +3514,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\2270345\\source\\repos\\MVCNETCORE\\MVCNETCORE.csproj",
+      "projectUniqueName": "C:\\Users\\2270345\\OneDrive - Cognizant\\.NET-and-Stuffs-\\C sharp Advance\\Applications of Entity Framework\\ASP.Net Core with MVC\\MVCNETCORE\\MVCNETCORE.csproj",
       "projectName": "MVCNETCORE",
-      "projectPath": "C:\\Users\\2270345\\source\\repos\\MVCNETCORE\\MVCNETCORE.csproj",
+      "projectPath": "C:\\Users\\2270345\\OneDrive - Cognizant\\.NET-and-Stuffs-\\C sharp Advance\\Applications of Entity Framework\\ASP.Net Core with MVC\\MVCNETCORE\\MVCNETCORE.csproj",
       "packagesPath": "C:\\Users\\2270345\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\2270345\\source\\repos\\MVCNETCORE\\obj\\",
+      "outputPath": "C:\\Users\\2270345\\OneDrive - Cognizant\\.NET-and-Stuffs-\\C sharp Advance\\Applications of Entity Framework\\ASP.Net Core with MVC\\MVCNETCORE\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\2270345\\AppData\\Roaming\\NuGet\\NuGet.Config",

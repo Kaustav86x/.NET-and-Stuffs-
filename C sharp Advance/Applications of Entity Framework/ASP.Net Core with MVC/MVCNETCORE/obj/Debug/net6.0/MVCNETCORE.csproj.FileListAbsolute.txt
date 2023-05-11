@@ -85,3 +85,14 @@ C:\Users\2270345\source\repos\MVCNETCORE\bin\Debug\net6.0\runtimes\win\lib\netst
 C:\Users\2270345\source\repos\MVCNETCORE\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\2270345\source\repos\MVCNETCORE\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\2270345\source\repos\MVCNETCORE\obj\Debug\net6.0\MVCNETCORE.csproj.CopyComplete
+C:\Users\2270345\OneDrive - Cognizant\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\ASP.Net Core with MVC\MVCNETCORE\obj\Debug\net6.0\MVCNETCORE.csproj.AssemblyReference.cache
+C:\Users\2270345\OneDrive - Cognizant\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\ASP.Net Core with MVC\MVCNETCORE\obj\Debug\net6.0\MVCNETCORE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\2270345\OneDrive - Cognizant\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\ASP.Net Core with MVC\MVCNETCORE\obj\Debug\net6.0\MVCNETCORE.AssemblyInfoInputs.cache
+C:\Users\2270345\OneDrive - Cognizant\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\ASP.Net Core with MVC\MVCNETCORE\obj\Debug\net6.0\MVCNETCORE.AssemblyInfo.cs
+C:\Users\2270345\OneDrive - Cognizant\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\ASP.Net Core with MVC\MVCNETCORE\obj\Debug\net6.0\MVCNETCORE.csproj.CoreCompileInputs.cache
+C:\Users\2270345\OneDrive - Cognizant\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\ASP.Net Core with MVC\MVCNETCORE\obj\Debug\net6.0\MVCNETCORE.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\2270345\OneDrive - Cognizant\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\ASP.Net Core with MVC\MVCNETCORE\obj\Debug\net6.0\MVCNETCORE.RazorAssemblyInfo.cache
+C:\Users\2270345\OneDrive - Cognizant\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\ASP.Net Core with MVC\MVCNETCORE\obj\Debug\net6.0\MVCNETCORE.RazorAssemblyInfo.cs
+C:\Users\2270345\OneDrive - Cognizant\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\ASP.Net Core with MVC\MVCNETCORE\obj\Debug\net6.0\MVCNETCORE.dll
+C:\Users\2270345\OneDrive - Cognizant\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\ASP.Net Core with MVC\MVCNETCORE\obj\Debug\net6.0\refint\MVCNETCORE.dll
+C:\Users\2270345\OneDrive - Cognizant\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\ASP.Net Core with MVC\MVCNETCORE\obj\Debug\net6.0\MVCNETCORE.pdb
