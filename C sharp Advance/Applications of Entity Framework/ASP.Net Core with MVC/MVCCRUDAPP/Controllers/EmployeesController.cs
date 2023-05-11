@@ -37,21 +37,53 @@ namespace MVCCRUDAPP.Controllers
                 Name = addEmp.Name,
                 Email = addEmp.Email,
                 Salary = addEmp.Salary,
-                DateOfBirth = addEmp.DateOfBirth,
+                DOB = addEmp.DOB,
                 Department = addEmp.Department
             };
 
             await demoDbContext.Employees.AddAsync(employee);
             await demoDbContext.SaveChangesAsync();
-            // we'll get back to the Add method
+            // we'll get back to the Index method
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public IActionResult View(Guid Id) 
+        public async Task<IActionResult> View(Guid Id) 
         { 
-            var empId = demoDbContext.Employees.FirstOrDefaultAsync(x => x.Id == Id);
-            return View(empId);
+            var empId = await demoDbContext.Employees.FirstOrDefaultAsync(x => x.Id == Id);
+            if(empId != null)
+            {
+                var UpdateEmp = new UpdateEmployeeViewModel()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = empId.Name,
+                    Email = empId.Email,
+                    Salary = empId.Salary,
+                    DOB = empId.DOB,
+                    Department = empId.Department
+                };
+                return await Task.Run(() => View("View",UpdateEmp));
+            }
+            return RedirectToAction("Index");
+            
+        }
+        [HttpPost]
+        public async Task<IActionResult> View(UpdateEmployeeViewModel model)
+        {
+            var employee = await demoDbContext.Employees.FindAsync(model.Id);
+            if(employee != null) 
+            {
+                employee.Name = model.Name;
+                employee.Email = model.Email;
+                employee.Salary = model.Salary;
+                employee.DOB = model.DOB;
+                employee.Department = model.Department;
+
+                await demoDbContext.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
     }
 }
