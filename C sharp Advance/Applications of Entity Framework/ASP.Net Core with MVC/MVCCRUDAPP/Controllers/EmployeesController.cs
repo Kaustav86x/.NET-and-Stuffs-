@@ -37,7 +37,7 @@ namespace MVCCRUDAPP.Controllers
                 Name = addEmp.Name,
                 Email = addEmp.Email,
                 Salary = addEmp.Salary,
-                DOB = addEmp.DOB,
+                DateOfBirth = addEmp.DateOfBirth,
                 Department = addEmp.Department
             };
 
@@ -59,7 +59,7 @@ namespace MVCCRUDAPP.Controllers
                     Name = empId.Name,
                     Email = empId.Email,
                     Salary = empId.Salary,
-                    DOB = empId.DOB,
+                    DateOfBirth = empId.DateOfBirth,
                     Department = empId.Department
                 };
                 return await Task.Run(() => View("View",UpdateEmp));
@@ -76,9 +76,23 @@ namespace MVCCRUDAPP.Controllers
                 employee.Name = model.Name;
                 employee.Email = model.Email;
                 employee.Salary = model.Salary;
-                employee.DOB = model.DOB;
+                employee.DateOfBirth = model.DateOfBirth;
                 employee.Department = model.Department;
 
+                await demoDbContext.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(UpdateEmployeeViewModel model)
+        {
+            var emp = await demoDbContext.Employees.FindAsync(model.Id);
+            if(emp != null) 
+            {
+                demoDbContext.Employees.Remove(emp);
                 await demoDbContext.SaveChangesAsync();
 
                 return RedirectToAction("Index");

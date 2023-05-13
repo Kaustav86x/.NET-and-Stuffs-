@@ -3509,19 +3509,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\2270345\\.nuget\\packages\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\2270345\\OneDrive - Cognizant\\.NET-and-Stuffs-\\C sharp Advance\\Applications of Entity Framework\\ASP.Net Core with MVC\\MVCCRUDAPP\\MVCCRUDAPP.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\.NET-and-Stuffs-\\C sharp Advance\\Applications of Entity Framework\\ASP.Net Core with MVC\\MVCCRUDAPP\\MVCCRUDAPP.csproj",
       "projectName": "MVCCRUDAPP",
-      "projectPath": "C:\\Users\\2270345\\OneDrive - Cognizant\\.NET-and-Stuffs-\\C sharp Advance\\Applications of Entity Framework\\ASP.Net Core with MVC\\MVCCRUDAPP\\MVCCRUDAPP.csproj",
-      "packagesPath": "C:\\Users\\2270345\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\2270345\\OneDrive - Cognizant\\.NET-and-Stuffs-\\C sharp Advance\\Applications of Entity Framework\\ASP.Net Core with MVC\\MVCCRUDAPP\\obj\\",
+      "projectPath": "C:\\Users\\HP\\.NET-and-Stuffs-\\C sharp Advance\\Applications of Entity Framework\\ASP.Net Core with MVC\\MVCCRUDAPP\\MVCCRUDAPP.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\.NET-and-Stuffs-\\C sharp Advance\\Applications of Entity Framework\\ASP.Net Core with MVC\\MVCCRUDAPP\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\2270345\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3577,7 +3582,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

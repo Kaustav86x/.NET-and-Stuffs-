@@ -1,6 +1,7 @@
 ﻿@model MVCCRUDAPP.Models.UpdateEmployeeViewModel
 
 @{
+    ViewData["Title"] = "Edit Employees";
 }
 
 <h1>Edit Employee</h1>
@@ -19,17 +20,21 @@
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Salary</label>
-        <input type="number" class="form-control" asp-for="Salary">
+        <input type="text" class="form-control" asp-for="Salary">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">DOB</label>
-        <input type="date" class="form-control" asp-for="DOB">
+        <label for="" class="form-label">DateOfBirth</label>
+        <input type="date" class="form-control" asp-for="DateOfBirth">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">Department</label>
+        <label for="" class="form-label">Departm    ent</label>
         <input type="text" class="form-control" asp-for="Department">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     <button type="submit" class="btn btn-danger" 
     asp-action="Delete" asp-controller="Employees">Delete</button>
 </form>

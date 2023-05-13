@@ -2,6 +2,7 @@
 @*we're getting the data via DbContext, that's why we need to mention the database*@
 @model List<MVCCRUDAPP.Models.Domain.Employee> 
 @{
+    ViewData["Title"] = "Display Employees";
 }
 
 <h1>Employees</h1>
@@ -25,7 +26,7 @@
                 <td>@val.Name</td>
                 <td>@val.Email</td>
                 <td>@val.Salary</td>
-                <td>@val.DOB.ToString("dd-MM-yyyy")</td>
+                <td>@val.DateOfBirth.ToString("dd-MM-yyyy")</td>
                 <td>@val.Department</td>
                 <td><a href="Employees/View/@val.Id">View</a></td>
             </tr>
