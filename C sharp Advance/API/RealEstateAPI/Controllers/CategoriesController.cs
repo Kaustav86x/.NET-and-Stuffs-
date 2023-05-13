@@ -15,16 +15,32 @@ namespace RealEstateAPI.Controllers
             new Category { Id = 3, Name = "A3", ImageUrl = "A4.pmg"}
         };
 
+        //view
         [HttpGet] //api/categories
         public IEnumerable<Category> GetCategories() 
         {
             return categories; 
         }
 
+        // create/add
         [HttpPost]
         public void PostCategories([FromBody] Category cat)
         {
             categories.Add(cat);
+        }
+
+        //update
+        [HttpPut("{Id}")]
+        public void PutCategories(int id, [FromBody] Category cat)
+        {
+            categories[id] = cat;
+        }
+
+        //delete
+        [HttpDelete("{Id}")]
+        public void DeleteCategories(int id) 
+        { 
+            categories.RemoveAt(id);
         }
     }
 }
