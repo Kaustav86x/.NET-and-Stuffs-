@@ -34,6 +34,13 @@ namespace RealEstateAPI.Controllers
                 return Ok(category);
 
         }
+        // GET : api/<CategoriesController>/<Name_of_the_below_method>
+        [HttpGet("[action]")]
+        // same signature as Get method above
+        public IActionResult GetSortCategories(int id) 
+        {
+            return Ok(_dbContext.Categories.OrderByDescending(x => x.Id));
+        }
 
         // adding data to the database
         // POST api/<CategoriesController>
