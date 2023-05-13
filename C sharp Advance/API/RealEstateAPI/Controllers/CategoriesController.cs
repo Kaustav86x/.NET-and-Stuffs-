@@ -24,38 +24,43 @@ namespace RealEstateAPI.Controllers
         // GET api/<CategoriesController>/5
         // returning a particular value
         [HttpGet("{id}")]
-        public Category Get(int id)
+        public IActionResult Get(int id)
         {
             var category = _dbContext.Categories.FirstOrDefault(c => c.Id == id);
-            return category == null ? null : category;
+            // return the 200 status code
+            return Ok(category);
         }
 
         // adding data to the database
         // POST api/<CategoriesController>
         [HttpPost]
-        public void Post([FromBody] Category value)
+        public IActionResult Post([FromBody] Category value)
         {
             _dbContext.Categories.Add(value);
             _dbContext.SaveChanges();
+            // retruns 201 to indicate creation of data (addition)
+            return StatusCode(StatusCodes.Status201Created);
         }
 
         // PUT api/<CategoriesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Category value)
+        public IActionResult Put(int id, [FromBody] Category value)
         {
             var cat = _dbContext.Categories.Find(id);
             cat.Name = value.Name;
             cat.ImageUrl = value.ImageUrl; 
             _dbContext.SaveChanges();
+            return Ok("Record updated successfully!");
         }
 
         // DELETE api/<CategoriesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
             var cat = _dbContext.Categories.Find(id);
             _dbContext.Categories.Remove(cat);
             _dbContext.SaveChanges();
+            return Ok("Record Deleted successfully !!");
         }
     }
 }
