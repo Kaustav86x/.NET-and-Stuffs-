@@ -27,8 +27,12 @@ namespace RealEstateAPI.Controllers
         public IActionResult Get(int id)
         {
             var category = _dbContext.Categories.FirstOrDefault(c => c.Id == id);
-            // return the 200 status code
-            return Ok(category);
+            if (category == null)
+                return NotFound("No data found");
+            else
+                // return the 200 status code
+                return Ok(category);
+
         }
 
         // adding data to the database
@@ -47,6 +51,10 @@ namespace RealEstateAPI.Controllers
         public IActionResult Put(int id, [FromBody] Category value)
         {
             var cat = _dbContext.Categories.Find(id);
+            if(cat == null)
+            {
+                return StatusCode(StatusCodes.Status404NotFound);
+            }
             cat.Name = value.Name;
             cat.ImageUrl = value.ImageUrl; 
             _dbContext.SaveChanges();
@@ -58,9 +66,18 @@ namespace RealEstateAPI.Controllers
         public IActionResult Delete(int id)
         {
             var cat = _dbContext.Categories.Find(id);
-            _dbContext.Categories.Remove(cat);
-            _dbContext.SaveChanges();
-            return Ok("Record Deleted successfully !!");
+            if (cat == null)
+            {
+                // either one is working fine
+                return NotFound(id + " not found ");
+                /*return StatusCode(StatusCodes.Status404NotFound);*/
+            }
+            else
+            {
+                _dbContext.Categories.Remove(cat);
+                _dbContext.SaveChanges();
+                return Ok("Record Deleted successfully !!");
+            }
         }
     }
 }
