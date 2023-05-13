@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RealEstateAPI.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace RealEstateAPI.Controllers
 {
@@ -8,39 +8,36 @@ namespace RealEstateAPI.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        private static List<Category> categories = new List<Category>()
+        // GET: api/<CategoriesController>
+        [HttpGet]
+        public IEnumerable<string> Get()
         {
-            new Category { Id = 1, Name = "A1", ImageUrl = "A1.png"},
-            new Category { Id = 2, Name = "A2", ImageUrl = "A2.png"},
-            new Category { Id = 3, Name = "A3", ImageUrl = "A4.pmg"}
-        };
-
-        //view
-        [HttpGet] //api/categories
-        public IEnumerable<Category> GetCategories() 
-        {
-            return categories; 
+            return new string[] { "value1", "value2" };
         }
 
-        // create/add
+        // GET api/<CategoriesController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST api/<CategoriesController>
         [HttpPost]
-        public void PostCategories([FromBody] Category cat)
+        public void Post([FromBody] string value)
         {
-            categories.Add(cat);
         }
 
-        //update
-        [HttpPut("{Id}")]
-        public void PutCategories(int id, [FromBody] Category cat)
+        // PUT api/<CategoriesController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            categories[id] = cat;
         }
 
-        //delete
-        [HttpDelete("{Id}")]
-        public void DeleteCategories(int id) 
-        { 
-            categories.RemoveAt(id);
+        // DELETE api/<CategoriesController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
         }
     }
 }

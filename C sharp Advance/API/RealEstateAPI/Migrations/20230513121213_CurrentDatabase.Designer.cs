@@ -11,8 +11,8 @@ using RealEstateAPI.Data;
 namespace RealEstateAPI.Migrations
 {
     [DbContext(typeof(APIDbContext))]
-    [Migration("20230513114752_A New property called Description added")]
-    partial class ANewpropertycalledDescriptionadded
+    [Migration("20230513121213_CurrentDatabase")]
+    partial class CurrentDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,9 +31,6 @@ namespace RealEstateAPI.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
