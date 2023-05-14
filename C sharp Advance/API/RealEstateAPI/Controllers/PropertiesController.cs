@@ -34,7 +34,7 @@ namespace RealEstateAPI.Controllers
             }
         }
 
-        /*[HttpPut("{id}")]
+        [HttpPut("{id}")]
         [Authorize]
         public IActionResult Put(int id, [FromBody] Property property)
         {
@@ -57,13 +57,13 @@ namespace RealEstateAPI.Controllers
                     // foreign key (user table)
                     property.UserId = user.Id;
 
-                    *//*_dbcontext.Properties.Add(property);*//*
+                    /*_dbcontext.Properties.Add(property);*/
                     _dbcontext.SaveChanges();
                     return Ok("Data updated successfully!");
                 }
                 else
                     return BadRequest();
             }
-        }*/
+        }
     }
 }
