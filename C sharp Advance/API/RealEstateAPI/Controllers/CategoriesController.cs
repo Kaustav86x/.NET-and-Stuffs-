@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RealEstateAPI.Data;
 using RealEstateAPI.Models;
@@ -11,13 +12,13 @@ namespace RealEstateAPI.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        APIDbContext _dbContext = new APIDbContext(); // name of our dbcontext
+        /*APIDbContext _dbContext = new APIDbContext(); // name of our dbcontext
 
         // GET: api/<CategoriesController>
         [HttpGet]
         public IEnumerable<Category> Get()
         {
-            /*return new string[] { "value1", "value2" };*/
+            *//*return new string[] { "value1", "value2" };*//*
             return _dbContext.Categories;
         }
 
@@ -77,7 +78,7 @@ namespace RealEstateAPI.Controllers
             {
                 // either one is working fine
                 return NotFound(id + " not found ");
-                /*return StatusCode(StatusCodes.Status404NotFound);*/
+                *//*return StatusCode(StatusCodes.Status404NotFound);*//*
             }
             else
             {
@@ -85,6 +86,15 @@ namespace RealEstateAPI.Controllers
                 _dbContext.SaveChanges();
                 return Ok("Record Deleted successfully !!");
             }
+        }*/
+        APIDbContext _dbcontext = new APIDbContext();
+
+        [HttpGet]
+        // onlys users with access token can access the data
+        [Authorize]
+        public IActionResult Get()
+        {
+            return Ok(_dbcontext.Categories);
         }
     }
 }
