@@ -17,7 +17,9 @@ namespace RealEstateAPI.Controllers
             var userExists = _dbcontext.Users.FirstOrDefault(u => u.Email == user.Email);
             if (userExists != null) 
             {
+                // either one is working fine
                 return BadRequest("User with this email already exists");
+                /*return StatusCode(StatusCodes.Status400BadRequest);*/
             }
             else
             {
@@ -27,5 +29,11 @@ namespace RealEstateAPI.Controllers
                 return StatusCode(StatusCodes.Status201Created);
             }
         }
+        [HttpGet]
+        public IEnumerable<User> ShowUsers()
+        {
+            return _dbcontext.Users;
+        }
+
     }
 }
