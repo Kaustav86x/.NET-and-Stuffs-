@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CodeFirstModel
 {
-    public class Course
+    /*public class Course
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -45,8 +45,7 @@ namespace CodeFirstModel
         public DbSet<Author> Authors { get; set; }
 
         public PlutoContext():base("name=DefaultConnection")
-        { }
-    }
+        { }*/
     internal class Program
     {
         static void Main(string[] args)

@@ -13,3 +13,6 @@ C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Co
 C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.pdb
 C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.Migrations.InitialCodeFirstDemo.resources
 C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.csproj.GenerateResource.cache
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.Migrations.Second_Migration.resources
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.Migrations.CourseTableUpdatedwithDatePublishedattribute.resources
+C:\Users\HP\.NET-and-Stuffs-\C sharp Advance\Applications of Entity Framework\Code-first Approach\CodeFirstModel\obj\Debug\CodeFirstModel.Migrations.temp1.resources
