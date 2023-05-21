@@ -12,8 +12,8 @@
         public DateTime Date { get; set;}
         public int Fare { get; set;}
         //foreign key
-        /*public int User_id { get; set; }
+        public int User_id { get; set; }
         public User User { get; set; }
-        public ICollection<Reservation> Reservations { get; set; }*/
+        public ICollection<Reservation> Reservations { get; set; }
     }
 }

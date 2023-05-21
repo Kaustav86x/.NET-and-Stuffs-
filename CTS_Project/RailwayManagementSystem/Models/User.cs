@@ -14,9 +14,12 @@ namespace RailwayManagementSystem.Models
         public long Phone { get; set;}
         public string Email { get; set;}
         // foreign key
-        /*public virtual Role Role { get; set; }
+        public int Role_id { get; set; }
+        public Role Role { get; set; }
 
         // foreign key
-        public ICollection<Ticket_detail> Ticket_Details { get; set;}*/
+        public ICollection<Ticket_detail> Ticket_Details { get; set; }
+
+        public ICollection<Reservation> Reservations { get; set; }
     }
 }

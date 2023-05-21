@@ -5,6 +5,7 @@
     {
         public int Id { get; set; }
         public int Fare { get; set; }
-        /*public ICollection<Reservation> Reservations { get; set;}*/
+
+        public ICollection<Reservation> Reservations { get; set; }
     }
 }

@@ -8,6 +8,6 @@
         public string Payment_method { get; set; }
         public string Amount_paid { get; set;}
         public string Payment_status { get; set;}
-        /*public ICollection<Reservation> Reservations { get; set; }*/
+        public ICollection<Reservation> Reservations { get; set; }
     }
 }
