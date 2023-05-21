@@ -5,6 +5,6 @@
     {
         public int Id { get; set; }
         public string Role_Type { get; set; }
-        public virtual User User { get; set; }
+        /*public virtual User User { get; set; }*/
     }
 }

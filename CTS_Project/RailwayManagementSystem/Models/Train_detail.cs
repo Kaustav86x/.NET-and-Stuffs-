@@ -13,6 +13,6 @@ namespace RailwayManagementSystem.Models
         public string Arr_time { get;}
         public string Dept_name { get; set; }
         public string Class_available { get; set; }
-        public ICollection<Reservation> Reservations { get; set; }
+        /*public ICollection<Reservation> Reservations { get; set; }*/
     }
 }
