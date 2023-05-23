@@ -9,8 +9,8 @@ namespace RailwayManagementSystem.Controllers
     {
         [HttpGet("Admin")] 
         protected IActionResult Admin() 
-        { 
-
+        {
+            return Ok();
         }
     }
 }

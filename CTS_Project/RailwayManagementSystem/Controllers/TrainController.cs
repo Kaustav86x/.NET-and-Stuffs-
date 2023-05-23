@@ -14,10 +14,10 @@ namespace RailwayManagementSystem.Controllers
         [HttpGet("TrainList")]
         // search for a particular train
         // [Authorize] - haven't done yet
-        public IActionResult GetTrainList(int train_id) 
+        public IActionResult GetTrainList(int train_id)
         {
             var trainresult = _Railwaycontext.TrainDetails.Where(t => t.Id == train_id);
-            if(trainresult == null)
+            if (trainresult == null)
             {
                 return NotFound();
             }
@@ -25,6 +25,7 @@ namespace RailwayManagementSystem.Controllers
             {
                 return Ok(trainresult);
             }
+            /*return Ok(trainresult)*/
         }
 
         [HttpGet("TrainListByTime")]
