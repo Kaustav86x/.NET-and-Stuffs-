@@ -5,9 +5,9 @@ namespace RailwayManagementSystem.Models
 {
     // one-to-many with Ticket_detail
     // one-to-one with Role
-    public class User
+    public class User // child
     {
-        [ForeignKey("Role")]
+        /*[ForeignKey("Role")]*/
         public int Id { get; set; }
         public string Fname { get; set; }
         public string Lname { get; set;}
@@ -16,10 +16,7 @@ namespace RailwayManagementSystem.Models
         // foreign key
         public int Role_id { get; set; }
         public Role Role { get; set; }
-
-        // foreign key
         public ICollection<Ticket_detail> Ticket_Details { get; set; }
-
         public ICollection<Reservation> Reservations { get; set; }
     }
 }

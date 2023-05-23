@@ -115,7 +115,7 @@ namespace RailwayManagementSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Role_Type")
+                    b.Property<string>("Role_type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -146,6 +146,9 @@ namespace RailwayManagementSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("User_id")
                         .HasColumnType("int");
 
@@ -155,7 +158,7 @@ namespace RailwayManagementSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("User_id");
+                    b.HasIndex("UserId");
 
                     b.ToTable("TicketDetails");
                 });
@@ -274,8 +277,8 @@ namespace RailwayManagementSystem.Migrations
                 {
                     b.HasOne("RailwayManagementSystem.Models.User", "User")
                         .WithMany("Ticket_Details")
-                        .HasForeignKey("User_id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -304,8 +307,7 @@ namespace RailwayManagementSystem.Migrations
 
             modelBuilder.Entity("RailwayManagementSystem.Models.Role", b =>
                 {
-                    b.Navigation("User")
-                        .IsRequired();
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RailwayManagementSystem.Models.Ticket_detail", b =>

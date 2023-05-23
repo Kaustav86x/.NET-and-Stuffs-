@@ -7,5 +7,6 @@ namespace RailwayManagementSystem.Controllers
     [ApiController]
     public class ReservationController : ControllerBase
     {
+
     }
 }

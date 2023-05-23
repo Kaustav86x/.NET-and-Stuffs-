@@ -31,7 +31,7 @@ namespace RailwayManagementSystem.Controllers
         // fetching train list on the basis of arrival time
         public IActionResult GetTrainListByTime(DateTime arrival)
         {
-            
+            return Ok();
         }
 
     }

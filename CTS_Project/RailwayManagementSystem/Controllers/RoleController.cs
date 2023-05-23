@@ -7,6 +7,10 @@ namespace RailwayManagementSystem.Controllers
     [ApiController]
     public class RoleController : ControllerBase
     {
+        [HttpGet("Admin")] 
+        protected IActionResult Admin() 
+        { 
 
+        }
     }
 }

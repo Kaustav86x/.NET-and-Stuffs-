@@ -12,7 +12,7 @@ using RailwayManagementSystem.Data;
 namespace RailwayManagementSystem.Migrations
 {
     [DbContext(typeof(RailwayDbContext))]
-    [Migration("20230521123034_InitialCreate")]
+    [Migration("20230523110922_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -77,10 +77,35 @@ namespace RailwayManagementSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Class_id")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Payment_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Ticket_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Train_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("User_id")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Class_id");
+
+                    b.HasIndex("Payment_id");
+
+                    b.HasIndex("Ticket_id");
+
+                    b.HasIndex("Train_id");
+
+                    b.HasIndex("User_id");
 
                     b.ToTable("Reservations");
                 });
@@ -93,7 +118,7 @@ namespace RailwayManagementSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Role_Type")
+                    b.Property<string>("Role_type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -124,11 +149,19 @@ namespace RailwayManagementSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("User_id")
+                        .HasColumnType("int");
+
                     b.Property<string>("class_type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("TicketDetails");
                 });
@@ -189,9 +222,112 @@ namespace RailwayManagementSystem.Migrations
                     b.Property<long>("Phone")
                         .HasColumnType("bigint");
 
+                    b.Property<int>("Role_id")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("Role_id")
+                        .IsUnique();
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("RailwayManagementSystem.Models.Reservation", b =>
+                {
+                    b.HasOne("RailwayManagementSystem.Models.Class", "Class")
+                        .WithMany("Reservations")
+                        .HasForeignKey("Class_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RailwayManagementSystem.Models.Payment", "Payment")
+                        .WithMany("Reservations")
+                        .HasForeignKey("Payment_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RailwayManagementSystem.Models.Ticket_detail", "Ticket_Detail")
+                        .WithMany("Reservations")
+                        .HasForeignKey("Ticket_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RailwayManagementSystem.Models.Train_detail", "Train_detail")
+                        .WithMany("Reservations")
+                        .HasForeignKey("Train_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RailwayManagementSystem.Models.User", "User")
+                        .WithMany("Reservations")
+                        .HasForeignKey("User_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Class");
+
+                    b.Navigation("Payment");
+
+                    b.Navigation("Ticket_Detail");
+
+                    b.Navigation("Train_detail");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("RailwayManagementSystem.Models.Ticket_detail", b =>
+                {
+                    b.HasOne("RailwayManagementSystem.Models.User", "User")
+                        .WithMany("Ticket_Details")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("RailwayManagementSystem.Models.User", b =>
+                {
+                    b.HasOne("RailwayManagementSystem.Models.Role", "Role")
+                        .WithOne("User")
+                        .HasForeignKey("RailwayManagementSystem.Models.User", "Role_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("RailwayManagementSystem.Models.Class", b =>
+                {
+                    b.Navigation("Reservations");
+                });
+
+            modelBuilder.Entity("RailwayManagementSystem.Models.Payment", b =>
+                {
+                    b.Navigation("Reservations");
+                });
+
+            modelBuilder.Entity("RailwayManagementSystem.Models.Role", b =>
+                {
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("RailwayManagementSystem.Models.Ticket_detail", b =>
+                {
+                    b.Navigation("Reservations");
+                });
+
+            modelBuilder.Entity("RailwayManagementSystem.Models.Train_detail", b =>
+                {
+                    b.Navigation("Reservations");
+                });
+
+            modelBuilder.Entity("RailwayManagementSystem.Models.User", b =>
+                {
+                    b.Navigation("Reservations");
+
+                    b.Navigation("Ticket_Details");
                 });
 #pragma warning restore 612, 618
         }
