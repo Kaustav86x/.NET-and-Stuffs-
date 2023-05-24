@@ -1,8 +1,12 @@
-﻿namespace RailwayManagementSystem.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RailwayManagementSystem.Models
 {
     public class Role //parent
     {
-        public int Id { get; set; }
+        [Required]
+        public Guid Id { get; set; }
+        [MaxLength(50)]
         public string Role_type { get; set; }
         public User? User { get; set; }
     }

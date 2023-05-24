@@ -28,8 +28,7 @@ namespace RailwayManagementSystem.Migrations
                 name: "Payments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Payment_method = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Amount_paid = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -44,9 +43,8 @@ namespace RailwayManagementSystem.Migrations
                 name: "Roles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Role_type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Role_type = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -74,13 +72,12 @@ namespace RailwayManagementSystem.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Fname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Lname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Fname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Lname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Phone = table.Column<long>(type: "bigint", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Role_id = table.Column<int>(type: "int", nullable: false)
+                    Role_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -105,7 +102,7 @@ namespace RailwayManagementSystem.Migrations
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Fare = table.Column<int>(type: "int", nullable: false),
                     User_id = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -121,14 +118,13 @@ namespace RailwayManagementSystem.Migrations
                 name: "Reservations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    User_id = table.Column<int>(type: "int", nullable: false),
+                    User_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Train_id = table.Column<int>(type: "int", nullable: false),
                     Ticket_id = table.Column<int>(type: "int", nullable: false),
                     Class_id = table.Column<int>(type: "int", nullable: false),
-                    Payment_id = table.Column<int>(type: "int", nullable: false)
+                    Payment_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {

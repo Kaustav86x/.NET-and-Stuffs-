@@ -40,11 +40,9 @@ namespace RailwayManagementSystem.Migrations
 
             modelBuilder.Entity("RailwayManagementSystem.Models.Payment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Amount_paid")
                         .IsRequired()
@@ -68,11 +66,9 @@ namespace RailwayManagementSystem.Migrations
 
             modelBuilder.Entity("RailwayManagementSystem.Models.Reservation", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Class_id")
                         .HasColumnType("int");
@@ -80,8 +76,8 @@ namespace RailwayManagementSystem.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Payment_id")
-                        .HasColumnType("int");
+                    b.Property<Guid>("Payment_id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Ticket_id")
                         .HasColumnType("int");
@@ -89,8 +85,8 @@ namespace RailwayManagementSystem.Migrations
                     b.Property<int>("Train_id")
                         .HasColumnType("int");
 
-                    b.Property<int>("User_id")
-                        .HasColumnType("int");
+                    b.Property<Guid>("User_id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -109,15 +105,14 @@ namespace RailwayManagementSystem.Migrations
 
             modelBuilder.Entity("RailwayManagementSystem.Models.Role", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Role_type")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -146,8 +141,8 @@ namespace RailwayManagementSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("User_id")
                         .HasColumnType("int");
@@ -198,11 +193,9 @@ namespace RailwayManagementSystem.Migrations
 
             modelBuilder.Entity("RailwayManagementSystem.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -210,17 +203,19 @@ namespace RailwayManagementSystem.Migrations
 
                     b.Property<string>("Fname")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Lname")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<long>("Phone")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("Role_id")
-                        .HasColumnType("int");
+                    b.Property<Guid>("Role_id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
