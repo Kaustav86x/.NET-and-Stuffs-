@@ -47,11 +47,11 @@ namespace RailwayManagementSystem.Data
                 .HasMany(a => a.Reservations)
                 .WithOne(b => b.User)
                 .HasForeignKey(c => c.User_id).IsRequired();
-            // Role to User (1:1)
+            // Role to User (1:N)
             modelBuilder.Entity<Role>()
-                .HasOne(a => a.User)
+                .HasMany(a => a.Users)
                 .WithOne(b => b.Role)
-                .HasForeignKey<User>(c => c.Role_id).IsRequired();
+                .HasForeignKey(c => c.Role_id).IsRequired();
             // User to Ticket_details(1:N)
             modelBuilder.Entity<User>()
                 .HasMany(a => a.Ticket_Details)

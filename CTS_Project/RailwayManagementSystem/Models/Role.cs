@@ -8,6 +8,6 @@ namespace RailwayManagementSystem.Models
         public Guid Id { get; set; }
         [MaxLength(50)]
         public string Role_type { get; set; }
-        public User? User { get; set; }
+        public ICollection<User> Users { get; set;}
     }
 }

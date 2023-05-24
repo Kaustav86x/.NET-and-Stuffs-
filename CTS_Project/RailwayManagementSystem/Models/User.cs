@@ -21,6 +21,7 @@ namespace RailwayManagementSystem.Models
         [Required]
         public string Email { get; set;}
         // foreign key
+        [Required]
         public Guid Role_id { get; set; }
         public Role Role { get; set; }
         public ICollection<Ticket_detail> Ticket_Details { get; set; }
