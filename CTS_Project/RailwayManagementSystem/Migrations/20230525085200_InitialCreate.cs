@@ -60,7 +60,7 @@ namespace RailwayManagementSystem.Migrations
                     Source = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Destination = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Train_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Dept_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Dept_time = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Class_available = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -194,8 +194,7 @@ namespace RailwayManagementSystem.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Role_id",
                 table: "Users",
-                column: "Role_id",
-                unique: true);
+                column: "Role_id");
         }
 
         /// <inheritdoc />

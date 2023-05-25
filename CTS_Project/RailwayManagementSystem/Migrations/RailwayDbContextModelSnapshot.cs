@@ -170,7 +170,7 @@ namespace RailwayManagementSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Dept_name")
+                    b.Property<string>("Dept_time")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

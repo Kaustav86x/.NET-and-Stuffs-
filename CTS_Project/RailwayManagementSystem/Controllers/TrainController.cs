@@ -11,28 +11,28 @@ namespace RailwayManagementSystem.Controllers
     {
         RailwayDbContext _Railwaycontext = new RailwayDbContext();
 
-        [HttpGet("TrainList")]
         // search for a particular train
-        // [Authorize] - haven't done yet
-        public IActionResult GetTrainList(int train_id)
+        [HttpGet("TrainListId")]
+        public IActionResult GetTrainListById(int train_id)
         {
-            var trainresult = _Railwaycontext.TrainDetails.Where(t => t.Id == train_id);
-            if (trainresult == null)
+            var train = _Railwaycontext.TrainDetails.Where(c => c.Id == train_id);
+            if (train == null)
             {
                 return NotFound();
             }
             else
-            {
-                return Ok(trainresult);
-            }
-            /*return Ok(trainresult)*/
+                return Ok(train);
         }
 
-        [HttpGet("TrainListByTime")]
+        [HttpGet("TrainListTime")]
         // fetching train list on the basis of arrival time
         public IActionResult GetTrainListByTime(DateTime arrival)
         {
-            return Ok();
+            var traintime = _Railwaycontext.TrainDetails.Where(a => a.Arr_time == arrival.ToString());
+            if (traintime == null) 
+                return NotFound();
+            else
+                return Ok(traintime);
         }
 
     }

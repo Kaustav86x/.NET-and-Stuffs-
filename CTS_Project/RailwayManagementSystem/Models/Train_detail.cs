@@ -11,7 +11,7 @@ namespace RailwayManagementSystem.Models
         public string Destination { get; set; }
         public string Train_name { get; set; }
         public string Arr_time { get;}
-        public string Dept_name { get; set; }
+        public string Dept_time { get; set; }
         public string Class_available { get; set; }
         public ICollection<Reservation> Reservations { get; set; }
     }

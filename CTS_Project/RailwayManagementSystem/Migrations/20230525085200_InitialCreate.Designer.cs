@@ -12,7 +12,7 @@ using RailwayManagementSystem.Data;
 namespace RailwayManagementSystem.Migrations
 {
     [DbContext(typeof(RailwayDbContext))]
-    [Migration("20230524152449_InitialCreate")]
+    [Migration("20230525085200_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -173,7 +173,7 @@ namespace RailwayManagementSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Dept_name")
+                    b.Property<string>("Dept_time")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -222,8 +222,7 @@ namespace RailwayManagementSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Role_id")
-                        .IsUnique();
+                    b.HasIndex("Role_id");
 
                     b.ToTable("Users");
                 });
@@ -285,8 +284,8 @@ namespace RailwayManagementSystem.Migrations
             modelBuilder.Entity("RailwayManagementSystem.Models.User", b =>
                 {
                     b.HasOne("RailwayManagementSystem.Models.Role", "Role")
-                        .WithOne("User")
-                        .HasForeignKey("RailwayManagementSystem.Models.User", "Role_id")
+                        .WithMany("Users")
+                        .HasForeignKey("Role_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -305,7 +304,7 @@ namespace RailwayManagementSystem.Migrations
 
             modelBuilder.Entity("RailwayManagementSystem.Models.Role", b =>
                 {
-                    b.Navigation("User");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("RailwayManagementSystem.Models.Ticket_detail", b =>
