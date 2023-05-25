@@ -32,7 +32,7 @@ namespace RailwayManagementSystem.Controllers
             if (traintime == null) 
                 return NotFound();
             else
-                return Ok(traintime);
+                return Ok(traintime.ToList());
         }
 
     }
