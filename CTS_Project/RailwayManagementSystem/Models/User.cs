@@ -8,13 +8,17 @@ namespace RailwayManagementSystem.Models
     // one-to-one with Role
     public class User // child
     {
+        public User() 
+        {
+            Ticket_Details = new HashSet<Ticket_detail>();
+            Reservations = new HashSet<Reservation>();
+        }   
         /*[ForeignKey("Role")]*/
         [Required]
         public Guid Id { get; set; }
-        [MaxLength(50)]
         [Required]
         public string Fname { get; set; }
-        [MaxLength(50)]
+        [Required]
         public string Lname { get; set;}
         [Required]
         public long Phone { get; set;}
@@ -23,8 +27,8 @@ namespace RailwayManagementSystem.Models
         // foreign key
         [Required]
         public Guid Role_id { get; set; }
-        public Role Role { get; set; }
-        public ICollection<Ticket_detail> Ticket_Details { get; set; }
-        public ICollection<Reservation> Reservations { get; set; }
+        public virtual Role? Role { get; set; }
+        public virtual ICollection<Ticket_detail> Ticket_Details { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

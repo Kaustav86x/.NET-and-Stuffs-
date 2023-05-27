@@ -11,9 +11,9 @@ namespace RailwayManagementSystem.Controllers
     {
         RailwayDbContext _Railwaycontext = new RailwayDbContext();
 
-        // search for a particular train
+        // search for a particular train using Id
         [HttpGet("TrainListId")]
-        public IActionResult GetTrainListById(int train_id)
+        public IActionResult GetTrainsById(int train_id)
         {
             var train = _Railwaycontext.TrainDetails.Where(c => c.Id == train_id);
             if (train == null)
@@ -23,16 +23,15 @@ namespace RailwayManagementSystem.Controllers
             else
                 return Ok(train);
         }
-
-        [HttpGet("TrainListTime")]
-        // fetching train list on the basis of arrival time
-        public IActionResult GetTrainListByTime(DateTime arrival)
+        [HttpGet("TrainName")]
+        // finding train by name
+        public IActionResult GetTrainNames(string Tname)
         {
-            var traintime = _Railwaycontext.TrainDetails.Where(a => a.Arr_time == arrival.ToString());
-            if (traintime == null) 
+            var trainname = _Railwaycontext.TrainDetails.Where(a => a.Train_name == Tname);
+            if (trainname == null)
                 return NotFound();
             else
-                return Ok(traintime.ToList());
+                return Ok(trainname.ToList());
         }
 
     }

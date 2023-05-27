@@ -4,10 +4,13 @@ namespace RailwayManagementSystem.Models
 {
     public class Role //parent
     {
-        [Required]
+        public Role() 
+        {
+            Users = new HashSet<User>();
+        }
         public Guid Id { get; set; }
-        [MaxLength(50)]
+        [Required]
         public string Role_type { get; set; }
-        public ICollection<User> Users { get; set;}
+        public virtual ICollection<User> Users { get; set;}
     }
 }

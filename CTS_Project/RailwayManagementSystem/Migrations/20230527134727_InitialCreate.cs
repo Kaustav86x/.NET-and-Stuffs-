@@ -31,7 +31,7 @@ namespace RailwayManagementSystem.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Payment_method = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Amount_paid = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Amount_paid = table.Column<int>(type: "int", nullable: false),
                     Payment_status = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -44,7 +44,7 @@ namespace RailwayManagementSystem.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Role_type = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    Role_type = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,7 +60,7 @@ namespace RailwayManagementSystem.Migrations
                     Source = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Destination = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Train_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Dept_time = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Dept_time = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Class_available = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -73,8 +73,8 @@ namespace RailwayManagementSystem.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Fname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Lname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Fname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Lname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<long>(type: "bigint", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
@@ -91,38 +91,15 @@ namespace RailwayManagementSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TicketDetails",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Train_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    class_type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Seat_no = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Fare = table.Column<int>(type: "int", nullable: false),
-                    User_id = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TicketDetails", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TicketDetails_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Reservations",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    User_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Total_fare = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     User_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Train_id = table.Column<int>(type: "int", nullable: false),
-                    Ticket_id = table.Column<int>(type: "int", nullable: false),
                     Class_id = table.Column<int>(type: "int", nullable: false),
                     Payment_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -142,12 +119,6 @@ namespace RailwayManagementSystem.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Reservations_TicketDetails_Ticket_id",
-                        column: x => x.Ticket_id,
-                        principalTable: "TicketDetails",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Reservations_TrainDetails_Train_id",
                         column: x => x.Train_id,
                         principalTable: "TrainDetails",
@@ -161,6 +132,30 @@ namespace RailwayManagementSystem.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "TicketDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Train_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    class_type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Seat_no = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Fare = table.Column<int>(type: "int", nullable: false),
+                    User_id = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TicketDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TicketDetails_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Reservations_Class_id",
                 table: "Reservations",
@@ -170,11 +165,6 @@ namespace RailwayManagementSystem.Migrations
                 name: "IX_Reservations_Payment_id",
                 table: "Reservations",
                 column: "Payment_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reservations_Ticket_id",
-                table: "Reservations",
-                column: "Ticket_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reservations_Train_id",
@@ -204,13 +194,13 @@ namespace RailwayManagementSystem.Migrations
                 name: "Reservations");
 
             migrationBuilder.DropTable(
+                name: "TicketDetails");
+
+            migrationBuilder.DropTable(
                 name: "Classes");
 
             migrationBuilder.DropTable(
                 name: "Payments");
-
-            migrationBuilder.DropTable(
-                name: "TicketDetails");
 
             migrationBuilder.DropTable(
                 name: "TrainDetails");

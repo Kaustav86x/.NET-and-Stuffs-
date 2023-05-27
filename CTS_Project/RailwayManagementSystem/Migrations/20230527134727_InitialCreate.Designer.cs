@@ -12,7 +12,7 @@ using RailwayManagementSystem.Data;
 namespace RailwayManagementSystem.Migrations
 {
     [DbContext(typeof(RailwayDbContext))]
-    [Migration("20230525155912_InitialCreate")]
+    [Migration("20230527134727_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -47,9 +47,8 @@ namespace RailwayManagementSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Amount_paid")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Amount_paid")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -82,7 +81,7 @@ namespace RailwayManagementSystem.Migrations
                     b.Property<Guid>("Payment_id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Ticket_id")
+                    b.Property<int>("Total_fare")
                         .HasColumnType("int");
 
                     b.Property<int>("Train_id")
@@ -91,13 +90,15 @@ namespace RailwayManagementSystem.Migrations
                     b.Property<Guid>("User_id")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("User_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Class_id");
 
                     b.HasIndex("Payment_id");
-
-                    b.HasIndex("Ticket_id");
 
                     b.HasIndex("Train_id");
 
@@ -114,8 +115,7 @@ namespace RailwayManagementSystem.Migrations
 
                     b.Property<string>("Role_type")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -144,7 +144,7 @@ namespace RailwayManagementSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("User_id")
@@ -173,9 +173,8 @@ namespace RailwayManagementSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Dept_time")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Dept_time")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Destination")
                         .IsRequired()
@@ -206,13 +205,11 @@ namespace RailwayManagementSystem.Migrations
 
                     b.Property<string>("Fname")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Lname")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("Phone")
                         .HasColumnType("bigint");
@@ -241,12 +238,6 @@ namespace RailwayManagementSystem.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RailwayManagementSystem.Models.Ticket_detail", "Ticket_Detail")
-                        .WithMany("Reservations")
-                        .HasForeignKey("Ticket_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("RailwayManagementSystem.Models.Train_detail", "Train_detail")
                         .WithMany("Reservations")
                         .HasForeignKey("Train_id")
@@ -263,8 +254,6 @@ namespace RailwayManagementSystem.Migrations
 
                     b.Navigation("Payment");
 
-                    b.Navigation("Ticket_Detail");
-
                     b.Navigation("Train_detail");
 
                     b.Navigation("User");
@@ -274,9 +263,7 @@ namespace RailwayManagementSystem.Migrations
                 {
                     b.HasOne("RailwayManagementSystem.Models.User", "User")
                         .WithMany("Ticket_Details")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -305,11 +292,6 @@ namespace RailwayManagementSystem.Migrations
             modelBuilder.Entity("RailwayManagementSystem.Models.Role", b =>
                 {
                     b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("RailwayManagementSystem.Models.Ticket_detail", b =>
-                {
-                    b.Navigation("Reservations");
                 });
 
             modelBuilder.Entity("RailwayManagementSystem.Models.Train_detail", b =>
