@@ -7,5 +7,7 @@ namespace RailwayManagementSystem.Controllers
     [ApiController]
     public class PaymentController : ControllerBase
     {
+        
+
     }
 }
