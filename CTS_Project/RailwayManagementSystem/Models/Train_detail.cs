@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace RailwayManagementSystem.Models
 {
     // one-to-many with Reservation
+    // one-to-many with Class
     public class Train_detail
     {
         public Train_detail()
@@ -19,11 +20,11 @@ namespace RailwayManagementSystem.Models
         [Required]
         public string Train_name { get; set; }
         [Required]
-        public DateTime Arr_time { get;}
+        public string Arr_time { get;}
         [Required]
-        public DateTime Dept_time { get; set; }
+        public string Dept_time { get; set; }
         [Required]
-        public string Class_available { get; set; }
+        public string Class_type { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

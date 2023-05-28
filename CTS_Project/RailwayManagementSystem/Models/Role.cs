@@ -8,9 +8,10 @@ namespace RailwayManagementSystem.Models
         {
             Users = new HashSet<User>();
         }
-        public Guid Id { get; set; }
         [Required]
-        public string Role_type { get; set; }
-        public virtual ICollection<User> Users { get; set;}
+        public string Id { get; set; }
+        [Required]
+        public string? Role_type { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

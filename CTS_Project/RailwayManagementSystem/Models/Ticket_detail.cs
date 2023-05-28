@@ -3,7 +3,6 @@
 namespace RailwayManagementSystem.Models
 {
     // many-to-one with User
-    // one-to-many with Reservation
     public class Ticket_detail
     {
         public int Id { get; set; }
@@ -21,7 +20,7 @@ namespace RailwayManagementSystem.Models
         [Required]
         public int Fare { get; set;}
         // foreign key
-        public int User_id { get; set; }
+        public string User_id { get; set; }
         public virtual User? User { get; set; }
     }
 }

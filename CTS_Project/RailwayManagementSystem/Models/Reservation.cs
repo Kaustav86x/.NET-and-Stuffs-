@@ -8,16 +8,16 @@ namespace RailwayManagementSystem.Models
     // many-to-one with Payment
     public class Reservation
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         [Required]
         public string User_name { get; set; }
         [Required]
         public int Total_fare { get; set;}
-        [Required]
+        [Required] 
         public DateTime Date { get; set; }
         // foreign key
         [Required]
-        public Guid User_id { get; set; }
+        public string User_id { get; set; }
         public virtual User? User { get; set; }
         // foreign key 
         [Required]

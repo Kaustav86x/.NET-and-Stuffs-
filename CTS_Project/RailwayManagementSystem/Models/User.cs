@@ -13,9 +13,8 @@ namespace RailwayManagementSystem.Models
             Ticket_Details = new HashSet<Ticket_detail>();
             Reservations = new HashSet<Reservation>();
         }   
-        /*[ForeignKey("Role")]*/
         [Required]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         [Required]
         public string Fname { get; set; }
         [Required]
@@ -24,9 +23,11 @@ namespace RailwayManagementSystem.Models
         public long Phone { get; set;}
         [Required]
         public string Email { get; set;}
+        [Required]
+        public string Password { get; set;}
         // foreign key
         [Required]
-        public Guid Role_id { get; set; }
+        public string Role_id { get; set; }
         public virtual Role? Role { get; set; }
         public virtual ICollection<Ticket_detail> Ticket_Details { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }

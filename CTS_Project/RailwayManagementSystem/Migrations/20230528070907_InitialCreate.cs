@@ -17,6 +17,7 @@ namespace RailwayManagementSystem.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Class_type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Fare = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -43,7 +44,7 @@ namespace RailwayManagementSystem.Migrations
                 name: "Roles",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Role_type = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -60,8 +61,8 @@ namespace RailwayManagementSystem.Migrations
                     Source = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Destination = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Train_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Dept_time = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Class_available = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Dept_time = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Class_type = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,12 +73,12 @@ namespace RailwayManagementSystem.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Fname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Lname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<long>(type: "bigint", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Role_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Role_id = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -94,11 +95,11 @@ namespace RailwayManagementSystem.Migrations
                 name: "Reservations",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     User_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Total_fare = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    User_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    User_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Train_id = table.Column<int>(type: "int", nullable: false),
                     Class_id = table.Column<int>(type: "int", nullable: false),
                     Payment_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
@@ -143,8 +144,8 @@ namespace RailwayManagementSystem.Migrations
                     Seat_no = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Fare = table.Column<int>(type: "int", nullable: false),
-                    User_id = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    User_id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
