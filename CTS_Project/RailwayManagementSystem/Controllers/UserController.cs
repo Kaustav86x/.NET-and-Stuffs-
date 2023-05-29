@@ -53,9 +53,9 @@ namespace RailwayManagementSystem.Controllers
         }
 
         [HttpPost("[action]")]
-        public IActionResult Login([FromBody] string Email,string Password)
+        public IActionResult Login(string Email,string Password)
         {
-            var exists = _Railwaycontext.Users.FirstOrDefault(e => e.Email.Equals(Email) && e.Password.Equals(Password));
+            var exists = _Railwaycontext.Users.FirstOrDefault(e => e.Email == Email && e.Password == Password);
             if (exists == null)
             {
                 return NotFound("User not found");
@@ -63,16 +63,17 @@ namespace RailwayManagementSystem.Controllers
             var securitykey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
             var credentials = new SigningCredentials(securitykey, SecurityAlgorithms.HmacSha256);
 
-            string roleType = "";
-            foreach(var role in _Railwaycontext.Roles) 
+            var role = _Railwaycontext.Roles.Find(exists.Role_id);
+            /*foreach(var role in _Railwaycontext.Roles) 
             {
                 if (role.Id == exists.Role_id)
                     roleType = role.Role_type;
                 break;
-            }
+            }*/
+
             // claimType, claimValue
             var EmailClaim = new Claim(ClaimTypes.Email, Email);
-            var userClaim = new Claim(ClaimTypes.Role, roleType);
+            var userClaim = new Claim(ClaimTypes.Role, role.Role_type);
 
             var claims = new[]
             {

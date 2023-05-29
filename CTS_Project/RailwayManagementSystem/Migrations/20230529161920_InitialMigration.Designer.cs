@@ -12,8 +12,8 @@ using RailwayManagementSystem.Data;
 namespace RailwayManagementSystem.Migrations
 {
     [DbContext(typeof(RailwayDbContext))]
-    [Migration("20230529121640_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230529161920_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

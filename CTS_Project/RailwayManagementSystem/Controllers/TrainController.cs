@@ -24,7 +24,7 @@ namespace RailwayManagementSystem.Controllers
                 return Ok(train);
         }
         [HttpGet("TrainName")]
-        [Authorize(Roles = "passenger")]
+        [Authorize(Roles = "Passenger")]
         // finding train by name
         public IActionResult GetTrainNames(string Tname)
         {
@@ -32,7 +32,7 @@ namespace RailwayManagementSystem.Controllers
             if (trainname == null)
                 return NotFound();
             else
-                return Ok(trainname.ToList());
+                return Ok(trainname);
         }
         [HttpGet("TrainsAvailable")]
         [Authorize(Roles = "passenger")]
