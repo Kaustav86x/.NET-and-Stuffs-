@@ -53,9 +53,9 @@ namespace RailwayManagementSystem.Controllers
         }
 
         [HttpPost("[action]")]
-        public IActionResult Login([FromBody] User user)
+        public IActionResult Login([FromBody] string Email,string Password)
         {
-            var exists = _Railwaycontext.Users.FirstOrDefault(e => e.Email.Equals(user.Email) && e.Password.Equals(user.Password));
+            var exists = _Railwaycontext.Users.FirstOrDefault(e => e.Email.Equals(Email) && e.Password.Equals(Password));
             if (exists == null)
             {
                 return NotFound("User not found");
@@ -71,8 +71,8 @@ namespace RailwayManagementSystem.Controllers
                 break;
             }
             // claimType, claimValue
-            var EmailClaim = new Claim(ClaimTypes.Email, user.Email);
-            var userClaim = new Claim("TypeUser", roleType);
+            var EmailClaim = new Claim(ClaimTypes.Email, Email);
+            var userClaim = new Claim(ClaimTypes.Role, roleType);
 
             var claims = new[]
             {

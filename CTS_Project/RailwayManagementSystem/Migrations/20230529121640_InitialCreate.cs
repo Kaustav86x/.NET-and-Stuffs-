@@ -61,6 +61,7 @@ namespace RailwayManagementSystem.Migrations
                     Source = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Destination = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Train_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Arr_time = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Dept_time = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Class_type = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -78,6 +79,7 @@ namespace RailwayManagementSystem.Migrations
                     Lname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<long>(type: "bigint", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role_id = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>

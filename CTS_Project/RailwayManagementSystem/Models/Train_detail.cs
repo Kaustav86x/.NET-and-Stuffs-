@@ -20,7 +20,7 @@ namespace RailwayManagementSystem.Models
         [Required]
         public string Train_name { get; set; }
         [Required]
-        public string Arr_time { get;}
+        public string Arr_time { get; set; }
         [Required]
         public string Dept_time { get; set; }
         [Required]

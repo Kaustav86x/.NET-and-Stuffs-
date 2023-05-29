@@ -24,7 +24,7 @@ namespace RailwayManagementSystem.Controllers
                 return Ok(train);
         }
         [HttpGet("TrainName")]
-        [Authorize(Policy = "passenger")]
+        [Authorize(Roles = "passenger")]
         // finding train by name
         public IActionResult GetTrainNames(string Tname)
         {
@@ -35,7 +35,7 @@ namespace RailwayManagementSystem.Controllers
                 return Ok(trainname.ToList());
         }
         [HttpGet("TrainsAvailable")]
-        [Authorize(Policy = "passenger")]
+        [Authorize(Roles = "passenger")]
         public IActionResult GetTrains()
         {
             return Ok(_Railwaycontext.TrainDetails);

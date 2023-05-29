@@ -170,6 +170,10 @@ namespace RailwayManagementSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Arr_time")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Class_type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
