@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RailwayManagementSystem.Models
+namespace RailwayManagementSystem.Models.DbModels
 {
     // one-to-many with Ticket_detail
     // one-to-one with Role

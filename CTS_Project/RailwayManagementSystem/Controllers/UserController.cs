@@ -5,12 +5,16 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RailwayManagementSystem.Data;
 using RailwayManagementSystem.Models;
+using RailwayManagementSystem.Models.AddModels;
+using RailwayManagementSystem.Models.DbModels;
+using RailwayManagementSystem.Models.ViewModels;
 
 namespace RailwayManagementSystem.Controllers
 {
@@ -18,126 +22,155 @@ namespace RailwayManagementSystem.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly RailwayDbContext _context;
-        private readonly IConfiguration _confih;
+        private readonly RailwayDbContext _Railwaycontext;
+        private readonly IConfiguration _config;
 
-        public UserController(RailwayDbContext context)
+        public UserController(RailwayDbContext context, IConfiguration config)
         {
-            _context = context;
+            _Railwaycontext = context;
+            this._config = config;
         }
 
         // GET: api/User
+        // Get the list of the Passemegrs from the database
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        [Authorize(Roles = "Admin")]
+        [Route("[Action]")]
+        public async Task<ActionResult> GetPassengers()
         {
-          if (_context.Users == null)
-          {
-              return NotFound();
-          }
-            return await _context.Users.ToListAsync();
-        }
-
-        // GET: api/User/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(string id)
-        {
-          if (_context.Users == null)
-          {
-              return NotFound();
-          }
-            var user = await _context.Users.FindAsync(id);
-
-            if (user == null)
+            if (_Railwaycontext.Users == null)
             {
-                return NotFound();
+                return NotFound("No passengers found");
             }
-
-            return user;
+            return Ok(await _Railwaycontext.Users.ToListAsync());
         }
 
         // PUT: api/User/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(string id, User user)
+        // get passenger by ID
+        [HttpGet]
+        [Authorize(Roles = "Admin,Passenger")]
+        [Route("[Action]/{id}")]
+        public async Task<IActionResult> GetPassengerId(string pass_id)
         {
-            if (id != user.Id)
+            if (_Railwaycontext.Users == null)
             {
-                return BadRequest();
+                return BadRequest("No passenger found with this Id");
             }
 
-            _context.Entry(user).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok(await _Railwaycontext.Users.Where(pass => pass.Id == pass_id).ToListAsync());
         }
 
         // POST: api/User
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        // finding user details of a certain user using Id
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]/{id:string")]
+        public async Task<ActionResult> GetUserDetailsById([FromRoute] string user_id)
         {
-          if (_context.Users == null)
-          {
-              return Problem("Entity set 'RailwayDbContext.Users'  is null.");
-          }
-            _context.Users.Add(user);
-            try
+            var user = await _Railwaycontext.Users.FindAsync(user_id);
+            if (user != null)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (UserExists(user.Id))
+                var viewPassenger = new ViewUser()
                 {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                    Fname = user.Fname,
+                    Lname = user.Lname,
+                    Phone = user.Phone,
+                    Email = user.Email,
+                    Role = user.Role_id
+                };
+                return Ok(viewPassenger);
             }
-
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            else
+                return NotFound("Passenger not found");
         }
 
         // DELETE: api/User/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(string id)
+        /*public async Task<IActionResult> DeleteUser(string id)
         {
-            if (_context.Users == null)
+           
+        }*/
+        [HttpPut]
+        [Authorize(Roles = "Admin")]
+        [Route("[action/{id:string}")]
+        public async Task<IActionResult> UpdatePassengers([FromBody] string uid, [FromBody] ViewUser passenger)
+        {
+            var PassengerExists = await _Railwaycontext.Users.FindAsync(uid);
+            if (PassengerExists != null)
             {
-                return NotFound();
+                PassengerExists.Fname = passenger.Fname;
+                PassengerExists.Lname = passenger.Lname;
+                PassengerExists.Phone = passenger.Phone;
+                PassengerExists.Email = passenger.Email;
+                PassengerExists.Role_id = passenger.Role;
+
+                await _Railwaycontext.SaveChangesAsync();
+                return Ok("Record updated successfully");
             }
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
+            else { return NotFound("Passenger with that Id is not found"); }
+        }
+        // new user addition
+        [HttpPost]
+        [Route("[action]")]
+        public async Task<IActionResult> SignUp([FromBody] User passenger)
+        {
+            var email = await _Railwaycontext.Users.FindAsync(passenger.Email);
+            if (email != null)
             {
-                return NotFound();
+                return Ok("EmailId already exists !");
             }
-
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            else
+            {
+                /*[Authorize]*/
+                // string role = passenger.Role_id; // A / P
+                _Railwaycontext.Users.Add(passenger);
+                _Railwaycontext.SaveChanges();
+                return Ok("New User added successfully");
+            }
         }
 
-        private bool UserExists(string id)
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Login([FromBody] Login User)
         {
-            return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
+            var ExistingUser = _Railwaycontext.Users.FirstOrDefault(e => e.Email == User.Email);
+            if (ExistingUser != null)
+            {
+                if (User.Password == ExistingUser.Password)
+                {
+                    var role = await _Railwaycontext.Roles.FindAsync(ExistingUser.Role_id);
+                    var jwt = JwtTokenCreation(ExistingUser.Email, role.Role_type);
+                    return Ok(jwt);
+                }
+                return BadRequest("Password is incorrect");
+            }
+            else { return NotFound("Incorrect Email Id"); }
+        }
+        private string JwtTokenCreation(string Email, string role)
+        {
+            var securitykey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
+            var credentials = new SigningCredentials(securitykey, SecurityAlgorithms.HmacSha256);
+
+            // claimType, claimValue
+            var EmailClaim = new Claim(ClaimTypes.Email, Email);
+            var userClaim = new Claim(ClaimTypes.Role, role);
+
+            var claims = new[]
+            {
+                    EmailClaim, userClaim
+                };
+
+            // generating the JWT token
+            var token = new JwtSecurityToken(
+                issuer: _config["JWT:Issuer"],
+                audience: _config["JWT:Audience"],
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(60),
+                signingCredentials: credentials);
+
+            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+            return jwt;
         }
     }
 }

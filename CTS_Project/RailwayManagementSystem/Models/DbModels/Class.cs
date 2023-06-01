@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RailwayManagementSystem.Models
+namespace RailwayManagementSystem.Models.DbModels
 {
     // one-to-many with Reservation
     // many-to-many with class

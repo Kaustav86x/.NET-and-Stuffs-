@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RailwayManagementSystem.Models
+namespace RailwayManagementSystem.Models.DbModels
 {
     // many-to-one with User
     public class Ticket_detail

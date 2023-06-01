@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RailwayManagementSystem.Models;
+using RailwayManagementSystem.Models.DbModels;
 
 namespace RailwayManagementSystem.Data
 {

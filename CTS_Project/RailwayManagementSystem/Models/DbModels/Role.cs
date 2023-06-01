@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RailwayManagementSystem.Models
+namespace RailwayManagementSystem.Models.DbModels
 {
     public class Role //parent
     {
