@@ -36,7 +36,7 @@ namespace RailwayManagementSystem.Controllers
         [HttpGet]
         [Authorize(Roles = "Admin")]
         [Route("[Action]")]
-        public async Task<ActionResult> GetPassengers()
+        public async Task<IActionResult> GetPassengers()
         {
             if (_Railwaycontext.Users == null)
             {
@@ -93,9 +93,9 @@ namespace RailwayManagementSystem.Controllers
            
         }*/
         [HttpPut]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admim")]
         [Route("[action/{id:string}")]
-        public async Task<IActionResult> UpdatePassengers([FromBody] string uid, [FromBody] ViewUser passenger)
+        public async Task<IActionResult> UpdatePassengers([FromBody] string uid, [FromBody] AddUser passenger)
         {
             var PassengerExists = await _Railwaycontext.Users.FindAsync(uid);
             if (PassengerExists != null)
@@ -159,7 +159,7 @@ namespace RailwayManagementSystem.Controllers
             var claims = new[]
             {
                     EmailClaim, userClaim
-                };
+            };
 
             // generating the JWT token
             var token = new JwtSecurityToken(

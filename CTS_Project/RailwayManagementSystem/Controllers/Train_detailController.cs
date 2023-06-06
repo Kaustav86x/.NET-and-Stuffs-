@@ -12,55 +12,55 @@ namespace RailwayManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClassController : ControllerBase
+    public class Train_detailController : ControllerBase
     {
         private readonly RailwayDbContext _context;
 
-        public ClassController(RailwayDbContext context)
+        public Train_detailController(RailwayDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Class
+        // GET: api/Train_detail
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Class>>> GetClasses()
+        public async Task<ActionResult<IEnumerable<Train_detail>>> GetTrainDetails()
         {
-          if (_context.Classes == null)
+          if (_context.TrainDetails == null)
           {
               return NotFound();
           }
-            return await _context.Classes.ToListAsync();
+            return await _context.TrainDetails.ToListAsync();
         }
 
-        // GET: api/Class/5
+        // GET: api/Train_detail/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Class>> GetClass(int id)
+        public async Task<ActionResult<Train_detail>> GetTrain_detail(int id)
         {
-          if (_context.Classes == null)
+          if (_context.TrainDetails == null)
           {
               return NotFound();
           }
-            var @class = await _context.Classes.FindAsync(id);
+            var train_detail = await _context.TrainDetails.FindAsync(id);
 
-            if (@class == null)
+            if (train_detail == null)
             {
                 return NotFound();
             }
 
-            return @class;
+            return train_detail;
         }
 
-        // PUT: api/Class/5
+        // PUT: api/Train_detail/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutClass(int id, Class @class)
+        public async Task<IActionResult> PutTrain_detail(int id, Train_detail train_detail)
         {
-            if (id != @class.Id)
+            if (id != train_detail.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(@class).State = EntityState.Modified;
+            _context.Entry(train_detail).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace RailwayManagementSystem.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ClassExists(id))
+                if (!Train_detailExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace RailwayManagementSystem.Controllers
             return NoContent();
         }
 
-        // POST: api/Class
+        // POST: api/Train_detail
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Class>> PostClass(Class @class)
+        public async Task<ActionResult<Train_detail>> PostTrain_detail(Train_detail train_detail)
         {
-          if (_context.Classes == null)
+          if (_context.TrainDetails == null)
           {
-              return Problem("Entity set 'RailwayDbContext.Classes'  is null.");
+              return Problem("Entity set 'RailwayDbContext.TrainDetails'  is null.");
           }
-            _context.Classes.Add(@class);
+            _context.TrainDetails.Add(train_detail);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetClass", new { id = @class.Id }, @class);
+            return CreatedAtAction("GetTrain_detail", new { id = train_detail.Id }, train_detail);
         }
 
-        // DELETE: api/Class/5
+        // DELETE: api/Train_detail/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteClass(int id)
+        public async Task<IActionResult> DeleteTrain_detail(int id)
         {
-            if (_context.Classes == null)
+            if (_context.TrainDetails == null)
             {
                 return NotFound();
             }
-            var @class = await _context.Classes.FindAsync(id);
-            if (@class == null)
+            var train_detail = await _context.TrainDetails.FindAsync(id);
+            if (train_detail == null)
             {
                 return NotFound();
             }
 
-            _context.Classes.Remove(@class);
+            _context.TrainDetails.Remove(train_detail);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ClassExists(int id)
+        private bool Train_detailExists(int id)
         {
-            return (_context.Classes?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.TrainDetails?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
