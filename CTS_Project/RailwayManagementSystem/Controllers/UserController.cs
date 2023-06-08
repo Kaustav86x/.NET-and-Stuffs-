@@ -48,24 +48,24 @@ namespace RailwayManagementSystem.Controllers
         // PUT: api/User/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         // get passenger by ID
-        [HttpGet]
-        [Authorize(Roles = "Admin,Passenger")]
-        [Route("[Action]/{id}")]
-        public async Task<IActionResult> GetPassengerId(string pass_id)
-        {
-            if (_Railwaycontext.Users == null)
-            {
-                return BadRequest("No passenger found with this Id");
-            }
+        //[HttpGet]
+        //[Authorize(Roles = "Admin,Passenger")]
+        //[Route("[Action]/{id}")]
+        //public async Task<IActionResult> GetPassengerId(string pass_id)
+        //{
+        //    if (_Railwaycontext.Users == null)
+        //    {
+        //        return BadRequest("No passenger found with this Id");
+        //    }
 
-            return Ok(await _Railwaycontext.Users.Where(pass => pass.Id == pass_id).ToListAsync());
-        }
+        //    return Ok(await _Railwaycontext.Users.FirstOrDefaultAsync(pass => pass.Id == pass_id));
+        //}
 
         // POST: api/User
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         // finding user details of a certain user using Id
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [Route("[action]/{id:string")]
         public async Task<ActionResult> GetUserDetailsById([FromRoute] string user_id)
         {
@@ -87,13 +87,21 @@ namespace RailwayManagementSystem.Controllers
         }
 
         // DELETE: api/User/5
-        [HttpDelete("{id}")]
-        /*public async Task<IActionResult> DeleteUser(string id)
+        [HttpDelete("[Action]/{id}")]
+        public async Task<IActionResult> DeleteUser(string id)
         {
-           
-        }*/
+            var user = await _Railwaycontext.Users.FindAsync(id);
+            if (user == null) 
+            {
+                return NotFound("User Id not Find");
+            }
+            _Railwaycontext.Remove(user);
+            await _Railwaycontext.SaveChangesAsync();
+            return Ok("User successfully deleted");
+        }
+
         [HttpPut]
-        [Authorize(Roles = "Admim")]
+        [Authorize]
         [Route("[action/{id:string}")]
         public async Task<IActionResult> UpdatePassengers([FromBody] string uid, [FromBody] AddUser passenger)
         {
@@ -114,18 +122,16 @@ namespace RailwayManagementSystem.Controllers
         // new user addition
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> SignUp([FromBody] User passenger)
+        public async Task<IActionResult> SignUp([FromBody] ViewUser pass)
         {
-            var email = await _Railwaycontext.Users.FindAsync(passenger.Email);
+            var email = await _Railwaycontext.Users.FindAsync(pass.Email);
             if (email != null)
             {
                 return Ok("EmailId already exists !");
             }
             else
             {
-                /*[Authorize]*/
-                // string role = passenger.Role_id; // A / P
-                _Railwaycontext.Users.Add(passenger);
+                // _Railwaycontext.Users.Add(pass);
                 _Railwaycontext.SaveChanges();
                 return Ok("New User added successfully");
             }
