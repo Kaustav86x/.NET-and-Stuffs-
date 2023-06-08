@@ -42,17 +42,22 @@ namespace RailwayManagementSystem.Data
             modelBuilder.Entity<User>()
                 .HasMany(a => a.Reservations)
                 .WithOne(b => b.User)
-                .HasForeignKey(c => c.User_id).IsRequired();
+                .OnDelete(DeleteBehavior.ClientSetNull);
             // Role to User (1:N)
             modelBuilder.Entity<Role>()
                 .HasMany(a => a.Users)
                 .WithOne(b => b.Role)
                 .HasForeignKey(c => c.Role_id).IsRequired();
-            // User to Ticket_details(1:N)
+            // User to Ticket_details (1:N)
             modelBuilder.Entity<User>()
                 .HasMany(a => a.Ticket_Details)
                 .WithOne(b => b.User)
                 .OnDelete(DeleteBehavior.ClientSetNull);
+            // User to Payments(1:N)
+            modelBuilder.Entity<User>()
+                .HasMany(a => a.Payments)
+                .WithOne(b => b.User)
+                .HasForeignKey(c => c.User_id).IsRequired();
             base.OnModelCreating(modelBuilder);
         }
     }

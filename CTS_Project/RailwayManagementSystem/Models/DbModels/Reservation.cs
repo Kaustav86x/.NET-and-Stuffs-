@@ -10,9 +10,7 @@ namespace RailwayManagementSystem.Models.DbModels
     {
         public string Id { get; set; }
         [Required]
-        public string User_name { get; set; }
-        [Required]
-        public int Total_fare { get; set;}
+        public string Passenger { get; set; }
         [Required] 
         public DateTime Date { get; set; }
         // foreign key

@@ -9,16 +9,14 @@ namespace RailwayManagementSystem.Models.DbModels
         [Required]
         public string Train_name { get; set; }
         [Required]
-        public string Passenger { get; }
+        public string Passenger { get; set; }
         [Required]
         // some trains don't have a class specification
-        public string? class_type { get; set; }
+        public string? Class_type { get; set; }
         [Required]
         public string Seat_no { get; set;}
         [Required]
         public DateTime Date { get; set;}
-        [Required]
-        public int Fare { get; set;}
         // foreign key
         public string User_id { get; set; }
         public virtual User? User { get; set; }

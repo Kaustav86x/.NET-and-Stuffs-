@@ -6,12 +6,14 @@ namespace RailwayManagementSystem.Models.DbModels
 {
     // one-to-many with Ticket_detail
     // one-to-one with Role
+    // one-to-many with Payments
     public class User // child
     {
         public User() 
         {
             Ticket_Details = new HashSet<Ticket_detail>();
             Reservations = new HashSet<Reservation>();
+            Payments = new HashSet<Payment>();
         }   
         [Required]
         public string Id { get; set; }
@@ -30,6 +32,8 @@ namespace RailwayManagementSystem.Models.DbModels
         public string Role_id { get; set; }
         public virtual Role? Role { get; set; }
         public virtual ICollection<Ticket_detail> Ticket_Details { get; set; }
-        public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; } 
+        // a user can conduct multiple payments
+        public virtual ICollection<Payment> Payments { get; set; }    
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -100,7 +100,7 @@ namespace RailwayManagementSystem.Controllers
             return Ok("User successfully deleted");
         }
 
-        [HttpPut]
+     *//*   [HttpPut]
         [Authorize]
         [Route("[action/{id:string}")]
         public async Task<IActionResult> UpdatePassengers([FromBody] string uid, [FromBody] AddUser passenger)
@@ -118,7 +118,7 @@ namespace RailwayManagementSystem.Controllers
                 return Ok("Record updated successfully");
             }
             else { return NotFound("Passenger with that Id is not found"); }
-        }
+        }*//*
         // new user addition
         [HttpPost]
         [Route("[action]")]
@@ -180,7 +180,7 @@ namespace RailwayManagementSystem.Controllers
         }
     }
 }
- /*using Microsoft.AspNetCore.Http;
+ *//*using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using RailwayManagementSystem.Data;
