@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RailwayManagementSystem.Data;
 using RailwayManagementSystem.Models.DbModels;
+using RailwayManagementSystem.Models.ViewModels;
 
 namespace RailwayManagementSystem.Controllers
 {
@@ -14,40 +15,26 @@ namespace RailwayManagementSystem.Controllers
     [ApiController]
     public class Train_detailController : ControllerBase
     {
-        private readonly RailwayDbContext _context;
+        private readonly RailwayDbContext _RailwayDbContext;
 
         public Train_detailController(RailwayDbContext context)
         {
-            _context = context;
+            _RailwayDbContext = context;
         }
 
-        // GET: api/Train_detail
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Train_detail>>> GetTrainDetails()
+        [Route("[action]")]
+        public async Task<IActionResult> GetTrainsForDestination([FromBody] GetTrainsByDestination trains)
         {
-          if (_context.TrainDetails == null)
-          {
-              return NotFound();
-          }
-            return await _context.TrainDetails.ToListAsync();
-        }
-
-        // GET: api/Train_detail/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Train_detail>> GetTrain_detail(int id)
-        {
-          if (_context.TrainDetails == null)
-          {
-              return NotFound();
-          }
-            var train_detail = await _context.TrainDetails.FindAsync(id);
-
-            if (train_detail == null)
+            if (_RailwayDbContext.TrainDetails == null)
             {
-                return NotFound();
+                return NoContent();
             }
-
-            return train_detail;
+            var trainList = _RailwayDbContext.TrainDetails.FirstOrDefault(snd => snd.Source == trains.Source && snd.Destination == trains.Destination);
+            if(trainList == null) 
+                return NotFound("No trains are found for this route");
+            else
+                return Ok(trainList);
         }
 
         // PUT: api/Train_detail/5
@@ -60,11 +47,11 @@ namespace RailwayManagementSystem.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(train_detail).State = EntityState.Modified;
+            _RailwayDbContext.Entry(train_detail).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _RailwayDbContext.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -86,12 +73,12 @@ namespace RailwayManagementSystem.Controllers
         [HttpPost]
         public async Task<ActionResult<Train_detail>> PostTrain_detail(Train_detail train_detail)
         {
-          if (_context.TrainDetails == null)
+          if (_RailwayDbContext.TrainDetails == null)
           {
               return Problem("Entity set 'RailwayDbContext.TrainDetails'  is null.");
           }
-            _context.TrainDetails.Add(train_detail);
-            await _context.SaveChangesAsync();
+            _RailwayDbContext.TrainDetails.Add(train_detail);
+            await _RailwayDbContext.SaveChangesAsync();
 
             return CreatedAtAction("GetTrain_detail", new { id = train_detail.Id }, train_detail);
         }
@@ -100,25 +87,25 @@ namespace RailwayManagementSystem.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTrain_detail(int id)
         {
-            if (_context.TrainDetails == null)
+            if (_RailwayDbContext.TrainDetails == null)
             {
                 return NotFound();
             }
-            var train_detail = await _context.TrainDetails.FindAsync(id);
+            var train_detail = await _RailwayDbContext.TrainDetails.FindAsync(id);
             if (train_detail == null)
             {
                 return NotFound();
             }
 
-            _context.TrainDetails.Remove(train_detail);
-            await _context.SaveChangesAsync();
+            _RailwayDbContext.TrainDetails.Remove(train_detail);
+            await _RailwayDbContext.SaveChangesAsync();
 
             return NoContent();
         }
 
         private bool Train_detailExists(int id)
         {
-            return (_context.TrainDetails?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_RailwayDbContext.TrainDetails?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

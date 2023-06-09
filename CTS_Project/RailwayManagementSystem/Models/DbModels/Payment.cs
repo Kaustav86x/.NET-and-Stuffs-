@@ -18,11 +18,9 @@ namespace RailwayManagementSystem.Models.DbModels
         public int Amount_paid { get; set;}*/
         [Required]
         public string Payment_status { get; set;}
-        [Required]
-        public string User_id { get; set;}
+        public string UserId { get; set;}
         public virtual User? User { get; set; }
-        [Required]
-        public string Class_id { get; set; }   
+        // public string ClassId { get; set; }   
         public virtual Class? Class { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
     }

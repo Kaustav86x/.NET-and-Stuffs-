@@ -14,20 +14,16 @@ namespace RailwayManagementSystem.Models.DbModels
         [Required] 
         public DateTime Date { get; set; }
         // foreign key
-        [Required]
-        public string User_id { get; set; }
+        public string UserId { get; set; }
         public virtual User? User { get; set; }
         // foreign key 
-        [Required]
-        public int Train_id { get; set; }
+        public int TrainId { get; set; }
         public virtual Train_detail? Train_detail { get; set; }
         // foreign key
-        [Required]
-        public int Class_id { get; set; }
+        public int ClassId { get; set; }
         public virtual Class? Class { get; set; }
         // foreign key
-        [Required]
-        public Guid Payment_id { get; set; }
+        public Guid PaymentId { get; set; }
         public virtual Payment? Payment { get; set; }
     }
 }

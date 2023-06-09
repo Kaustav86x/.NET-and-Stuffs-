@@ -29,7 +29,7 @@ namespace RailwayManagementSystem.Models.DbModels
         public string Password { get; set;}
         // foreign key
         [Required]
-        public string Role_id { get; set; }
+        public string RoleId { get; set; }
         public virtual Role? Role { get; set; }
         public virtual ICollection<Ticket_detail> Ticket_Details { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; } 

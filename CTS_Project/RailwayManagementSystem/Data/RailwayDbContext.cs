@@ -26,17 +26,17 @@ namespace RailwayManagementSystem.Data
             modelBuilder.Entity<Class>()
                 .HasMany(a => a.Reservations)
                 .WithOne(b => b.Class)
-                .HasForeignKey(c => c.Class_id).IsRequired();
+                .HasForeignKey(c => c.ClassId).IsRequired();
             // Payment to Reservation (1:N)
             modelBuilder.Entity<Payment>()
                 .HasMany(a => a.Reservations)
                 .WithOne(b => b.Payment)
-                .HasForeignKey(c => c.Payment_id).IsRequired();
+                .HasForeignKey(c => c.PaymentId).IsRequired();
             // Train_detail to Reservation (1:N)
             modelBuilder.Entity<Train_detail>()
                 .HasMany(a => a.Reservations)
                 .WithOne(b => b.Train_detail)
-                .HasForeignKey(c => c.Train_id).IsRequired();
+                .HasForeignKey(c => c.TrainId).IsRequired();
             // User to Reservation (1:N)
             modelBuilder.Entity<User>()
                 .HasMany(a => a.Reservations)
@@ -46,7 +46,7 @@ namespace RailwayManagementSystem.Data
             modelBuilder.Entity<Role>()
                 .HasMany(a => a.Users)
                 .WithOne(b => b.Role)
-                .HasForeignKey(c => c.Role_id).IsRequired();
+                .HasForeignKey(c => c.RoleId).IsRequired();
             // User to Ticket_details (1:N)
             modelBuilder.Entity<User>()
                 .HasMany(a => a.Ticket_Details)
@@ -57,7 +57,7 @@ namespace RailwayManagementSystem.Data
             modelBuilder.Entity<User>()
                 .HasMany(a => a.Payments)
                 .WithOne(b => b.User)
-                .HasForeignKey(c => c.User_id).IsRequired();
+                .HasForeignKey(c => c.UserId).IsRequired();
             base.OnModelCreating(modelBuilder);
         }
     }

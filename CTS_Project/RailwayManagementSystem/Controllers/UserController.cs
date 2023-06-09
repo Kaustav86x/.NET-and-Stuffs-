@@ -42,32 +42,12 @@ namespace RailwayManagementSystem.Controllers
             }
             return Ok(await _Railwaycontext.Users.ToListAsync());
         }
-
-        // PUT: api/User/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        // get passenger by ID
-        //[HttpGet]
-        //[Authorize(Roles = "Admin,Passenger")]
-        //[Route("[Action]/{id}")]
-        //public async Task<IActionResult> GetPassengerId(string pass_id)
-        //{
-        //    if (_Railwaycontext.Users == null)
-        //    {
-        //        return BadRequest("No passenger found with this Id");
-        //    }
-
-        //    return Ok(await _Railwaycontext.Users.FirstOrDefaultAsync(pass => pass.Id == pass_id));
-        //}
-
-        // POST: api/User
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        // finding user details of a certain user using Id
         [HttpGet]
         [Authorize]
         [Route("[action]/{id}")]
-        public async Task<ActionResult> GetUserDetailsById(string user_id)
+        public async Task<ActionResult> GetUserDetailsById(string userId)
         {
-            var user = await _Railwaycontext.Users.FindAsync(user_id);
+            var user = await _Railwaycontext.Users.FindAsync(userId);
             if (user != null)
             {
                 var viewPassenger = new ViewUser()
@@ -76,7 +56,7 @@ namespace RailwayManagementSystem.Controllers
                     Lname = user.Lname,
                     Phone = user.Phone,
                     Email = user.Email,
-                    Role = user.Role_id
+                    Role = user.RoleId
                 };
                 return Ok(viewPassenger);
             }
@@ -110,7 +90,7 @@ namespace RailwayManagementSystem.Controllers
                 PassengerExists.Lname = passenger.Lname;
                 PassengerExists.Phone = passenger.Phone;
                 PassengerExists.Email = passenger.Email;
-                PassengerExists.Role_id = passenger.Role;
+                PassengerExists.RoleId = passenger.Role;
 
                 await _Railwaycontext.SaveChangesAsync();
                 return Ok("Record updated successfully");
@@ -143,7 +123,7 @@ namespace RailwayManagementSystem.Controllers
             {
                 if (User.Password == ExistingUser.Password)
                 {
-                    var role = await _Railwaycontext.Roles.FindAsync(ExistingUser.Role_id);
+                    var role = await _Railwaycontext.Roles.FindAsync(ExistingUser.RoleId);
                     var jwt = JwtTokenCreation(ExistingUser.Email, role.Role_type);
                     return Ok(jwt);
                 }
