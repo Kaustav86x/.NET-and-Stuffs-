@@ -18,7 +18,7 @@ namespace RailwayManagementSystem.Models.DbModels
         [Required]
         public DateTime Date { get; set;}
         // foreign key
-        public string User_id { get; set; }
+        public string UserId { get; set; }
         public virtual User? User { get; set; }
     }
 }

@@ -48,11 +48,18 @@ namespace RailwayManagementSystem.Migrations
                     Train_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Arr_time = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Dept_time = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Class_type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Class_id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClassId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TrainDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TrainDetails_Classes_ClassId",
+                        column: x => x.ClassId,
+                        principalTable: "Classes",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -85,13 +92,19 @@ namespace RailwayManagementSystem.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Payment_method = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Amount_paid = table.Column<int>(type: "int", nullable: false),
                     Payment_status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    User_id = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    User_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Class_id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClassId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Payments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Payments_Classes_ClassId",
+                        column: x => x.ClassId,
+                        principalTable: "Classes",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Payments_Users_User_id",
                         column: x => x.User_id,
@@ -107,11 +120,11 @@ namespace RailwayManagementSystem.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Train_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Passenger = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Class_type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Seat_no = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    User_id = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -165,6 +178,11 @@ namespace RailwayManagementSystem.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Payments_ClassId",
+                table: "Payments",
+                column: "ClassId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Payments_User_id",
                 table: "Payments",
                 column: "User_id");
@@ -195,6 +213,11 @@ namespace RailwayManagementSystem.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TrainDetails_ClassId",
+                table: "TrainDetails",
+                column: "ClassId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_Role_id",
                 table: "Users",
                 column: "Role_id");
@@ -210,9 +233,6 @@ namespace RailwayManagementSystem.Migrations
                 name: "TicketDetails");
 
             migrationBuilder.DropTable(
-                name: "Classes");
-
-            migrationBuilder.DropTable(
                 name: "Payments");
 
             migrationBuilder.DropTable(
@@ -220,6 +240,9 @@ namespace RailwayManagementSystem.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Classes");
 
             migrationBuilder.DropTable(
                 name: "Roles");

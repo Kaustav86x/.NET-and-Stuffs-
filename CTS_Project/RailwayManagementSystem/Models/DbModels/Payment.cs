@@ -21,6 +21,9 @@ namespace RailwayManagementSystem.Models.DbModels
         [Required]
         public string User_id { get; set;}
         public virtual User? User { get; set; }
+        [Required]
+        public string Class_id { get; set; }   
+        public virtual Class? Class { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

@@ -48,6 +48,13 @@ namespace RailwayManagementSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int?>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Class_id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
@@ -64,6 +71,8 @@ namespace RailwayManagementSystem.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClassId");
 
                     b.HasIndex("User_id");
 
@@ -153,11 +162,8 @@ namespace RailwayManagementSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("User_id")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -178,9 +184,15 @@ namespace RailwayManagementSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Class_type")
+                    b.Property<int?>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Class_id")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Dept_time")
                         .IsRequired()
@@ -199,6 +211,8 @@ namespace RailwayManagementSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClassId");
 
                     b.ToTable("TrainDetails");
                 });
@@ -240,11 +254,17 @@ namespace RailwayManagementSystem.Migrations
 
             modelBuilder.Entity("RailwayManagementSystem.Models.DbModels.Payment", b =>
                 {
+                    b.HasOne("RailwayManagementSystem.Models.DbModels.Class", "Class")
+                        .WithMany()
+                        .HasForeignKey("ClassId");
+
                     b.HasOne("RailwayManagementSystem.Models.DbModels.User", "User")
                         .WithMany("Payments")
                         .HasForeignKey("User_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Class");
 
                     b.Navigation("User");
                 });
@@ -286,9 +306,19 @@ namespace RailwayManagementSystem.Migrations
                 {
                     b.HasOne("RailwayManagementSystem.Models.DbModels.User", "User")
                         .WithMany("Ticket_Details")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("RailwayManagementSystem.Models.DbModels.Train_detail", b =>
+                {
+                    b.HasOne("RailwayManagementSystem.Models.DbModels.Class", "Class")
+                        .WithMany()
+                        .HasForeignKey("ClassId");
+
+                    b.Navigation("Class");
                 });
 
             modelBuilder.Entity("RailwayManagementSystem.Models.DbModels.User", b =>

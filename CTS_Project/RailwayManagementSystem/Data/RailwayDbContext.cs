@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RailwayManagementSystem.Models;
 using RailwayManagementSystem.Models.DbModels;
 
 namespace RailwayManagementSystem.Data
@@ -52,6 +51,7 @@ namespace RailwayManagementSystem.Data
             modelBuilder.Entity<User>()
                 .HasMany(a => a.Ticket_Details)
                 .WithOne(b => b.User)
+                //.HasForeignKey(c=>c.User_id)
                 .OnDelete(DeleteBehavior.ClientSetNull);
             // User to Payments(1:N)
             modelBuilder.Entity<User>()

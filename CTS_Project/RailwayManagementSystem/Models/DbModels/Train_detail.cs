@@ -24,7 +24,10 @@ namespace RailwayManagementSystem.Models.DbModels
         [Required]
         public string Dept_time { get; set; }
         [Required]
-        public string Class_type { get; set; }
+        public DateTime Date { get; set; }
+        [Required]
+        public string Class_id { get; set; }
+        public virtual Class? Class { get; set; }  
         public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }
