@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol;
 using RailwayManagementSystem.Data;
 using RailwayManagementSystem.Models.DbModels;
 
@@ -14,40 +16,44 @@ namespace RailwayManagementSystem.Controllers
     [ApiController]
     public class RoleController : ControllerBase
     {
-        private readonly RailwayDbContext _context;
+        private readonly RailwayDbContext _RailwayDbContext;
 
         public RoleController(RailwayDbContext context)
         {
-            _context = context;
+            _RailwayDbContext = context;
         }
 
         // GET: api/Role
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Role>>> GetRoles()
+        [Authorize(Roles = "Admin,Passenger")]
+        [Route("[action]")]
+        public async Task<IActionResult> GetRoles()
         {
-          if (_context.Roles == null)
+          if (_RailwayDbContext.Roles == null)
           {
-              return NotFound();
+              return NoContent();
           }
-            return await _context.Roles.ToListAsync();
+            return Ok(await _RailwayDbContext.Roles.ToListAsync());
         }
 
         // GET: api/Role/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Role>> GetRole(string id)
+        [HttpGet]
+        [Authorize(Roles = "Admin,Passenger")]
+        [Route("[action]")]
+        public async Task<IActionResult> GetRolesById(string id)
         {
-          if (_context.Roles == null)
+          if (_RailwayDbContext.Roles == null)
           {
-              return NotFound();
+              return NoContent();
           }
-            var role = await _context.Roles.FindAsync(id);
+            var role = await _RailwayDbContext.Roles.FindAsync(id);
 
             if (role == null)
             {
-                return NotFound();
+                return NotFound("No roles found with this Id");
             }
 
-            return role;
+            return Ok(role.Role_type);
         }
 
         // PUT: api/Role/5
@@ -60,11 +66,11 @@ namespace RailwayManagementSystem.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(role).State = EntityState.Modified;
+            _RailwayDbContext.Entry(role).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _RailwayDbContext.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -84,16 +90,28 @@ namespace RailwayManagementSystem.Controllers
         // POST: api/Role
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Role>> PostRole(Role role)
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> AddRoles(Role role)
         {
-          if (_context.Roles == null)
-          {
-              return Problem("Entity set 'RailwayDbContext.Roles'  is null.");
-          }
-            _context.Roles.Add(role);
-            try
+          if (_RailwayDbContext.Roles == null)
+              return Problem("There are no existing roles");
+            var roles = _RailwayDbContext.Roles.FirstOrDefaultAsync(r => r.Id == role.Id && r.Role_type == role.Role_type);
+            if(roles == null)
             {
-                await _context.SaveChangesAsync();
+                var r = new Role()
+                {
+                    Id = role.Id,
+                    Role_type = role.Role_type,
+                };
+                await _RailwayDbContext.Roles.AddAsync(r);
+                await _RailwayDbContext.SaveChangesAsync();
+                return Created("201","New Role is created");
+            }
+            return BadRequest("Role Id and Role_Type already exists");
+            /*try
+            {
+                await _RailwayDbContext.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
@@ -107,32 +125,31 @@ namespace RailwayManagementSystem.Controllers
                 }
             }
 
-            return CreatedAtAction("GetRole", new { id = role.Id }, role);
+            return CreatedAtAction("GetRole", new { id = role.Id }, role);*/
         }
 
         // DELETE: api/Role/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
         public async Task<IActionResult> DeleteRole(string id)
         {
-            if (_context.Roles == null)
+            if (_RailwayDbContext.Roles == null)
             {
-                return NotFound();
+                return NoContent();
             }
-            var role = await _context.Roles.FindAsync(id);
+            var role = await _RailwayDbContext.Roles.FindAsync(id);
             if (role == null)
             {
-                return NotFound();
+                return NotFound("Role with this id is not found");
             }
-
-            _context.Roles.Remove(role);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            _RailwayDbContext.Roles.Remove(role);
+            await _RailwayDbContext.SaveChangesAsync();
+            return Ok("Role successfully deleted");
         }
-
         private bool RoleExists(string id)
         {
-            return (_context.Roles?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_RailwayDbContext.Roles?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

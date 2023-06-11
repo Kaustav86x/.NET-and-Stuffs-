@@ -14,33 +14,33 @@ namespace RailwayManagementSystem.Controllers
     [ApiController]
     public class Ticket_detailController : ControllerBase
     {
-        private readonly RailwayDbContext _context;
+        private readonly RailwayDbContext _RailwayDbContext;
 
         public Ticket_detailController(RailwayDbContext context)
         {
-            _context = context;
+            _RailwayDbContext = context;
         }
 
         // GET: api/Ticket_detail
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ticket_detail>>> GetTicketDetails()
         {
-          if (_context.TicketDetails == null)
+          if (_RailwayDbContext.TicketDetails == null)
           {
               return NotFound();
           }
-            return await _context.TicketDetails.ToListAsync();
+            return await _RailwayDbContext.TicketDetails.ToListAsync();
         }
 
         // GET: api/Ticket_detail/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Ticket_detail>> GetTicket_detail(int id)
         {
-          if (_context.TicketDetails == null)
+          if (_RailwayDbContext.TicketDetails == null)
           {
               return NotFound();
           }
-            var ticket_detail = await _context.TicketDetails.FindAsync(id);
+            var ticket_detail = await _RailwayDbContext.TicketDetails.FindAsync(id);
 
             if (ticket_detail == null)
             {
@@ -60,11 +60,11 @@ namespace RailwayManagementSystem.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(ticket_detail).State = EntityState.Modified;
+            _RailwayDbContext.Entry(ticket_detail).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _RailwayDbContext.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -86,12 +86,12 @@ namespace RailwayManagementSystem.Controllers
         [HttpPost]
         public async Task<ActionResult<Ticket_detail>> PostTicket_detail(Ticket_detail ticket_detail)
         {
-          if (_context.TicketDetails == null)
+          if (_RailwayDbContext.TicketDetails == null)
           {
               return Problem("Entity set 'RailwayDbContext.TicketDetails'  is null.");
           }
-            _context.TicketDetails.Add(ticket_detail);
-            await _context.SaveChangesAsync();
+            _RailwayDbContext.TicketDetails.Add(ticket_detail);
+            await _RailwayDbContext.SaveChangesAsync();
 
             return CreatedAtAction("GetTicket_detail", new { id = ticket_detail.Id }, ticket_detail);
         }
@@ -100,25 +100,25 @@ namespace RailwayManagementSystem.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTicket_detail(int id)
         {
-            if (_context.TicketDetails == null)
+            if (_RailwayDbContext.TicketDetails == null)
             {
                 return NotFound();
             }
-            var ticket_detail = await _context.TicketDetails.FindAsync(id);
+            var ticket_detail = await _RailwayDbContext.TicketDetails.FindAsync(id);
             if (ticket_detail == null)
             {
                 return NotFound();
             }
 
-            _context.TicketDetails.Remove(ticket_detail);
-            await _context.SaveChangesAsync();
+            _RailwayDbContext.TicketDetails.Remove(ticket_detail);
+            await _RailwayDbContext.SaveChangesAsync();
 
             return NoContent();
         }
 
         private bool Ticket_detailExists(int id)
         {
-            return (_context.TicketDetails?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_RailwayDbContext.TicketDetails?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

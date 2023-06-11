@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RailwayManagementSystem.Data;
 using RailwayManagementSystem.Models.AddModels;
+using RailwayManagementSystem.Models.DbModels;
 using RailwayManagementSystem.Models.ViewModels;
 
 namespace RailwayManagementSystem.Controllers
@@ -43,15 +44,16 @@ namespace RailwayManagementSystem.Controllers
             return Ok(await _Railwaycontext.Users.ToListAsync());
         }
         [HttpGet]
-        [Authorize]
-        [Route("[action]/{id}")]
-        public async Task<ActionResult> GetUserDetailsById(string userId)
+        [Authorize(Roles = "Admin,Passenger")]
+        [Route("[action]")]
+        public async Task<IActionResult> GetUserDetailsById(string userId)
         {
             var user = await _Railwaycontext.Users.FindAsync(userId);
             if (user != null)
             {
                 var viewPassenger = new ViewUser()
                 {
+                    Id = userId,
                     Fname = user.Fname,
                     Lname = user.Lname,
                     Phone = user.Phone,
@@ -61,7 +63,7 @@ namespace RailwayManagementSystem.Controllers
                 return Ok(viewPassenger);
             }
             else
-                return NotFound("Passenger not found");
+                return NotFound("User not found");
         }
 
         // DELETE: api/User/5
@@ -79,7 +81,7 @@ namespace RailwayManagementSystem.Controllers
         }
 
         [HttpPut]
-        [Authorize]
+        [Authorize(Roles = "Admin,Passenger")]
         [Route("[action]")]
         public async Task<IActionResult> UpdatePassengers(string uid,AddUser passenger)
         {
@@ -100,22 +102,30 @@ namespace RailwayManagementSystem.Controllers
         // new user addition
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> SignUp(ViewUser pass)
+        public async Task<IActionResult> SignUp(string roleId, [FromBody] AddUser pass)
         {
-            var email = await _Railwaycontext.Users.FindAsync(pass.Email);
-            if (email != null)
+            var role = await _Railwaycontext.Roles.FindAsync(roleId);
+            var existemail = await _Railwaycontext.Users.FindAsync(pass.Email);
+            if (role != null && existemail.Email != pass.Email)
             {
-                return Ok("EmailId already exists !");
+                var addUser = new User()
+                {
+                    Id = pass.Id,
+                    Fname = pass.Fname,
+                    Lname = pass.Lname,
+                    Phone = pass.Phone,
+                    Email = pass.Email,
+                    Password = pass.Password,
+                    RoleId = pass.Role
+                };
+                await _Railwaycontext.Users.AddAsync(addUser);
+                await _Railwaycontext.SaveChangesAsync();
+                return Ok("User Registration successful");
             }
-            else
-            {
-                // _Railwaycontext.Users.Add(pass);
-                _Railwaycontext.SaveChanges();
-                return Ok("New User added successfully");
-            }
+            return BadRequest("User with this email already exists");
         }
 
-        [HttpPost("[action]")]
+            [HttpPost("[action]")]
         public async Task<IActionResult> Login(Login User)
         {
             var ExistingUser = _Railwaycontext.Users.FirstOrDefault(e => e.Email == User.Email);

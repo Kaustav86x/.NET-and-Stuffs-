@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RailwayManagementSystem.Data;
 using RailwayManagementSystem.Models.DbModels;
+using RailwayManagementSystem.Models.AddModels;
 
 namespace RailwayManagementSystem.Controllers
 {
@@ -120,5 +121,12 @@ namespace RailwayManagementSystem.Controllers
         {
             return (_context.Payments?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        /*[HttpPut]
+        [Route("[action")]
+        public async Task<IActionResult> UpdateRandomData([FromBody] RandomUser randUser)
+        {
+            var val = randUser.Address; 
+        }*/
     }
 }

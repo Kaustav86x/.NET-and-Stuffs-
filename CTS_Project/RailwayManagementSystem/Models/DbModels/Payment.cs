@@ -17,7 +17,7 @@ namespace RailwayManagementSystem.Models.DbModels
         /*[Required]
         public int Amount_paid { get; set;}*/
         [Required]
-        public string Payment_status { get; set;}
+        public string Payment_status { get; set; }
         public string UserId { get; set;}
         public virtual User? User { get; set; }
         // public string ClassId { get; set; }   

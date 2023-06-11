@@ -12,7 +12,7 @@ using RailwayManagementSystem.Data;
 namespace RailwayManagementSystem.Migrations
 {
     [DbContext(typeof(RailwayDbContext))]
-    [Migration("20230609195329_InitialCreate")]
+    [Migration("20230611085416_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -180,9 +180,6 @@ namespace RailwayManagementSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ClassId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
@@ -203,8 +200,6 @@ namespace RailwayManagementSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClassId");
 
                     b.ToTable("TrainDetails");
                 });
@@ -242,6 +237,21 @@ namespace RailwayManagementSystem.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("TrainDetailClass", b =>
+                {
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TrainDetailId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ClassId", "TrainDetailId");
+
+                    b.HasIndex("TrainDetailId");
+
+                    b.ToTable("TrainDetailClass");
                 });
 
             modelBuilder.Entity("RailwayManagementSystem.Models.DbModels.Payment", b =>
@@ -305,15 +315,6 @@ namespace RailwayManagementSystem.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("RailwayManagementSystem.Models.DbModels.Train_detail", b =>
-                {
-                    b.HasOne("RailwayManagementSystem.Models.DbModels.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId");
-
-                    b.Navigation("Class");
-                });
-
             modelBuilder.Entity("RailwayManagementSystem.Models.DbModels.User", b =>
                 {
                     b.HasOne("RailwayManagementSystem.Models.DbModels.Role", "Role")
@@ -323,6 +324,21 @@ namespace RailwayManagementSystem.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("TrainDetailClass", b =>
+                {
+                    b.HasOne("RailwayManagementSystem.Models.DbModels.Class", null)
+                        .WithMany()
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RailwayManagementSystem.Models.DbModels.Train_detail", null)
+                        .WithMany()
+                        .HasForeignKey("TrainDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("RailwayManagementSystem.Models.DbModels.Class", b =>

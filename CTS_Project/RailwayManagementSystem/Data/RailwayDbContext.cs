@@ -27,6 +27,15 @@ namespace RailwayManagementSystem.Data
                 .HasMany(a => a.Reservations)
                 .WithOne(b => b.Class)
                 .HasForeignKey(c => c.ClassId).IsRequired();
+            // Train_detail to Class (N:N)
+            modelBuilder.Entity<Train_detail>()
+                .HasMany(a => a.Classes)
+                .WithMany(b => b.Train_details)
+                .UsingEntity(
+                "TrainDetailClass",
+                l => l.HasOne(typeof(Class)).WithMany().HasForeignKey("ClassId").HasPrincipalKey(nameof(Class.Id)),
+                r => r.HasOne(typeof(Train_detail)).WithMany().HasForeignKey("TrainDetailId").HasPrincipalKey(nameof(Train_detail.Id)),
+                j => j.HasKey("ClassId", "TrainDetailId"));
             // Payment to Reservation (1:N)
             modelBuilder.Entity<Payment>()
                 .HasMany(a => a.Reservations)

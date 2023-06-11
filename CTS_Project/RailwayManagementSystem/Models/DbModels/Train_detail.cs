@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations;
 namespace RailwayManagementSystem.Models.DbModels
 {
     // one-to-many with Reservation
-    // one-to-many with Class
+    // many-to-many with Class
     public class Train_detail
     {
         public Train_detail()
         {
             Reservations = new HashSet<Reservation>();
+            Classes = new HashSet<Class>();
         }
         [Required]
         public int Id { get; set; }
@@ -25,8 +26,9 @@ namespace RailwayManagementSystem.Models.DbModels
         public string Dept_time { get; set; }
         [Required]
         public DateTime Date { get; set; }
-        //public string ClassId { get; set; }
-        public virtual Class? Class { get; set; }  
+        /*public string ClassId { get; set; }
+        public virtual Class? Class { get; set; }  */
         public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<Class> Classes { get; set; }
     }
 }

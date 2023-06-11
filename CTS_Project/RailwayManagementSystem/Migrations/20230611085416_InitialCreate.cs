@@ -48,17 +48,11 @@ namespace RailwayManagementSystem.Migrations
                     Train_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Arr_time = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Dept_time = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ClassId = table.Column<int>(type: "int", nullable: true)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TrainDetails", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TrainDetails_Classes_ClassId",
-                        column: x => x.ClassId,
-                        principalTable: "Classes",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -80,6 +74,30 @@ namespace RailwayManagementSystem.Migrations
                         name: "FK_Users_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TrainDetailClass",
+                columns: table => new
+                {
+                    ClassId = table.Column<int>(type: "int", nullable: false),
+                    TrainDetailId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TrainDetailClass", x => new { x.ClassId, x.TrainDetailId });
+                    table.ForeignKey(
+                        name: "FK_TrainDetailClass_Classes_ClassId",
+                        column: x => x.ClassId,
+                        principalTable: "Classes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TrainDetailClass_TrainDetails_TrainDetailId",
+                        column: x => x.TrainDetailId,
+                        principalTable: "TrainDetails",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -210,9 +228,9 @@ namespace RailwayManagementSystem.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TrainDetails_ClassId",
-                table: "TrainDetails",
-                column: "ClassId");
+                name: "IX_TrainDetailClass_TrainDetailId",
+                table: "TrainDetailClass",
+                column: "TrainDetailId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",
@@ -230,16 +248,19 @@ namespace RailwayManagementSystem.Migrations
                 name: "TicketDetails");
 
             migrationBuilder.DropTable(
+                name: "TrainDetailClass");
+
+            migrationBuilder.DropTable(
                 name: "Payments");
 
             migrationBuilder.DropTable(
                 name: "TrainDetails");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Classes");
 
             migrationBuilder.DropTable(
-                name: "Classes");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Roles");
