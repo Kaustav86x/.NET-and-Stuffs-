@@ -61,7 +61,7 @@ namespace RailwayManagementSystem.Controllers
         public async Task<IActionResult> AddTrains([FromBody] AddTrains addtrain)
         {
             var trains = await _RailwayDbContext.TrainDetails.FindAsync(addtrain);
-            if (addtrain.Train_name != "string" && addtrain.Source != "string" && addtrain.Destination != "string" && addtrain.Arr_time != "string" && addtrain.Dept_time != "string" && addtrain.Date.ToString() != "string")
+            if (addtrain.Train_name != "string" && addtrain.Source != "string" && addtrain.Destination != "string" && addtrain.Arr_time != "string" && addtrain.Dept_time != "string" && addtrain.DateOfDeparture.ToString() != "string")
             {
                 var addt = new Train_detail()
                 {
@@ -70,7 +70,8 @@ namespace RailwayManagementSystem.Controllers
                     Train_name = addtrain.Train_name,
                     Arr_time = addtrain.Arr_time,
                     Dept_time = addtrain.Dept_time,
-                    Date = new DateTime(2022, 01, 03)
+                    DateOfDeparture = addtrain.DateOfDeparture,
+                    Duration = addtrain.Duration
                 };
                 await _RailwayDbContext.TrainDetails.AddAsync(addt);
                 await _RailwayDbContext.SaveChangesAsync();
@@ -78,13 +79,6 @@ namespace RailwayManagementSystem.Controllers
             }
             await _RailwayDbContext.SaveChangesAsync();
             return BadRequest("No column should contain null value");
-            /*else
-            {
-                if (addtrain.Source == null || addtrain.Destination == null || addtrain.Arr_time == null || addtrain.Dept_time == null || addtrain.Train_name == null || addtrain.Date.ToString() == null)
-                    return BadRequest("");
-            }
-            await _RailwayDbContext.SaveChangesAsync();
-            return BadRequest("No two row can have identical set of data");*/
         }
             
         // DELETE: api/Train_detail/5
@@ -107,38 +101,5 @@ namespace RailwayManagementSystem.Controllers
 
             return Ok("Train deleted successfully");
         }
-
-        private bool Train_detailExists(int id)
-        {
-            return (_RailwayDbContext.TrainDetails?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
-
-        /*[HttpGet]
-        [Authorize(Roles = "Admin,Passenger")]
-        [Route("[action]")]
-        public async Task<IActionResult> GetTrainsByClass(string classid)
-        {
-            var trains = _RailwayDbContext.TrainDetails.FirstOrDefault(c => c. == classid)
-        }*/
     }
 }
-
-/* _RailwayDbContext.Entry(train_detail).State = EntityState.Modified;
-
-            try
-            {
-                await _RailwayDbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!Train_detailExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();*/

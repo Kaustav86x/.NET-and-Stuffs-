@@ -22,11 +22,6 @@ namespace RailwayManagementSystem.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // class to Reservation (1:N)
-            modelBuilder.Entity<Class>()
-                .HasMany(a => a.Reservations)
-                .WithOne(b => b.Class)
-                .HasForeignKey(c => c.ClassId).IsRequired();
             // Train_detail to Class (N:N)
             modelBuilder.Entity<Train_detail>()
                 .HasMany(a => a.Classes)
@@ -36,11 +31,11 @@ namespace RailwayManagementSystem.Data
                 l => l.HasOne(typeof(Class)).WithMany().HasForeignKey("ClassId").HasPrincipalKey(nameof(Class.Id)),
                 r => r.HasOne(typeof(Train_detail)).WithMany().HasForeignKey("TrainDetailId").HasPrincipalKey(nameof(Train_detail.Id)),
                 j => j.HasKey("ClassId", "TrainDetailId"));
-            // Payment to Reservation (1:N)
-            modelBuilder.Entity<Payment>()
-                .HasMany(a => a.Reservations)
-                .WithOne(b => b.Payment)
-                .HasForeignKey(c => c.PaymentId).IsRequired();
+            // Payment to Reservation (1:1)
+            modelBuilder.Entity<Reservation>()
+                .HasOne(a => a.Payment)
+                .WithOne(b => b.Reservations)
+                .HasForeignKey<Payment>(c => c.Reservation_Id).IsRequired();
             // Train_detail to Reservation (1:N)
             modelBuilder.Entity<Train_detail>()
                 .HasMany(a => a.Reservations)
@@ -56,17 +51,11 @@ namespace RailwayManagementSystem.Data
                 .HasMany(a => a.Users)
                 .WithOne(b => b.Role)
                 .HasForeignKey(c => c.RoleId).IsRequired();
-            // User to Ticket_details (1:N)
-            modelBuilder.Entity<User>()
-                .HasMany(a => a.Ticket_Details)
-                .WithOne(b => b.User)
-                //.HasForeignKey(c=>c.User_id)
-                .OnDelete(DeleteBehavior.ClientSetNull);
-            // User to Payments(1:N)
-            modelBuilder.Entity<User>()
-                .HasMany(a => a.Payments)
-                .WithOne(b => b.User)
-                .HasForeignKey(c => c.UserId).IsRequired();
+            // ticket_detail to payment(1:1)
+            modelBuilder.Entity<Payment>()
+                .HasOne(a => a.Ticket_Details)
+                .WithOne(b => b.Payment)
+                .HasForeignKey<Ticket_detail>(c => c.Payment_Id).IsRequired();
             base.OnModelCreating(modelBuilder);
         }
     }

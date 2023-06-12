@@ -10,6 +10,7 @@ namespace RailwayManagementSystem.Models.AddModels
         public string Train_name { get; set; }
         public string Arr_time { get; set; }
         public string Dept_time { get; set; }
-        public DateTime Date { get; set; }
+        public double Duration { get; set; }
+        public DateTime DateOfDeparture { get; set; }
     }
 }

@@ -8,7 +8,6 @@ namespace RailwayManagementSystem.Models.DbModels
     {
         public Class() 
         { 
-            Reservations = new HashSet<Reservation>(); 
             Train_details = new HashSet<Train_detail>();
         }
         [Required]
@@ -17,8 +16,9 @@ namespace RailwayManagementSystem.Models.DbModels
         public string Class_type { get; set; }
         [Required]
         public int Fare { get; set; }
+        [Required]
+        public int SeatCapacity { get; set; }
         // foreign key
-        public virtual ICollection<Reservation> Reservations { get; set; }
         public virtual ICollection<Train_detail> Train_details { get; set;}  
     }
 }
