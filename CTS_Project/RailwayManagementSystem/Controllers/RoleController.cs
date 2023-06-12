@@ -109,23 +109,6 @@ namespace RailwayManagementSystem.Controllers
                 return Created("201","New Role is created");
             }
             return BadRequest("Role Id and Role_Type already exists");
-            /*try
-            {
-                await _RailwayDbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (RoleExists(role.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetRole", new { id = role.Id }, role);*/
         }
 
         // DELETE: api/Role/5

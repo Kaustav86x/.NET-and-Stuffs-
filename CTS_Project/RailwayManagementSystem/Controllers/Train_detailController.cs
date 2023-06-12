@@ -58,10 +58,11 @@ namespace RailwayManagementSystem.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [Route("[action]")]
-        public async Task<IActionResult> AddTrains([FromBody] AddTrains addtrain)
+        public async Task<IActionResult> AddTrains(int tid,AddTrains addtrain)
         {
-            var trains = await _RailwayDbContext.TrainDetails.FindAsync(addtrain);
-            if (addtrain.Train_name != "string" && addtrain.Source != "string" && addtrain.Destination != "string" && addtrain.Arr_time != "string" && addtrain.Dept_time != "string" && addtrain.DateOfDeparture.ToString() != "string")
+            var trains = await _RailwayDbContext.TrainDetails.FindAsync(tid);
+            //if (addtrain.Train_name != "string" && addtrain.Source != "string" && addtrain.Destination != "string" && addtrain.Arr_time != "string" && addtrain.Dept_time != "string" && addtrain.DateOfDeparture.ToString() != "string" && addtrain.Duration != 0)
+            if (trains == null)
             {
                 var addt = new Train_detail()
                 {
@@ -77,8 +78,13 @@ namespace RailwayManagementSystem.Controllers
                 await _RailwayDbContext.SaveChangesAsync();
                 return Ok("Train added successfully");
             }
+            else
+            {
+                if (addtrain.Duration == 0)
+                    return BadRequest("No column should contain null value");
+            }
             await _RailwayDbContext.SaveChangesAsync();
-            return BadRequest("No column should contain null value");
+            return Ok("Train Database updated!");
         }
             
         // DELETE: api/Train_detail/5
@@ -101,5 +107,28 @@ namespace RailwayManagementSystem.Controllers
 
             return Ok("Train deleted successfully");
         }
+
+        [HttpPut]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> UpdateTrains(int tid, AddTrains addtrain)
+        {
+            var trains = await _RailwayDbContext.TrainDetails.FindAsync(tid);
+            //if (addtrain.Train_name != "string" && addtrain.Source != "string" && addtrain.Destination != "string" && addtrain.Arr_time != "string" && addtrain.Dept_time != "string" && addtrain.DateOfDeparture.ToString() != "string" && addtrain.Duration != 0)
+            if (trains != null)
+            {
+                trains.Source = addtrain.Source;
+                trains.Destination = addtrain.Destination;
+                trains.Train_name = addtrain.Train_name;
+                trains.Arr_time = addtrain.Arr_time;
+                trains.Dept_time = addtrain.Dept_time;
+                trains.DateOfDeparture = addtrain.DateOfDeparture;
+                trains.Duration = addtrain.Duration;
+
+                await _RailwayDbContext.SaveChangesAsync();
+                return Ok("Train Detail Updated");
+            }
+            return NotFound("Invalid train Id");
+            }
+        }
     }
-}

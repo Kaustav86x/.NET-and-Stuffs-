@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,18 +24,21 @@ namespace RailwayManagementSystem.Controllers
 
         // GET: api/Ticket_detail
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ticket_detail>>> GetTicketDetails()
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> GetAllTickets()
         {
           if (_RailwayDbContext.TicketDetails == null)
           {
-              return NotFound();
+              return NotFound("No ticket details found in the database");
           }
-            return await _RailwayDbContext.TicketDetails.ToListAsync();
+            return Ok(_RailwayDbContext.TicketDetails);
         }
 
         // GET: api/Ticket_detail/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Ticket_detail>> GetTicket_detail(int id)
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> GetTicket_detailByUsedId(int id)
         {
           if (_RailwayDbContext.TicketDetails == null)
           {
@@ -47,7 +51,7 @@ namespace RailwayManagementSystem.Controllers
                 return NotFound();
             }
 
-            return ticket_detail;
+            return Ok(ticket_detail);
         }
 
         // PUT: api/Ticket_detail/5

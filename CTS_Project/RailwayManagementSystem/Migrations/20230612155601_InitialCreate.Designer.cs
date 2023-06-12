@@ -12,7 +12,7 @@ using RailwayManagementSystem.Data;
 namespace RailwayManagementSystem.Migrations
 {
     [DbContext(typeof(RailwayDbContext))]
-    [Migration("20230612121920_InitialCreate")]
+    [Migration("20230612155601_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
