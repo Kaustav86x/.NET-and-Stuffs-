@@ -67,7 +67,9 @@ namespace RailwayManagementSystem.Controllers
         }
 
         // DELETE: api/User/5
-        [HttpDelete("[Action]/{id}")]
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
         public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await _Railwaycontext.Users.FindAsync(id);
@@ -79,7 +81,6 @@ namespace RailwayManagementSystem.Controllers
             await _Railwaycontext.SaveChangesAsync();
             return Ok("User successfully deleted");
         }
-
         [HttpPut]
         [Authorize(Roles = "Admin,Passenger")]
         [Route("[action]")]

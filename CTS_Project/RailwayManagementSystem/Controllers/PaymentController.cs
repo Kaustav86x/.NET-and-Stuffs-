@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using RailwayManagementSystem.Data;
 using RailwayManagementSystem.Models.DbModels;
 using RailwayManagementSystem.Models.AddModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RailwayManagementSystem.Controllers
 {
@@ -15,117 +16,58 @@ namespace RailwayManagementSystem.Controllers
     [ApiController]
     public class PaymentController : ControllerBase
     {
-        private readonly RailwayDbContext _context;
+        private readonly RailwayDbContext _RailwayDbContext;
 
         public PaymentController(RailwayDbContext context)
         {
-            _context = context;
+            _RailwayDbContext = context;
         }
 
-        // GET: api/Payment
-        //[HttpGet]
-        //public async Task<IActionResult> GetPayments()
-        //{
-        //  if (_context.Payments == null)
-        //  {
-        //      return NotFound();
-        //  }
-        //}
-
         // GET: api/Payment/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Payment>> GetPayment(Guid id)
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> GetAllTransactions()
         {
-          if (_context.Payments == null)
-          {
-              return NotFound();
-          }
-            var payment = await _context.Payments.FindAsync(id);
-
-            if (payment == null)
+            if (_RailwayDbContext.Payments == null)
             {
-                return NotFound();
+                return NotFound("No transactions being found in the database");
             }
-
-            return payment;
+            return Ok(_RailwayDbContext.Payments);
         }
 
         // PUT: api/Payment/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPayment(Guid id, Payment payment)
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> GetTransactionById(Guid id)
         {
-            if (id != payment.Id)
+            var pay = await _RailwayDbContext.Payments.FirstOrDefaultAsync(p => p.Id == id);
+            if (pay == null)
             {
-                return BadRequest();
+                return BadRequest("Transaction Id doesn't match");
             }
-
-            _context.Entry(payment).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PaymentExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            else
+                return Ok(pay);
         }
-
-        // POST: api/Payment
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Payment>> PostPayment(Payment payment)
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> CreateTransaction([FromBody] AddPayment payment)
         {
-          if (_context.Payments == null)
-          {
-              return Problem("Entity set 'RailwayDbContext.Payments'  is null.");
-          }
-            _context.Payments.Add(payment);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetPayment", new { id = payment.Id }, payment);
-        }
-
-        // DELETE: api/Payment/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePayment(Guid id)
-        {
-            if (_context.Payments == null)
+            // var pay = _RailwayDbContext.Payments.
+            var p = new Payment()
             {
-                return NotFound();
-            }
-            var payment = await _context.Payments.FindAsync(id);
-            if (payment == null)
-            {
-                return NotFound();
-            }
-
-            _context.Payments.Remove(payment);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+                Id = Guid.NewGuid(),
+                Date = payment.Date,
+                Payment_method = payment.Payment_method,
+                Payment_status = payment.Payment_status,
+                Reservation_Id = payment.Reservation_Id,
+            };
+            await _RailwayDbContext.Payments.AddAsync(p);
+            await _RailwayDbContext.SaveChangesAsync();
+            return Ok("Payment addded successfully");
         }
-
-        private bool PaymentExists(Guid id)
-        {
-            return (_context.Payments?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
-
-        /*[HttpPut]
-        [Route("[action")]
-        public async Task<IActionResult> UpdateRandomData([FromBody] RandomUser randUser)
-        {
-            var val = randUser.Address; 
-        }*/
     }
 }
