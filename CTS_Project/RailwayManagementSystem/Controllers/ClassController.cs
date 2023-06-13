@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,111 +15,93 @@ namespace RailwayManagementSystem.Controllers
     [ApiController]
     public class ClassController : ControllerBase
     {
-        private readonly RailwayDbContext _context;
+        private readonly RailwayDbContext _RailwayDbContext;
 
         public ClassController(RailwayDbContext context)
         {
-            _context = context;
+            _RailwayDbContext = context;
         }
 
         // GET: api/Class
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Class>>> GetClasses()
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> GetClasses()
         {
-          if (_context.Classes == null)
+          if (_RailwayDbContext.Classes == null)
           {
               return NotFound();
           }
-            return await _context.Classes.ToListAsync();
+            return Ok(await _RailwayDbContext.Classes.ToListAsync());
         }
 
         // GET: api/Class/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Class>> GetClass(int id)
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> GetClassById(int id)
         {
-          if (_context.Classes == null)
+          if (_RailwayDbContext.Classes == null)
           {
               return NotFound();
           }
-            var @class = await _context.Classes.FindAsync(id);
+            var @class = await _RailwayDbContext.Classes.FindAsync(id);
 
             if (@class == null)
             {
-                return NotFound();
+                return NotFound("Class with that Id is not found");
             }
-
-            return @class;
+            return Ok(@class);
         }
 
         // PUT: api/Class/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutClass(int id, Class @class)
         {
             if (id != @class.Id)
             {
                 return BadRequest();
             }
-
-            _context.Entry(@class).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ClassExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
             return NoContent();
         }
 
         // POST: api/Class
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Class>> PostClass(Class @class)
+        public async Task<IActionResult> PostClass(Class @class)
         {
-          if (_context.Classes == null)
+          if (_RailwayDbContext.Classes == null)
           {
               return Problem("Entity set 'RailwayDbContext.Classes'  is null.");
           }
-            _context.Classes.Add(@class);
-            await _context.SaveChangesAsync();
+            _RailwayDbContext.Classes.Add(@class);
+            await _RailwayDbContext.SaveChangesAsync();
 
             return CreatedAtAction("GetClass", new { id = @class.Id }, @class);
         }
 
         // DELETE: api/Class/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
         public async Task<IActionResult> DeleteClass(int id)
         {
-            if (_context.Classes == null)
+            if (_RailwayDbContext.Classes == null)
             {
                 return NotFound();
             }
-            var @class = await _context.Classes.FindAsync(id);
+            var @class = await _RailwayDbContext.Classes.FindAsync(id);
             if (@class == null)
             {
                 return NotFound();
             }
 
-            _context.Classes.Remove(@class);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            _RailwayDbContext.Classes.Remove(@class);
+            await _RailwayDbContext.SaveChangesAsync();
+            return Ok("Role with that Id is deleted");
         }
 
-        private bool ClassExists(int id)
-        {
-            return (_context.Classes?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
     }
 }

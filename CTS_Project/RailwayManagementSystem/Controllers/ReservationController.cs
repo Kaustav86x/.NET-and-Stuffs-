@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,69 +15,72 @@ namespace RailwayManagementSystem.Controllers
     [ApiController]
     public class ReservationController : ControllerBase
     {
-        private readonly RailwayDbContext _context;
+        private readonly RailwayDbContext _RailwayDbContext;
 
         public ReservationController(RailwayDbContext context)
         {
-            _context = context;
+            _RailwayDbContext = context;
         }
 
         // GET: api/Reservation
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<Reservation>>> GetReservations()
-        //{
-        //  if (_context.Reservations == null)
-        //  {
-        //      return NotFound();
-        //  }
-        //    return await _context.Reservations.ToListAsync();
-        //}
+         [HttpGet]
+         public async Task<IActionResult> GetReservations()
+         {
+           if (_RailwayDbContext.Reservations == null)
+           {
+               return NotFound("No reservation foumd");
+           }
+             return Ok(await _RailwayDbContext.Reservations.ToListAsync());
+         }
 
         // GET: api/Reservation/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Reservation>> GetReservation(string id)
-        //{
-        //  if (_context.Reservations == null)
-        //  {
-        //      return NotFound();
-        //  }
-        //    var reservation = await _context.Reservations.FindAsync(id);
+         [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+         public async Task<IActionResult> GetReservationById(string id)
+        {
+          if (_RailwayDbContext.Reservations == null)
+          {
+              return NotFound();
+          }
+            var reservation = await _RailwayDbContext.Reservations.FindAsync(id);
 
-        //    if (reservation == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (reservation == null)
+            {
+                return NotFound("Reservation Id not found");
+            }
 
-        //    return reservation;
-        //}
+            return Ok(reservation);
+        }
 
         // PUT: api/Reservation/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutReservation(string id, Reservation reservation)
-        //{
-        //    if (id != reservation.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        /*[HttpPut("{id}")]
+        public async Task<IActionResult> PutReservation(string id, Reservation reservation)
+        {
+            if (id != reservation.Id)
+            {
+                return BadRequest();
+            }
 
-        //    _context.Entry(reservation).State = EntityState.Modified;
+            _RailwayDbContext.Entry(reservation).State = EntityState.Modified;
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!ReservationExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
+            try
+            {
+                await _RailwayDbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ReservationExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }*/
 
         //    return NoContent();
         //}
@@ -111,24 +115,26 @@ namespace RailwayManagementSystem.Controllers
         //}
 
         // DELETE: api/Reservation/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteReservation(string id)
-        //{
-        //    if (_context.Reservations == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var reservation = await _context.Reservations.FindAsync(id);
-        //    if (reservation == null)
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> DeleteReservation(string id)
+        {
+            if (_RailwayDbContext.Reservations == null)
+            {
+                return NotFound();
+            }
+            var reservation = await _RailwayDbContext.Reservations.FindAsync(id);
+            if (reservation == null)
+            {
+                return NotFound();
+            }
+ 
+            _RailwayDbContext.Reservations.Remove(reservation);
+            await _RailwayDbContext.SaveChangesAsync();
 
-        //    _context.Reservations.Remove(reservation);
-        //    await _context.SaveChangesAsync();
-
-        //    return NoContent();
-        //}
+            return Ok("Reservation deleted successfully");
+        }
 
     }
 }
