@@ -23,15 +23,14 @@ namespace RailwayManagementSystem.Controllers
         }
 
         // GET: api/Payment
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Payment>>> GetPayments()
-        {
-          if (_context.Payments == null)
-          {
-              return NotFound();
-          }
-            return await _context.Payments.ToListAsync();
-        }
+        //[HttpGet]
+        //public async Task<IActionResult> GetPayments()
+        //{
+        //  if (_context.Payments == null)
+        //  {
+        //      return NotFound();
+        //  }
+        //}
 
         // GET: api/Payment/5
         [HttpGet("{id}")]

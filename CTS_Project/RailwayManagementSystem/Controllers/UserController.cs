@@ -104,9 +104,9 @@ namespace RailwayManagementSystem.Controllers
         [Route("[action]")]
         public async Task<IActionResult> SignUp(string roleId, [FromBody] AddUser pass)
         {
-            var role = await _Railwaycontext.Roles.FindAsync(roleId);
-            var existemail = await _Railwaycontext.Users.FindAsync(pass.Email);
-            if (role != null && existemail.Email != pass.Email)
+            var ExistsUser = await _Railwaycontext.Users.FirstOrDefaultAsync(r => r.Email == pass.Email);
+            // var existemail = await _Railwaycontext.Users.FindAsync(pass.Email);
+            if (ExistsUser == null)
             {
                 var addUser = new User()
                 {

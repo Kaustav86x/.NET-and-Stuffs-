@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol;
 using RailwayManagementSystem.Data;
+using RailwayManagementSystem.Models.AddModels;
 using RailwayManagementSystem.Models.DbModels;
 
 namespace RailwayManagementSystem.Controllers
@@ -25,7 +26,7 @@ namespace RailwayManagementSystem.Controllers
 
         // GET: api/Role
         [HttpGet]
-        [Authorize(Roles = "Admin,Passenger")]
+        [Authorize(Roles = "Admin")]
         [Route("[action]")]
         public async Task<IActionResult> GetRoles()
         {
@@ -38,7 +39,7 @@ namespace RailwayManagementSystem.Controllers
 
         // GET: api/Role/5
         [HttpGet]
-        [Authorize(Roles = "Admin,Passenger")]
+        [Authorize(Roles = "Admin")]
         [Route("[action]")]
         public async Task<IActionResult> GetRolesById(string id)
         {
@@ -58,33 +59,24 @@ namespace RailwayManagementSystem.Controllers
 
         // PUT: api/Role/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRole(string id, Role role)
+        [HttpPut]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> UpdateRoles(string id, AddRoles role)
         {
+            var r = await _RailwayDbContext.Roles.FirstOrDefaultAsync(r => r.Id == id);
             if (id != role.Id)
             {
-                return BadRequest();
+                return BadRequest("Role Id doesn't match");
             }
-
-            _RailwayDbContext.Entry(role).State = EntityState.Modified;
-
-            try
-            {
-                await _RailwayDbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RoleExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            if (r == null)
+                return BadRequest("Id is not valid");
+            if (id == "A" || id == "P")
+                return BadRequest("Admin Role or Passenger Role can't be updated");
+            r.Id = id;
+            r.Role_type = role.Role_type;
+            await _RailwayDbContext.SaveChangesAsync();
+            return Ok("Role Id updated successfully");
         }
 
         // POST: api/Role
@@ -92,7 +84,7 @@ namespace RailwayManagementSystem.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [Route("[action]")]
-        public async Task<IActionResult> AddRoles(Role role)
+        public async Task<IActionResult> AddRoles(AddRoles role)
         {
           if (_RailwayDbContext.Roles == null)
               return Problem("There are no existing roles");
@@ -121,18 +113,19 @@ namespace RailwayManagementSystem.Controllers
             {
                 return NoContent();
             }
-            var role = await _RailwayDbContext.Roles.FindAsync(id);
-            if (role == null)
+            var role = await _RailwayDbContext.Roles.FirstOrDefaultAsync(a => a.Id == id);
+            if (id == "A" || id == "P")
+                return BadRequest("Admin Role or Passenger Role can't be deleted");
+            else
             {
-                return NotFound("Role with this id is not found");
+                if (role == null)
+                {
+                    return NotFound("Role with this id is not found");
+                }
+                _RailwayDbContext.Roles.Remove(role);
+                await _RailwayDbContext.SaveChangesAsync();
+                return Ok("Role successfully deleted");
             }
-            _RailwayDbContext.Roles.Remove(role);
-            await _RailwayDbContext.SaveChangesAsync();
-            return Ok("Role successfully deleted");
-        }
-        private bool RoleExists(string id)
-        {
-            return (_RailwayDbContext.Roles?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

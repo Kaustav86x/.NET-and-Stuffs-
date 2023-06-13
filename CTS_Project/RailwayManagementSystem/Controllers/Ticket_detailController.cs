@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RailwayManagementSystem.Data;
 using RailwayManagementSystem.Models.DbModels;
+using RailwayManagementSystem.Models.AddModels;
 
 namespace RailwayManagementSystem.Controllers
 {
@@ -37,8 +38,9 @@ namespace RailwayManagementSystem.Controllers
 
         // GET: api/Ticket_detail/5
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         [Route("[action]")]
-        public async Task<IActionResult> GetTicket_detailByUsedId(int id)
+        public async Task<IActionResult> GetTicket_detailById(int id)
         {
           if (_RailwayDbContext.TicketDetails == null)
           {
@@ -48,81 +50,70 @@ namespace RailwayManagementSystem.Controllers
 
             if (ticket_detail == null)
             {
-                return NotFound();
+                return NotFound("Ticket Id not found");
             }
-
             return Ok(ticket_detail);
         }
 
         // PUT: api/Ticket_detail/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTicket_detail(int id, Ticket_detail ticket_detail)
-        {
-            if (id != ticket_detail.Id)
-            {
-                return BadRequest();
-            }
-
-            _RailwayDbContext.Entry(ticket_detail).State = EntityState.Modified;
-
-            try
-            {
-                await _RailwayDbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!Ticket_detailExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Ticket_detail
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Ticket_detail>> PostTicket_detail(Ticket_detail ticket_detail)
-        {
-          if (_RailwayDbContext.TicketDetails == null)
-          {
-              return Problem("Entity set 'RailwayDbContext.TicketDetails'  is null.");
-          }
-            _RailwayDbContext.TicketDetails.Add(ticket_detail);
-            await _RailwayDbContext.SaveChangesAsync();
-
-            return CreatedAtAction("GetTicket_detail", new { id = ticket_detail.Id }, ticket_detail);
-        }
-
-        // DELETE: api/Ticket_detail/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTicket_detail(int id)
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> GetTicketDetailsByPassengerName(string pass)
         {
             if (_RailwayDbContext.TicketDetails == null)
             {
                 return NotFound();
             }
-            var ticket_detail = await _RailwayDbContext.TicketDetails.FindAsync(id);
+            var ticket_detail = await _RailwayDbContext.TicketDetails.FirstOrDefaultAsync(t => t.Passenger == pass);
             if (ticket_detail == null)
             {
-                return NotFound();
+                return NotFound("Passenger not found");
             }
-
-            _RailwayDbContext.TicketDetails.Remove(ticket_detail);
-            await _RailwayDbContext.SaveChangesAsync();
-
-            return NoContent();
+            return Ok(ticket_detail);
         }
 
-        private bool Ticket_detailExists(int id)
+        // POST: api/Ticket_detail
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> UpdateTicketDetails(int tid, [FromBody] UpdateTicketDetails ticket)
         {
-            return (_RailwayDbContext.TicketDetails?.Any(e => e.Id == id)).GetValueOrDefault();
+          if (_RailwayDbContext.TicketDetails == null)
+              return NoContent();
+            var tick = await _RailwayDbContext.TicketDetails.FindAsync(tid);
+            if (tick != null)
+            {
+                tick.Passenger = ticket.Passenger;
+                tick.Class_type = ticket.Class_Type;
+                tick.Seat_no = ticket.SeatNo;
+                await _RailwayDbContext.SaveChangesAsync();
+                return Ok("Ticket detail updated successfully");
+            }
+            return BadRequest("Ticket Id doesn't exist");
+        }
+        // DELETE: api/Ticket_detail/5
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> DeleteTicketDetails(int id)
+        {
+            if (_RailwayDbContext.TicketDetails == null)
+            {
+                return NoContent();
+            }
+            var ticket_detail = await _RailwayDbContext.TicketDetails.FirstOrDefaultAsync(t => t.Id == id);
+            if(ticket_detail != null)
+            {
+                if (ticket_detail.Passenger == " " || ticket_detail.Payment_Id == null)
+                    return BadRequest("Ticket Detail must have a passenger name");
+                _RailwayDbContext.TicketDetails.Remove(ticket_detail);
+                await _RailwayDbContext.SaveChangesAsync();
+                return Ok("Ticket detail deleted successfully");
+            }
+            return BadRequest("Ticket id is not valid");
         }
     }
 }
