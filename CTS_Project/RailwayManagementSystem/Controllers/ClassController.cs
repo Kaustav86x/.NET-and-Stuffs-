@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RailwayManagementSystem.Data;
+using RailwayManagementSystem.Models.AddModels;
 using RailwayManagementSystem.Models.DbModels;
 
 namespace RailwayManagementSystem.Controllers
@@ -58,28 +59,50 @@ namespace RailwayManagementSystem.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> PutClass(int id, Class @class)
+        [Route("[action]")]
+        public async Task<IActionResult> UpdateClassFareById(int id, int newFare)
         {
-            if (id != @class.Id)
+            var tclass = await _RailwayDbContext.Classes.FirstOrDefaultAsync(c => c.Id == id);
+            if(tclass != null) 
             {
-                return BadRequest();
+                tclass.Fare = newFare;
+                await _RailwayDbContext.SaveChangesAsync();
+                return Ok("Record updated successfully");
             }
-            return NoContent();
+            return BadRequest("Class Id doesn't exist");
         }
 
         // POST: api/Class
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<IActionResult> PostClass(Class @class)
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> AddClass(int cid, AddClass addc)
         {
+            var cls = await _RailwayDbContext.Classes.FirstOrDefaultAsync(c => c.Id == cid);
+            var clsname = await _RailwayDbContext.Classes.FirstOrDefaultAsync(n => n.Class_type == addc.Class_type);
+
           if (_RailwayDbContext.Classes == null)
           {
-              return Problem("Entity set 'RailwayDbContext.Classes'  is null.");
+                return NoContent() ;
           }
-            _RailwayDbContext.Classes.Add(@class);
-            await _RailwayDbContext.SaveChangesAsync();
-
-            return CreatedAtAction("GetClass", new { id = @class.Id }, @class);
+          if(cls == null)
+          {
+                if(clsname != null)
+                {
+                    return BadRequest("This Class name already exists");
+                }
+                var c = new Class()
+                {
+                    Class_type = addc.Class_type,
+                    Fare = addc.Fare,
+                    SeatCapacity = addc.SeatCapacity
+                };
+                await _RailwayDbContext.AddAsync(c);
+                await _RailwayDbContext.SaveChangesAsync();
+                return Created("201", "Class created");
+           }
+           return BadRequest("Class Id already exists");
         }
 
         // DELETE: api/Class/5
@@ -101,6 +124,16 @@ namespace RailwayManagementSystem.Controllers
             _RailwayDbContext.Classes.Remove(@class);
             await _RailwayDbContext.SaveChangesAsync();
             return Ok("Role with that Id is deleted");
+        }
+        [HttpPut]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> UpdateSeat(int seacCap, string ClassType, int tid)
+        {
+            // we'll get the class id from here
+           var cls = await _RailwayDbContext.Classes.FirstOrDefaultAsync(c => c.Class_type == ClassType);
+           var train = await _RailwayDbContext.Reservations.FirstOrDefaultAsync(t => t.TrainId == tid);
+            return BadRequest("Seat Updated");
         }
 
     }
