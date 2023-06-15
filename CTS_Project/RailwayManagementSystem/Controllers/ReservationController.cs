@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RailwayManagementSystem.Data;
+using RailwayManagementSystem.Models.AddModels;
 using RailwayManagementSystem.Models.DbModels;
 
 namespace RailwayManagementSystem.Controllers
@@ -24,6 +25,8 @@ namespace RailwayManagementSystem.Controllers
 
         // GET: api/Reservation
          [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
          public async Task<IActionResult> GetReservations()
          {
            if (_RailwayDbContext.Reservations == null)
@@ -134,6 +137,32 @@ namespace RailwayManagementSystem.Controllers
             await _RailwayDbContext.SaveChangesAsync();
 
             return Ok("Reservation deleted successfully");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
+        public async Task<IActionResult> AddReservation(string rid, [FromBody] AddReservation reservation)
+        {
+            if (_RailwayDbContext.Reservations == null)
+                return NoContent();
+            var reserv = await _RailwayDbContext.Reservations.FirstOrDefaultAsync(r => r.Id == rid);
+            if(reserv == null)
+            {
+                var r = new Reservation()
+                {
+                    Id = reservation.Id,
+                    Passenger = reservation.Passenger,
+                    Date = reservation.Date,
+                    UserId = reservation.UserId,
+                    TrainId = reservation.TrainId
+
+                };
+                await _RailwayDbContext.Reservations.AddAsync(r);
+                await _RailwayDbContext.SaveChangesAsync();
+                return Ok("Reservation data added");
+            }
+            return BadRequest("Reservation Id already exists");
         }
 
     }

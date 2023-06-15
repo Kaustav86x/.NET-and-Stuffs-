@@ -125,16 +125,25 @@ namespace RailwayManagementSystem.Controllers
             await _RailwayDbContext.SaveChangesAsync();
             return Ok("Role with that Id is deleted");
         }
-        [HttpPut]
-        [Authorize(Roles = "Admin")]
-        [Route("[action]")]
-        public async Task<IActionResult> UpdateSeat(int seacCap, string ClassType, int tid)
-        {
-            // we'll get the class id from here
-           var cls = await _RailwayDbContext.Classes.FirstOrDefaultAsync(c => c.Class_type == ClassType);
-           var train = await _RailwayDbContext.Reservations.FirstOrDefaultAsync(t => t.TrainId == tid);
-            return BadRequest("Seat Updated");
+        //[HttpPut]
+        //[Authorize(Roles = "Admin")]
+        //[Route("[action]")]
+        //public async Task<IActionResult> UpdateSeat(int seacCap, string ClassType, int tid)
+        //{
+        //    // we'll get the class id from here
+        //   var cls = await _RailwayDbContext.Classes.FirstOrDefaultAsync(c => c.Class_type == ClassType);
+        //    // I need to find which train the user reserved
+        //    // if tid matches with TrainId the user Reserved a class in that train 
+        //    var train = await _RailwayDbContext.Reservations.FirstOrDefaultAsync(t => t.TrainId == tid);
+        //    // var tclass = await _RailwayDbContext.TrainDetails.FirstOrDefaultAsync(v => v.)
+        //    if(train != null)
+        //    {
+        //        // the user has registered and booked a class in a train
+
+        //    }
+
+            
+           
         }
 
     }
-}

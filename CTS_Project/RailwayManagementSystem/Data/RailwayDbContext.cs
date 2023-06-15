@@ -15,6 +15,8 @@ namespace RailwayManagementSystem.Data
         public DbSet<Ticket_detail> TicketDetails { get; set; }
         public DbSet<Train_detail> TrainDetails { get; set; }
         public DbSet<User> Users { get; set; }
+
+        //public DbSet<Tick>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder.UseSqlServer(

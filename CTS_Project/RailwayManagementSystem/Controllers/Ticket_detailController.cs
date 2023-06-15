@@ -115,5 +115,29 @@ namespace RailwayManagementSystem.Controllers
             }
             return BadRequest("Ticket id is not valid");
         }
+        [HttpPost]
+        [Authorize(Roles = "Passenger")]
+        [Route("[action]")]
+        public async Task<IActionResult> AddTicket(int tid, [FromBody] AddTicket ticket)
+        {
+            var tick = await _RailwayDbContext.TicketDetails.FirstOrDefaultAsync(t => t.Id == tid);
+            if(tick == null)
+            {
+                var t = new Ticket_detail()
+                {
+                    Id = tick.Id,
+                    Train_name = tick.Train_name,
+                    Passenger = tick.Passenger,
+                    Class_type = tick.Class_type,
+                    Seat_no = tick.Seat_no,
+                    Date = tick.Date,
+                    Payment_Id = tick.Payment_Id
+                };
+                await _RailwayDbContext.TicketDetails.AddAsync(t);
+                await _RailwayDbContext.SaveChangesAsync();
+                return Ok("Ticket Details added successfully");
+            }
+            return BadRequest("Ticket Id already exists");
+        }
     }
 }
