@@ -7,12 +7,12 @@ namespace RailwayManagementSystem.Models.DbModels
 {
     // one-to-many with Reservation
     // many-to-many with Class
+    // many-to-one with Train_detail_class
     public class Train_detail
     {
         public Train_detail()
         {
             Reservations = new HashSet<Reservation>();
-            Classes = new HashSet<Class>();
         }
         [Required]
         public int Id { get; set; }
@@ -35,7 +35,8 @@ namespace RailwayManagementSystem.Models.DbModels
         [Required]
         // estimate duration of the journey
         public double Duration { get; set; }
+        public string TDCID { get; set; }
+        public virtual Train_Detail_Class? Train_Detail_Classes { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
-        public virtual ICollection<Class> Classes { get; set; }
     }
 }

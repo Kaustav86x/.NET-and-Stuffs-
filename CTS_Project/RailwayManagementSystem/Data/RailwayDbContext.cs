@@ -12,6 +12,7 @@ namespace RailwayManagementSystem.Data
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Train_Detail_Class> TrainDetailClass { get; set; }
         public DbSet<Ticket_detail> TicketDetails { get; set; }
         public DbSet<Train_detail> TrainDetails { get; set; }
         public DbSet<User> Users { get; set; }
@@ -24,15 +25,16 @@ namespace RailwayManagementSystem.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Train_detail to Class (N:N)
-            modelBuilder.Entity<Train_detail>()
+            // Train_Detail_Class to Class (1:N)
+            modelBuilder.Entity<Train_Detail_Class>()
                 .HasMany(a => a.Classes)
-                .WithMany(b => b.Train_details)
-                .UsingEntity(
-                "TrainDetailClass",
-                l => l.HasOne(typeof(Class)).WithMany().HasForeignKey("ClassId").HasPrincipalKey(nameof(Class.Id)),
-                r => r.HasOne(typeof(Train_detail)).WithMany().HasForeignKey("TrainDetailId").HasPrincipalKey(nameof(Train_detail.Id)),
-                j => j.HasKey("ClassId", "TrainDetailId"));
+                .WithOne(b => b.Train_Detail_Classes)
+                .HasForeignKey(c => c.TDCID).IsRequired();
+            // Train_Detail_Class to Train_detail (1:N)
+            modelBuilder.Entity<Train_Detail_Class>()
+                .HasMany(a => a.TrainDetails)
+                .WithOne(b => b.Train_Detail_Classes)
+                .HasForeignKey(c => c.TDCID).IsRequired();
             // Payment to Reservation (1:1)
             modelBuilder.Entity<Reservation>()
                 .HasOne(a => a.Payment)

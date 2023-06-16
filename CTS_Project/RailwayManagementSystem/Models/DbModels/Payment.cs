@@ -11,10 +11,11 @@ namespace RailwayManagementSystem.Models.DbModels
         [Required]
         public string? Payment_method { get; set; }
         [Required]
-        public string? Payment_status { get; set; }  
-        public virtual Class? Class { get; set; }
+        public string? Payment_status { get; set; } 
+        // public virtual Class? Class { get; set; }
         public string? Reservation_Id { get; set; }
         public virtual Reservation? Reservations { get; set; }
+        public int? TicketId { get; set; }
         public virtual Ticket_detail? Ticket_Details { get; set; }
     }
 }
