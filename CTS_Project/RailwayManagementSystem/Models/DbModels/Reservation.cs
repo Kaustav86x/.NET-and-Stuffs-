@@ -17,7 +17,7 @@ namespace RailwayManagementSystem.Models.DbModels
         public string? UserId { get; set; }
         public virtual User? User { get; set; }
         // foreign key 
-        public int TrainId { get; set; }
+        public string? TrainId { get; set; }
         public virtual Train_detail? Train_detail { get; set; }
         // foreign key
         public virtual Payment? Payment { get; set; }

@@ -63,7 +63,7 @@ namespace RailwayManagementSystem.Controllers
                 Date = payment.Date,
                 Payment_method = payment.Payment_method,
                 Payment_status = payment.Payment_status,
-                Reservation_Id = payment.Reservation_Id,
+                ReservationId = payment.Reservation_Id,
             };
             await _RailwayDbContext.Payments.AddAsync(p);
             await _RailwayDbContext.SaveChangesAsync();

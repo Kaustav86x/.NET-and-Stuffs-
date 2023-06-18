@@ -8,15 +8,15 @@ namespace RailwayManagementSystem.Models.DbModels
     public class Class
     {
         [Required]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [Required] 
-        public string Class_type { get; set; }
+        public string? Class_type { get; set; }
         [Required]
         public int Fare { get; set; }
         [Required]
         public int SeatCapacity { get; set; }
         // foreign key
-        public string TDCID { get; set; }
+        public string? TDCID { get; set; }
         public virtual Train_Detail_Class? Train_Detail_Classes { get; set; }
     }
 }

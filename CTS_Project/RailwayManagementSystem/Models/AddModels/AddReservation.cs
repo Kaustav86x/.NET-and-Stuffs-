@@ -6,6 +6,6 @@
         public string Passenger { get; set; }
         public DateTime Date { get; set; }
         public string UserId { get; set; }
-        public int TrainId { get; set; }
+        public string TrainId { get; set; }
     }
 }

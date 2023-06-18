@@ -11,8 +11,7 @@ namespace RailwayManagementSystem.Models.DbModels
             TrainDetails = new HashSet<Train_detail>();
             Classes = new HashSet<Class>();
         }
-        [Required]
-        public string TDC_Id { get; set; }
+        public string? Id { get; set; }
         public virtual ICollection<Train_detail> TrainDetails { get; set; }
         public virtual ICollection<Class> Classes { get; set; }
     }

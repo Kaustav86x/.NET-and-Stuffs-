@@ -4,7 +4,7 @@ namespace RailwayManagementSystem.Models.AddModels
 {
     public class AddTicket
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Train_ame { get; set; }
         public string Passenger { get; set; }
         public string Class_Type { get; set; }

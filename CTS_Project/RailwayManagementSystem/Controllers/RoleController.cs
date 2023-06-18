@@ -54,7 +54,7 @@ namespace RailwayManagementSystem.Controllers
                 return NotFound("No roles found with this Id");
             }
 
-            return Ok(role.Role_type);
+            return Ok(role.Role_Type);
         }
 
         // PUT: api/Role/5
@@ -74,7 +74,7 @@ namespace RailwayManagementSystem.Controllers
             if (id == "A" || id == "P")
                 return BadRequest("Admin Role or Passenger Role can't be updated");
             r.Id = id;
-            r.Role_type = role.Role_type;
+            r.Role_Type = role.Role_type;
             await _RailwayDbContext.SaveChangesAsync();
             return Ok("Role Id updated successfully");
         }
@@ -88,13 +88,13 @@ namespace RailwayManagementSystem.Controllers
         {
           if (_RailwayDbContext.Roles == null)
               return Problem("There are no existing roles");
-            var roles = _RailwayDbContext.Roles.FirstOrDefaultAsync(r => r.Id == role.Id && r.Role_type == role.Role_type);
+            var roles = _RailwayDbContext.Roles.FirstOrDefaultAsync(r => r.Id == role.Id && r.Role_Type == role.Role_type);
             if(roles == null)
             {
                 var r = new Role()
                 {
                     Id = role.Id,
-                    Role_type = role.Role_type,
+                    Role_Type = role.Role_type,
                 };
                 await _RailwayDbContext.Roles.AddAsync(r);
                 await _RailwayDbContext.SaveChangesAsync();

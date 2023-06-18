@@ -15,27 +15,27 @@ namespace RailwayManagementSystem.Models.DbModels
             Reservations = new HashSet<Reservation>();
         }
         [Required]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [Required]
         [StringLength(50, ErrorMessage = "Source name length can't be more than 50.")]
-        public string Source { get; set; }
+        public string? Source { get; set; }
         [Required]
         [StringLength(50, ErrorMessage = "Destination length can't be more than 50.")]
-        public string Destination { get; set; }
+        public string? Destination { get; set; }
         [Required]
         [StringLength(50, ErrorMessage = "Train name length can't be more than 50.")]
-        public string Train_name { get; set; }
+        public string? Train_name { get; set; }
         [Required]
-        public string Arr_time { get; set; }
+        public string? Arr_time { get; set; }
         [Required]
-        public string Dept_time { get; set; }
+        public string? Dept_time { get; set; }
         [Required]
         [Column(TypeName = "date")]
         public DateTime DateOfDeparture { get; set; }
         [Required]
         // estimate duration of the journey
         public double Duration { get; set; }
-        public string TDCID { get; set; }
+        public string? TDCID { get; set; }
         public virtual Train_Detail_Class? Train_Detail_Classes { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
     }

@@ -5,7 +5,7 @@ namespace RailwayManagementSystem.Models.DbModels
     // many-to-one with User
     public class Ticket_detail
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         [Required]
         public string? Train_name { get; set; }
         [Required]
@@ -18,7 +18,7 @@ namespace RailwayManagementSystem.Models.DbModels
         [Required]
         public DateTime Date { get; set;}
         // foreign key
-        public Guid Payment_Id { get; set; }
+        public Guid PaymentId { get; set; }
         public Payment? Payment { get; set; }
 
     }

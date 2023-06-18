@@ -39,7 +39,7 @@ namespace RailwayManagementSystem.Data
             modelBuilder.Entity<Reservation>()
                 .HasOne(a => a.Payment)
                 .WithOne(b => b.Reservations)
-                .HasForeignKey<Payment>(c => c.Reservation_Id).IsRequired();
+                .HasForeignKey<Payment>(c => c.ReservationId).IsRequired();
             // Train_detail to Reservation (1:N)
             modelBuilder.Entity<Train_detail>()
                 .HasMany(a => a.Reservations)
@@ -49,7 +49,8 @@ namespace RailwayManagementSystem.Data
             modelBuilder.Entity<User>()
                 .HasMany(a => a.Reservations)
                 .WithOne(b => b.User)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                //.OnDelete(DeleteBehavior.ClientSetNull);
+                .HasForeignKey(c => c.UserId).IsRequired();
             // Role to User (1:N)
             modelBuilder.Entity<Role>()
                 .HasMany(a => a.Users)
@@ -59,7 +60,7 @@ namespace RailwayManagementSystem.Data
             modelBuilder.Entity<Payment>()
                 .HasOne(a => a.Ticket_Details)
                 .WithOne(b => b.Payment)
-                .HasForeignKey<Ticket_detail>(c => c.Payment_Id).IsRequired();
+                .HasForeignKey<Ticket_detail>(c => c.PaymentId).IsRequired();
             base.OnModelCreating(modelBuilder);
         }
     }

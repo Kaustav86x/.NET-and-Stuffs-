@@ -56,67 +56,6 @@ namespace RailwayManagementSystem.Controllers
             return Ok(reservation);
         }
 
-        // PUT: api/Reservation/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPut("{id}")]
-        public async Task<IActionResult> PutReservation(string id, Reservation reservation)
-        {
-            if (id != reservation.Id)
-            {
-                return BadRequest();
-            }
-
-            _RailwayDbContext.Entry(reservation).State = EntityState.Modified;
-
-            try
-            {
-                await _RailwayDbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ReservationExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-        }*/
-
-        //    return NoContent();
-        //}
-
-        // POST: api/Reservation
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPost]
-        //public async Task<ActionResult<Reservation>> PostReservation(Reservation reservation)
-        //{
-        //  if (_context.Reservations == null)
-        //  {
-        //      return Problem("Entity set 'RailwayDbContext.Reservations'  is null.");
-        //  }
-        //    _context.Reservations.Add(reservation);
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateException)
-        //    {
-        //        if (ReservationExists(reservation.Id))
-        //        {
-        //            return Conflict();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return CreatedAtAction("GetReservation", new { id = reservation.Id }, reservation);
-        //}
-
         // DELETE: api/Reservation/5
         [HttpDelete]
         [Authorize(Roles = "Admin")]

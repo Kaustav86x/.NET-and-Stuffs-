@@ -60,7 +60,7 @@ namespace RailwayManagementSystem.Controllers
         [HttpPut]
         [Authorize(Roles = "Admin")]
         [Route("[action]")]
-        public async Task<IActionResult> UpdateClassFareById(int id, int newFare)
+        public async Task<IActionResult> UpdateClassFareById(string id, int newFare)
         {
             var tclass = await _RailwayDbContext.Classes.FirstOrDefaultAsync(c => c.Id == id);
             if(tclass != null) 
@@ -77,7 +77,7 @@ namespace RailwayManagementSystem.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [Route("[action]")]
-        public async Task<IActionResult> AddClass(int cid, AddClass addc)
+        public async Task<IActionResult> AddClass(string cid, AddClass addc)
         {
             var cls = await _RailwayDbContext.Classes.FirstOrDefaultAsync(c => c.Id == cid);
             var clsname = await _RailwayDbContext.Classes.FirstOrDefaultAsync(n => n.Class_type == addc.Class_type);

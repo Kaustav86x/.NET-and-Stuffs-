@@ -11,7 +11,7 @@ namespace RailwayManagementSystem.Models.DbModels
         [Required]
         public string Id { get; set; }
         [Required]
-        public string? Role_type { get; set; }
+        public string? Role_Type { get; set; }
         public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -98,7 +98,7 @@ namespace RailwayManagementSystem.Controllers
         [HttpDelete]
         [Authorize(Roles = "Admin")]
         [Route("[action]")]
-        public async Task<IActionResult> DeleteTicketDetails(int id)
+        public async Task<IActionResult> DeleteTicketDetails(string id)
         {
             if (_RailwayDbContext.TicketDetails == null)
             {
@@ -107,7 +107,7 @@ namespace RailwayManagementSystem.Controllers
             var ticket_detail = await _RailwayDbContext.TicketDetails.FirstOrDefaultAsync(t => t.Id == id);
             if(ticket_detail != null)
             {
-                if (ticket_detail.Passenger == " " || ticket_detail.Payment_Id == null)
+                if (ticket_detail.Passenger == " " || ticket_detail.PaymentId == null)
                     return BadRequest("Ticket Detail must have a passenger name");
                 _RailwayDbContext.TicketDetails.Remove(ticket_detail);
                 await _RailwayDbContext.SaveChangesAsync();
@@ -118,7 +118,7 @@ namespace RailwayManagementSystem.Controllers
         [HttpPost]
         [Authorize(Roles = "Passenger")]
         [Route("[action]")]
-        public async Task<IActionResult> AddTicket(int tid, [FromBody] AddTicket ticket)
+        public async Task<IActionResult> AddTicket(string tid, [FromBody] AddTicket ticket)
         {
             var tick = await _RailwayDbContext.TicketDetails.FirstOrDefaultAsync(t => t.Id == tid);
             if(tick == null)
@@ -131,7 +131,7 @@ namespace RailwayManagementSystem.Controllers
                     Class_type = tick.Class_type,
                     Seat_no = tick.Seat_no,
                     Date = tick.Date,
-                    Payment_Id = tick.Payment_Id
+                    PaymentId = tick.PaymentId
                 };
                 await _RailwayDbContext.TicketDetails.AddAsync(t);
                 await _RailwayDbContext.SaveChangesAsync();

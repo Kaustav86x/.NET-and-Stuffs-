@@ -135,7 +135,7 @@ namespace RailwayManagementSystem.Controllers
                 if (User.Password == ExistingUser.Password)
                 {
                     var role = await _Railwaycontext.Roles.FindAsync(ExistingUser.RoleId);
-                    var jwt = JwtTokenCreation(ExistingUser.Email, role.Role_type);
+                    var jwt = JwtTokenCreation(ExistingUser.Email, role.Role_Type);
                     return Ok(jwt);
                 }
                 return BadRequest("Password is incorrect");
