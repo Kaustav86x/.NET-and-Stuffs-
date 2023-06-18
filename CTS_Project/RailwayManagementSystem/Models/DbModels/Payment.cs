@@ -15,7 +15,7 @@ namespace RailwayManagementSystem.Models.DbModels
         // public virtual Class? Class { get; set; }
         public string? ReservationId { get; set; }
         public virtual Reservation? Reservations { get; set; }
-        public int? TicketId { get; set; }
+        public string? TicketId { get; set; }
         public virtual Ticket_detail? Ticket_Details { get; set; }
     }
 }

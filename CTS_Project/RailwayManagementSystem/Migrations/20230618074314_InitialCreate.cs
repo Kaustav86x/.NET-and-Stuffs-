@@ -139,7 +139,7 @@ namespace RailwayManagementSystem.Migrations
                     Payment_method = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Payment_status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReservationId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TicketId = table.Column<int>(type: "int", nullable: true)
+                    TicketId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
