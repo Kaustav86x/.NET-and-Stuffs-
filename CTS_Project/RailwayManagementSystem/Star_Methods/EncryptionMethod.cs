@@ -6,7 +6,7 @@ namespace RailwayManagementSystem.Star_Methods
 {
     public class EncryptionMethod
     {
-        public static string EncryptString(string input)
+        public string EncryptString(string input)
         {
             using (SHA256 sha256 = SHA256.Create())
             {

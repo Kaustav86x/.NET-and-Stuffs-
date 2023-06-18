@@ -33,7 +33,9 @@ namespace RailwayManagementSystem.Models.DbModels
         [Column(TypeName = "date")]
         public DateTime DateOfDeparture { get; set; }
         [Required]
+        public int AvailableSeats { get; set; }
         // estimate duration of the journey
+        [Required]
         public double Duration { get; set; }
         public string? TDCID { get; set; }
         public virtual Train_Detail_Class? Train_Detail_Classes { get; set; }

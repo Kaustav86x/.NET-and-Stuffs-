@@ -14,6 +14,7 @@ using RailwayManagementSystem.Data;
 using RailwayManagementSystem.Models.AddModels;
 using RailwayManagementSystem.Models.DbModels;
 using RailwayManagementSystem.Models.ViewModels;
+using RailwayManagementSystem.Star_Methods;
 
 namespace RailwayManagementSystem.Controllers
 {
@@ -29,6 +30,8 @@ namespace RailwayManagementSystem.Controllers
             _Railwaycontext = context;
             this._config = config;
         }
+
+        // EncryptionMethod hashvalue = new EncryptionMethod();
 
         // GET: api/User
         // Get the list of the Passemegrs from the database
@@ -105,6 +108,7 @@ namespace RailwayManagementSystem.Controllers
         [Route("[action]")]
         public async Task<IActionResult> SignUp(string roleId, [FromBody] AddUser pass)
         {
+            // EncryptionMethod hashvalue = new EncryptionMethod();
             var ExistsUser = await _Railwaycontext.Users.FirstOrDefaultAsync(r => r.Email == pass.Email);
             // var existemail = await _Railwaycontext.Users.FindAsync(pass.Email);
             if (ExistsUser == null)
@@ -129,10 +133,12 @@ namespace RailwayManagementSystem.Controllers
             [HttpPost("[action]")]
         public async Task<IActionResult> Login(Login User)
         {
+            EncryptionMethod hashvalue = new EncryptionMethod();
             var ExistingUser = _Railwaycontext.Users.FirstOrDefault(e => e.Email == User.Email);
             if (ExistingUser != null)
             {
-                if (User.Password == ExistingUser.Password)
+                // checking if the current user having the same hashed encrypted password or not
+                if (hashvalue.EncryptString(User.Password) == hashvalue.EncryptString(ExistingUser.Password))
                 {
                     var role = await _Railwaycontext.Roles.FindAsync(ExistingUser.RoleId);
                     var jwt = JwtTokenCreation(ExistingUser.Email, role.Role_Type);

@@ -29,10 +29,10 @@ namespace RailwayManagementSystem.Controllers
         [Route("[action]")]
         public async Task<IActionResult> GetClasses()
         {
-          if (_RailwayDbContext.Classes == null)
-          {
-              return NotFound();
-          }
+            if (_RailwayDbContext.Classes == null)
+            {
+                return NotFound();
+            }
             return Ok(await _RailwayDbContext.Classes.ToListAsync());
         }
 
@@ -42,10 +42,10 @@ namespace RailwayManagementSystem.Controllers
         [Route("[action]")]
         public async Task<IActionResult> GetClassById(int id)
         {
-          if (_RailwayDbContext.Classes == null)
-          {
-              return NotFound();
-          }
+            if (_RailwayDbContext.Classes == null)
+            {
+                return NotFound();
+            }
             var @class = await _RailwayDbContext.Classes.FindAsync(id);
 
             if (@class == null)
@@ -63,7 +63,7 @@ namespace RailwayManagementSystem.Controllers
         public async Task<IActionResult> UpdateClassFareById(string id, int newFare)
         {
             var tclass = await _RailwayDbContext.Classes.FirstOrDefaultAsync(c => c.Id == id);
-            if(tclass != null) 
+            if (tclass != null)
             {
                 tclass.Fare = newFare;
                 await _RailwayDbContext.SaveChangesAsync();
@@ -82,13 +82,13 @@ namespace RailwayManagementSystem.Controllers
             var cls = await _RailwayDbContext.Classes.FirstOrDefaultAsync(c => c.Id == cid);
             var clsname = await _RailwayDbContext.Classes.FirstOrDefaultAsync(n => n.Class_type == addc.Class_type);
 
-          if (_RailwayDbContext.Classes == null)
-          {
-                return NoContent() ;
-          }
-          if(cls == null)
-          {
-                if(clsname != null)
+            if (_RailwayDbContext.Classes == null)
+            {
+                return NoContent();
+            }
+            if (cls == null)
+            {
+                if (clsname != null)
                 {
                     return BadRequest("This Class name already exists");
                 }
@@ -101,8 +101,8 @@ namespace RailwayManagementSystem.Controllers
                 await _RailwayDbContext.AddAsync(c);
                 await _RailwayDbContext.SaveChangesAsync();
                 return Created("201", "Class created");
-           }
-           return BadRequest("Class Id already exists");
+            }
+            return BadRequest("Class Id already exists");
         }
 
         // DELETE: api/Class/5
@@ -125,25 +125,16 @@ namespace RailwayManagementSystem.Controllers
             await _RailwayDbContext.SaveChangesAsync();
             return Ok("Role with that Id is deleted");
         }
-        //[HttpPut]
-        //[Authorize(Roles = "Admin")]
-        //[Route("[action]")]
-        //public async Task<IActionResult> UpdateSeat(int seacCap, string ClassType, int tid)
-        //{
-        //    // we'll get the class id from here
-        //   var cls = await _RailwayDbContext.Classes.FirstOrDefaultAsync(c => c.Class_type == ClassType);
-        //    // I need to find which train the user reserved
-        //    // if tid matches with TrainId the user Reserved a class in that train 
-        //    var train = await _RailwayDbContext.Reservations.FirstOrDefaultAsync(t => t.TrainId == tid);
-        //    // var tclass = await _RailwayDbContext.TrainDetails.FirstOrDefaultAsync(v => v.)
-        //    if(train != null)
-        //    {
-        //        // the user has registered and booked a class in a train
-
-        //    }
-
+        /*[HttpPut]
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]*/
+        /*public async Task<IActionResult> UpdateSeat(int seacCap, string ClassType, string tid)
+        {
             
-           
-        }
+
+
+
+        }*/
 
     }
+}
