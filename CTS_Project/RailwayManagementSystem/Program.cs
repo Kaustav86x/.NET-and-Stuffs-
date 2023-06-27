@@ -4,7 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using RailwayManagementSystem.Data;
 using System.Text;
 
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +16,7 @@ builder.Services.AddDbContext<RailwayDbContext>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 // Configure CORS
 builder.Services.AddCors(options =>
 {
