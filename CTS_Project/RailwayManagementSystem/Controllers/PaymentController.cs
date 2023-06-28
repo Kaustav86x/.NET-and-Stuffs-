@@ -9,6 +9,7 @@ using RailwayManagementSystem.Data;
 using RailwayManagementSystem.Models.DbModels;
 using RailwayManagementSystem.Models.AddModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace RailwayManagementSystem.Controllers
 {

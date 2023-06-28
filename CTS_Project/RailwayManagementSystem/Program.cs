@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 //using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RailwayManagementSystem.Data;
@@ -16,16 +17,27 @@ builder.Services.AddDbContext<RailwayDbContext>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+/*var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 // Configure CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
+    options.AddPolicy(MyAllowSpecificOrigins, policy =>
     {
-        policy.WithOrigins("http://localhost:5173/")
+        policy.AllowAnyOrigin()
+        *//*policy.WithOrigins("http://localhost:5173")*//*
                .AllowAnyHeader()
-               .AllowAnyMethod();
+               .AllowAnyMethod()
+               .AllowCredentials();
                
+    });
+});*/
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
     });
 });
 
@@ -59,7 +71,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 // Enable CORS
-app.UseCors(MyAllowSpecificOrigins);
+app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 

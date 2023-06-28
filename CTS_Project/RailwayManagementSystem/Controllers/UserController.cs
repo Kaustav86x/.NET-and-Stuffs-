@@ -6,10 +6,12 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using RailwayManagementSystem.Data;
 using RailwayManagementSystem.Models.AddModels;
 using RailwayManagementSystem.Models.DbModels;
@@ -142,7 +144,7 @@ namespace RailwayManagementSystem.Controllers
                 {
                     var role = await _Railwaycontext.Roles.FindAsync(ExistingUser.RoleId);
                     var jwt = JwtTokenCreation(ExistingUser.Email, role.Role_Type);
-                    return Ok(jwt);
+                    return Ok(new { Token = jwt});
                 }
                 return BadRequest("Password is incorrect");
             }
