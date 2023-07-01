@@ -27,6 +27,16 @@ namespace RailwayManagementSystem.Controllers
 
         [HttpGet]
         [Route("[action]")]
+        public async Task<IActionResult> GetTrains()
+        {
+            if(_RailwayDbContext.TrainDetails == null)
+                return NoContent();
+            /*var trainList = _RailwayDbContext.*/
+            return Ok(_RailwayDbContext.TrainDetails);
+        }
+
+        [HttpGet]
+        [Route("[action]")]
         public async Task<IActionResult> GetTrainsForDestination([FromBody] GetTrainsByDestination trains)
         {
             if (_RailwayDbContext.TrainDetails == null)
@@ -59,7 +69,7 @@ namespace RailwayManagementSystem.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [Route("[action]")]
-        public async Task<IActionResult> AddTrains(int tid,AddTrains addtrain)
+        public async Task<IActionResult> AddTrains(string tid,AddTrains addtrain)
         {
             var trains = await _RailwayDbContext.TrainDetails.FindAsync(tid);
             //if (addtrain.Train_name != "string" && addtrain.Source != "string" && addtrain.Destination != "string" && addtrain.Arr_time != "string" && addtrain.Dept_time != "string" && addtrain.DateOfDeparture.ToString() != "string" && addtrain.Duration != 0)
@@ -67,6 +77,7 @@ namespace RailwayManagementSystem.Controllers
             {
                 var addt = new Train_detail()
                 {
+                    Id = addtrain.Id,
                     Source = addtrain.Source,
                     Destination = addtrain.Destination,
                     Train_name = addtrain.Train_name,
@@ -92,7 +103,7 @@ namespace RailwayManagementSystem.Controllers
         [HttpDelete]
         [Authorize(Roles = "Admin")]
         [Route("[action]")]
-        public async Task<IActionResult> DeleteTrain(int id)
+        public async Task<IActionResult> DeleteTrain(string id)
         {
             if (_RailwayDbContext.TrainDetails == null)
             {
@@ -112,7 +123,7 @@ namespace RailwayManagementSystem.Controllers
         [HttpPut]
         [Authorize(Roles = "Admin")]
         [Route("[action]")]
-        public async Task<IActionResult> UpdateTrains(int tid, AddTrains addtrain)
+        public async Task<IActionResult> UpdateTrains(string tid, AddTrains addtrain)
         {
             var trains = await _RailwayDbContext.TrainDetails.FindAsync(tid);
             //if (addtrain.Train_name != "string" && addtrain.Source != "string" && addtrain.Destination != "string" && addtrain.Arr_time != "string" && addtrain.Dept_time != "string" && addtrain.DateOfDeparture.ToString() != "string" && addtrain.Duration != 0)

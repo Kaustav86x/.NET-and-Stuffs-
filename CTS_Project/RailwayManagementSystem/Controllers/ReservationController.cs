@@ -80,7 +80,7 @@ namespace RailwayManagementSystem.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Passenger")]
         [Route("[action]")]
         public async Task<IActionResult> AddReservation(string rid, [FromBody] AddReservation reservation)
         {
