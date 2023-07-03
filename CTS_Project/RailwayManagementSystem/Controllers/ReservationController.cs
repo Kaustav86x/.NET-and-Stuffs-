@@ -26,7 +26,7 @@ namespace RailwayManagementSystem.Controllers
 
         // GET: api/Reservation
          [HttpGet]
-        [Authorize(Roles = "Admin")]
+        /*[Authorize(Roles = "Admin")]*/
         [Route("[action]")]
          public async Task<IActionResult> GetReservations()
          {
@@ -80,18 +80,17 @@ namespace RailwayManagementSystem.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin,Passenger")]
         [Route("[action]")]
-        public async Task<IActionResult> AddReservation(string rid, [FromBody] AddReservation reservation)
+        public async Task<IActionResult> AddReservation([FromBody] AddReservation reservation)
         {
             if (_RailwayDbContext.Reservations == null)
                 return NoContent();
-            var reserv = await _RailwayDbContext.Reservations.FirstOrDefaultAsync(r => r.Id == rid);
+            /*var reserv = await _RailwayDbContext.Reservations.FirstOrDefaultAsync(r => r.UserId == reservation.UserId);
             if(reserv == null)
-            {
+            {*/
                 var r = new Reservation()
                 {
-                    Id = reservation.Id,
+                    Id = Guid.NewGuid().ToString(),
                     Passenger = reservation.Passenger,
                     Date = reservation.Date,
                     UserId = reservation.UserId,
@@ -101,8 +100,8 @@ namespace RailwayManagementSystem.Controllers
                 await _RailwayDbContext.Reservations.AddAsync(r);
                 await _RailwayDbContext.SaveChangesAsync();
                 return Ok("Reservation data added");
-            }
-            return BadRequest("Reservation Id already exists");
+            /*}
+            return BadRequest("Reservation Id already exists");*/
         }
 
     }

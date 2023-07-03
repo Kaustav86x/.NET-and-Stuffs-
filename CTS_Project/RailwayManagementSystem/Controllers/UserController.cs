@@ -108,7 +108,7 @@ namespace RailwayManagementSystem.Controllers
         // new user addition
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> SignUp(string roleId, [FromBody] AddUser pass)
+        public async Task<IActionResult> SignUp([FromBody] AddUser pass)
         {
             // EncryptionMethod hashvalue = new EncryptionMethod();
             var ExistsUser = await _Railwaycontext.Users.FirstOrDefaultAsync(r => r.Email == pass.Email);
@@ -117,7 +117,7 @@ namespace RailwayManagementSystem.Controllers
             {
                 var addUser = new User()
                 {
-                    Id = pass.Id,
+                    Id = Guid.NewGuid().ToString(),
                     Fname = pass.Fname,
                     Lname = pass.Lname,
                     Phone = pass.Phone,
@@ -132,7 +132,7 @@ namespace RailwayManagementSystem.Controllers
             return BadRequest("User with this email already exists");
         }
 
-            [HttpPost("[action]")]
+        [HttpPost("[action]")]
         public async Task<IActionResult> Login(Login User)
         {
             EncryptionMethod hashvalue = new EncryptionMethod();
