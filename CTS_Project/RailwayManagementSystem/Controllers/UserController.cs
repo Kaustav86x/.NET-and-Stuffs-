@@ -143,7 +143,8 @@ namespace RailwayManagementSystem.Controllers
                 if (hashvalue.EncryptString(User.Password) == hashvalue.EncryptString(ExistingUser.Password))
                 {
                     var role = await _Railwaycontext.Roles.FindAsync(ExistingUser.RoleId);
-                    // var name = await _Railwaycontext.Users.FindAsync(ExistingUser.Fname);
+                    // var name = await _Railway
+                    // context.Users.FindAsync(ExistingUser.Fname);
                     var jwt = JwtTokenCreation(ExistingUser.Email, role.Role_Type, ExistingUser.Fname);
                     return Ok(new { Token = jwt, userRole = role.Role_Type, userName = ExistingUser.Fname});
                 }
