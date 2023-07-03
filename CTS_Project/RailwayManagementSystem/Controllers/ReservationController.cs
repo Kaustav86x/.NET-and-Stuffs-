@@ -85,9 +85,6 @@ namespace RailwayManagementSystem.Controllers
         {
             if (_RailwayDbContext.Reservations == null)
                 return NoContent();
-            /*var reserv = await _RailwayDbContext.Reservations.FirstOrDefaultAsync(r => r.UserId == reservation.UserId);
-            if(reserv == null)
-            {*/
                 var r = new Reservation()
                 {
                     Id = Guid.NewGuid().ToString(),

@@ -143,14 +143,15 @@ namespace RailwayManagementSystem.Controllers
                 if (hashvalue.EncryptString(User.Password) == hashvalue.EncryptString(ExistingUser.Password))
                 {
                     var role = await _Railwaycontext.Roles.FindAsync(ExistingUser.RoleId);
-                    var jwt = JwtTokenCreation(ExistingUser.Email, role.Role_Type);
-                    return Ok(new { Token = jwt, userRole = role.Role_Type});
+                    // var name = await _Railwaycontext.Users.FindAsync(ExistingUser.Fname);
+                    var jwt = JwtTokenCreation(ExistingUser.Email, role.Role_Type, ExistingUser.Fname);
+                    return Ok(new { Token = jwt, userRole = role.Role_Type, userName = ExistingUser.Fname});
                 }
                 return BadRequest("Password is incorrect");
             }
             else { return NotFound("Incorrect Email Id"); }
         }
-        private string JwtTokenCreation(string Email, string role)
+        private string JwtTokenCreation(string Email, string role, string name)
         {
             var securitykey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
             var credentials = new SigningCredentials(securitykey, SecurityAlgorithms.HmacSha256);
@@ -158,10 +159,11 @@ namespace RailwayManagementSystem.Controllers
             // claimType, claimValue
             var EmailClaim = new Claim(ClaimTypes.Email, Email);
             var userClaim = new Claim(ClaimTypes.Role, role);
+            var userName = new Claim(ClaimTypes.Name, name);
 
             var claims = new[]
             {
-                    EmailClaim, userClaim
+                    EmailClaim, userClaim, userName
             };
 
             // generating the JWT token
