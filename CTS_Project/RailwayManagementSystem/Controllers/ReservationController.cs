@@ -39,7 +39,7 @@ namespace RailwayManagementSystem.Controllers
 
         // GET: api/Reservation/5
          [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Passenger")]
         [Route("[action]")]
          public async Task<IActionResult> GetReservationById(string id)
         {
@@ -97,8 +97,6 @@ namespace RailwayManagementSystem.Controllers
                 await _RailwayDbContext.Reservations.AddAsync(r);
                 await _RailwayDbContext.SaveChangesAsync();
                 return Ok("Reservation data added");
-            /*}
-            return BadRequest("Reservation Id already exists");*/
         }
 
     }
