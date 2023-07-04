@@ -12,5 +12,8 @@ namespace RailwayManagementSystem.Models.AddModels
         public string Dept_time { get; set; }
         public double Duration { get; set; }
         public DateTime DateOfDeparture { get; set; }
+        public string TDC { get; set; }
+        public int Available_Seats { get; set; }
+
     }
 }

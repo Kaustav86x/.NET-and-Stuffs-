@@ -84,7 +84,9 @@ namespace RailwayManagementSystem.Controllers
                     Arr_time = addtrain.Arr_time,
                     Dept_time = addtrain.Dept_time,
                     DateOfDeparture = addtrain.DateOfDeparture,
-                    Duration = addtrain.Duration
+                    Duration = addtrain.Duration,
+                    TDCID = addtrain.TDC,
+                    AvailableSeats = addtrain.Available_Seats
                 };
                 await _RailwayDbContext.TrainDetails.AddAsync(addt);
                 await _RailwayDbContext.SaveChangesAsync();
