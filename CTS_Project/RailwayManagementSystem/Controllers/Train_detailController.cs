@@ -73,8 +73,8 @@ namespace RailwayManagementSystem.Controllers
         {
             //var trains = await _RailwayDbContext.TrainDetails.FindAsync(tid);
             //if (addtrain.Train_name != "string" && addtrain.Source != "string" && addtrain.Destination != "string" && addtrain.Arr_time != "string" && addtrain.Dept_time != "string" && addtrain.DateOfDeparture.ToString() != "string" && addtrain.Duration != 0)
-            if (_RailwayDbContext.TrainDetails == null)
-            {
+            //if (_RailwayDbContext.TrainDetails == null)
+            //{
                 var addt = new Train_detail()
                 {
                     Id = Guid.NewGuid().ToString(),
@@ -91,15 +91,14 @@ namespace RailwayManagementSystem.Controllers
                 await _RailwayDbContext.TrainDetails.AddAsync(addt);
                 await _RailwayDbContext.SaveChangesAsync();
                 return Ok("Train added successfully");
-            }
-            else
-            {
-                if (addtrain.Duration == 0)
-                    return BadRequest("No column should contain null value");
-            }
-            await _RailwayDbContext.SaveChangesAsync();
-            return Ok("Train Database updated!");
-        }
+         }
+            //else
+            //{
+            //    if (addtrain.Duration == 0)
+            //        return BadRequest("No column should contain null value");
+            //}
+            //await _RailwayDbContext.SaveChangesAsync();
+            //return Ok("Train Database updated!");
             
         // DELETE: api/Train_detail/5
         [HttpDelete]
