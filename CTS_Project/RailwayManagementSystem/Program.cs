@@ -1,9 +1,10 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 //using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RailwayManagementSystem.Data;
 using System.Text;
+using RailwayManagementSystem.Controllers;
 
 
 
@@ -78,5 +79,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapTicket_detailEndpoints();
 
 app.Run();
