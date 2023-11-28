@@ -119,7 +119,7 @@ namespace RailwayManagementSystem.Controllers
         [HttpPost]
         [Authorize(Roles = "Passenger")]
         [Route("[action]")]
-        public async Task<IActionResult> AddTicket(string tid, [FromBody] AddTicket ticket)
+        public async Task<IActionResult> AddTicket(string tid)
         {
             var tick = await _RailwayDbContext.TicketDetails.FirstOrDefaultAsync(t => t.Id == tid);
             if(tick == null)

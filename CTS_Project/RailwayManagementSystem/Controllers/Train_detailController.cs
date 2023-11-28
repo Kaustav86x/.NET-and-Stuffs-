@@ -69,7 +69,7 @@ namespace RailwayManagementSystem.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [Route("[action]")]
-        public async Task<IActionResult> AddTrains(AddTrains addtrain)
+        public async Task<IActionResult> AddTrains([FromBody] AddTrains addtrain)
         {
             //var trains = await _RailwayDbContext.TrainDetails.FindAsync(tid);
             //if (addtrain.Train_name != "string" && addtrain.Source != "string" && addtrain.Destination != "string" && addtrain.Arr_time != "string" && addtrain.Dept_time != "string" && addtrain.DateOfDeparture.ToString() != "string" && addtrain.Duration != 0)
