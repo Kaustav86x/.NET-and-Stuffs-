@@ -8,8 +8,7 @@ builder.Services.AddControllersWithViews();
 
 // injecting the dbcontext
 builder.Services.AddDbContext<CarDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("CarRentalMVCConnectionString")
-));
+options.UseSqlServer(builder.Configuration.GetConnectionString("CarRentalMVCConnectionString")));
 
 var app = builder.Build();
 
