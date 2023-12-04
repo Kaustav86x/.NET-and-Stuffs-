@@ -18,11 +18,14 @@ namespace RailwayManagementSystem.Data
         public DbSet<User> Users { get; set; }
 
         //public DbSet<Tick>
+        // The OnConfiguring() method allows us to select and configure the data source to be used with a context using DbContextOptionsBuilder.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder.UseSqlServer(
                 @"Server=(localdb)\MSSQLLocalDB;Database=RailwaySystem;"));
         }
+
+        // The OnModelCreating() method allows us to configure the model using ModelBuilder Fluent API
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Train_Detail_Class to Class (1:N)
