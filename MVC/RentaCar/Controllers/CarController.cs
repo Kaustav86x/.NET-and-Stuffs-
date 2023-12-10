@@ -23,6 +23,10 @@ namespace RentaCar.Controllers
         // the Get.cshtml file content would come as an input (acar) to this method
         public IActionResult AddCar(AddCar acar) 
         {
+            /*if(acar.Kms == null || acar.Type == null || acar.Name == null || acar.Description == null || acar.Rating == null)
+            {
+                return NoContent();
+            }*/
             var car = new Car
             {
                 Name = acar.Name,
@@ -40,5 +44,7 @@ namespace RentaCar.Controllers
             var desc = acar.Description;*/
             return View("Add");
         }
+        //[HttpPut]
+
     }
 }
