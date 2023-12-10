@@ -8,6 +8,17 @@
     </div>
 </div>
 
+<script>
+    function clrForm()
+    {
+        document.getElementById("name").value = ' ';
+        document.getElementById('type').value = ' ';
+        document.getElementById('travelled').value = ' ';
+        document.getElementById('rating').value = ' ';
+        document.getElementById('description').value = ' ';
+    }
+</script>
+
 <div class="container py-5">
     <form method="post">
         <div class="mb-3">
@@ -31,7 +42,7 @@
             <input type="text" class="form-control" id="description" asp-for="Description" />
         </div>
         <div class="mb-3 py-3">
-            <button type="submit" class="btn btn-sm btn-dark">Submit</button>
+            <button onclick="clrForm()" type="submit" class="btn btn-sm btn-dark">Submit</button>
         </div>
     </form>
 </div>
