@@ -1,6 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model RentaCar.Models.ViewModels.AddCar; // telling the asp.net core that this model is the model we'll be using for data binding
 @{
 }
 
@@ -14,23 +12,23 @@
     <form method="post">
         <div class="mb-3">
             <label class="form-label">Name</label>
-            <input type="text" class="form-control" id="name"/>
+            <input type="text" class="form-control" id="name" asp-for="Name"/>
         </div>
         <div class="mb-3">
             <label class="form-label">Type</label>
-            <input type="text" class="form-control" id="type" />
+            <input type="text" class="form-control" id="type" asp-for="Type" />
         </div>
         <div class="mb-3">
             <label class="form-label">Tavelled</label>
-            <input type="text" class="form-control" id="travelled" />
+            <input type="text" class="form-control" id="travelled" asp-for="Kms" />
         </div>
         <div class="mb-3">
             <label class="form-label">Rating</label>
-            <input type="text" class="form-control" id="rating" />
+            <input type="text" class="form-control" id="rating" asp-for="Rating" />
         </div>
         <div class="mb-3">
             <label class="form-label">Description</label>
-            <input type="text" class="form-control" id="description" />
+            <input type="text" class="form-control" id="description" asp-for="Description" />
         </div>
         <div class="mb-3 py-3">
             <button type="submit" class="btn btn-sm btn-dark">Submit</button>

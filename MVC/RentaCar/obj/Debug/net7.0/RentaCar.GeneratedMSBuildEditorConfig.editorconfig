@@ -16,8 +16,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\HP\.NET-and-Stuffs-\MVC\RentaCar
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/HP/.NET-and-Stuffs-/MVC/RentaCar/Views/Car/Get.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXEdldC5jc2h0bWw=
+[C:/Users/HP/.NET-and-Stuffs-/MVC/RentaCar/Views/Car/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXEFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/.NET-and-Stuffs-/MVC/RentaCar/Views/Car/Index.cshtml]
