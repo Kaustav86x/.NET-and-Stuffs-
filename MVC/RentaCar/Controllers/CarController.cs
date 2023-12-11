@@ -44,7 +44,7 @@ namespace RentaCar.Controllers
             var desc = acar.Description;*/
             return View("Add");
         }
-        //[HttpPut]
+        [HttpGet]
 
     }
 }
