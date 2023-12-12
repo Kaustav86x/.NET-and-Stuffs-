@@ -23,14 +23,24 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Car" asp-action="Index">Car</a>
+                            @*<div class="py-1"></div>*@
+                            <div class="dropdown">
+                                <button class="btn btn-secondary btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Car
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item text-dark" asp-area="" asp-controller="Car" asp-action="Add">Add a Car</a></li>
+                                    <li><a class="dropdown-item text-dark" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item text-dark" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
-                    <ul class="navbar-nav ml-auto">
+                    @*<ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Car" asp-action="Add">Admin</a>
                         </li>
-                    </ul>
+                    </ul>*@
                 </div>
             </div>
         </nav>
