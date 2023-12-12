@@ -8,12 +8,16 @@
     </div>
 </div>
 
-@*<script>
+<script>
     function clrForm()
     {
-        document.getElementById("carForm").reset();
+        document.getElementById('name').value = '';
+        document.getElementById('type').value = '';
+        document.getElementById('travelled').value = '';
+        document.getElementById('rating').value = '';
+        document.getElementById('description').value = '';
     }
-</script>*@
+</script>
 
 <div class="container py-5">
     <form method="post" id="carForm">
@@ -40,7 +44,7 @@
         <div class="mb-3 py-3">
             @*<button onclick="clrForm()" type="submit" class="btn btn-sm btn-dark">Submit</button>*@
             <button type="submit" class="btn btn-sm btn-dark">Submit</button>
-            @*<button onclick="clrForm()" class="btn btn-sm-dark">Reset Form</button>*@
+            <button onclick="clrForm()" class="btn btn-sm btn-dark">Reset Form</button>
         </div>
     </form>
 </div>
