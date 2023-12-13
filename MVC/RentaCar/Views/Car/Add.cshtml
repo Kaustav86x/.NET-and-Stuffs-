@@ -18,6 +18,12 @@
         document.getElementById('description').value = '';
     }
 </script>
+@*<style>
+    #viewCar
+    {
+        text-align: right;
+    }
+</style>*@
 
 <div class="container py-5">
     <form method="post" id="carForm">
@@ -44,6 +50,7 @@
         <div class="mb-3 py-3">
             <button type="submit" class="btn btn-sm btn-dark">Submit</button>
             <button onclick="clrForm()" class="btn btn-sm btn-dark">Reset Form</button>
+            <button class="btn btn-success btn-sm align-self-xl-end" id="viewCar">View Cars</button>
         </div>
     </form>
 </div>

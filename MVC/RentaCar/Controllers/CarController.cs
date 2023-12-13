@@ -48,6 +48,11 @@ namespace RentaCar.Controllers
                 return View();
             }
         }
-        /*[HttpGet]*/
+        [HttpGet]
+        [ActionName("Read")]
+        public IActionResult Read(CarList car)
+        {
+            
+        }
     }
 }
