@@ -1,4 +1,6 @@
-﻿namespace RentaCar.Models.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RentaCar.Models.ViewModel
 {
     public class AddCar
     {

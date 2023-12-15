@@ -1,13 +1,41 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<RentaCar.Models.ViewModel.CarView>
+
 @{
-    ViewData["Title"] = "View Cars"; 
+    ViewData["Title"] = "Car Details";
 }
 <h3>@ViewData["Title"]</h3>
 <hr/>
-<form>
-    <button asp-action=""
-</form>
-
-
+<from>
+    <table class="table table-responsive table-hover">
+        <thead>
+            <tr class="table-active">
+            <th>Car ID</th>
+            <th>Model</th>
+            <th>Type</th>
+            <th>KM</th>
+            <th>Rating</th>
+            <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Any())
+            {
+                @foreach(var car in Model)
+                {
+                    <tr>
+                        <td>@car.Name</td>
+                        <td>@car.Type</td>
+                        <td>@car.Kms</td>
+                        <td>@car.Rating</td>
+                        <td>@car.Description</td>
+                        <td>
+                            <div>
+                                <a class="btn btn-dark btn-sm">Edit</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</from>

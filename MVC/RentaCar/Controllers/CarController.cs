@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RentaCar.Data;
 using RentaCar.Models.Domain;
-using RentaCar.Models.ViewModels;
+using RentaCar.Models.ViewModel;
 
 namespace RentaCar.Controllers
 {
@@ -49,10 +49,11 @@ namespace RentaCar.Controllers
             }
         }
         [HttpGet]
-        [ActionName("Read")]
-        public IActionResult Read(CarList car)
+        [ActionName("Carlist")]
+        public IActionResult CarList()
         {
-            
+            var cars = carDbContext.Cars.ToList();
+            return View(cars);
         }
     }
 }
