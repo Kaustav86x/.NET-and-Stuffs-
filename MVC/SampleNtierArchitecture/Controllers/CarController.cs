@@ -7,6 +7,7 @@ namespace SampleNtierArchitecture.Controllers
         [HttpGet]
         public IActionResult CarList()
         {
+            // get car list
             return View();
         }
     }

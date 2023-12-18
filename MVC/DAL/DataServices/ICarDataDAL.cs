@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOL.DataBaseEntities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace DAL.DataServices
 {
     public interface ICarDataDAL
     {
-
+        public List<Car> GetCarListDAL();
     }
 }
