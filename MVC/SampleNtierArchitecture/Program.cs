@@ -1,7 +1,12 @@
+using BLL.LogicServices;
+using DAL.DataServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ICarLogic, CarLogic>();
+builder.Services.AddSingleton<ICarDataDAL, CarDataDAL>();
 
 var app = builder.Build();
 
