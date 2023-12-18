@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL.LogicServices
 {
-    internal interface ICarLogic
+    public interface ICarLogic
     {
         public List<Car> GetCarListLogic(); 
     }

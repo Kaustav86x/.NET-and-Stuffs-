@@ -22,8 +22,9 @@ namespace BLL.LogicServices
             List<Car> result = new List<Car>();
 
             // a method in DAL will be called from this file ie, BLL
-            result = GetCarListDAL();
+            result = _carDataDAL.GetCarListDAL();   
 
+            // returning to the controller, so go to controller
             return result;
         }
     }
