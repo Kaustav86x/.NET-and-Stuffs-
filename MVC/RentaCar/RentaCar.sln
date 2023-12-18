@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCar", "RentaCar.csproj", "{C7893A49-6412-42C4-8755-4D6E6ABD2FD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentaCar", "RentaCar.csproj", "{C7893A49-6412-42C4-8755-4D6E6ABD2FD5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentaCarBLL", "..\RentaCarBAL\RentaCarBLL.csproj", "{C160B091-FB55-4780-AF26-51122863A960}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentaCarDAL", "..\RentaCarDAL\RentaCarDAL.csproj", "{3F4B6B70-C379-468E-9550-D51562B2A957}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{C7893A49-6412-42C4-8755-4D6E6ABD2FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7893A49-6412-42C4-8755-4D6E6ABD2FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7893A49-6412-42C4-8755-4D6E6ABD2FD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C160B091-FB55-4780-AF26-51122863A960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C160B091-FB55-4780-AF26-51122863A960}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C160B091-FB55-4780-AF26-51122863A960}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C160B091-FB55-4780-AF26-51122863A960}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F4B6B70-C379-468E-9550-D51562B2A957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F4B6B70-C379-468E-9550-D51562B2A957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F4B6B70-C379-468E-9550-D51562B2A957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F4B6B70-C379-468E-9550-D51562B2A957}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
