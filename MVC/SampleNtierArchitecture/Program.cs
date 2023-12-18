@@ -1,4 +1,5 @@
 using BLL.LogicServices;
+using DAL.DataMapping;
 using DAL.DataServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ICarLogic, CarLogic>();
 builder.Services.AddSingleton<ICarDataDAL, CarDataDAL>();
+builder.Services.AddSingleton<IDapperORM, DapperORM>();
 
 var app = builder.Build();
 
