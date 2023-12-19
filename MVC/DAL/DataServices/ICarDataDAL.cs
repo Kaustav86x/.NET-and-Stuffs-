@@ -1,4 +1,6 @@
-﻿using BOL.DataBaseEntities;
+﻿/*using BOL.DataBaseEntities;*/
+/*using DAL.Data.Model;*/
+using DAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

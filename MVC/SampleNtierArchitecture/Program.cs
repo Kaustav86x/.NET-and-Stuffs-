@@ -1,5 +1,5 @@
 using BLL.LogicServices;
-using DAL.DataMapping;
+/*using DAL.DataMapping;*/
 using DAL.DataServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ICarLogic, CarLogic>();
 builder.Services.AddSingleton<ICarDataDAL, CarDataDAL>();
-builder.Services.AddSingleton<IDapperORM, DapperORM>();
+/*builder.Services.AddSingleton<IDapperORM, DapperORM>();*/
+/*builder.Services.AddDbContext<ApplicationDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("FlightDB"), b => b.MigrationsAssembly("FlightBookingSystem"));
+});*/
 
 var app = builder.Build();
 

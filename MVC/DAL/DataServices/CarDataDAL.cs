@@ -1,5 +1,7 @@
-﻿using BOL.DataBaseEntities;
-using DAL.DataMapping;
+﻿/*using BOL.DataBaseEntities;*/
+/*using DAL.Data.Model;*/
+using DAL.Model;
+/*using DAL.DataMapping;*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +12,10 @@ namespace DAL.DataServices
 {
     public class CarDataDAL : ICarDataDAL
     {
-        private readonly IDapperORM _dapperORM;
+        /*private readonly IDapperORM _dapperORM;
         public CarDataDAL(IDapperORM dapperORM)
         {
-            _dapperORM = dapperORM;
-        }
+            _dapperORM = dapperORM;*/
         // fucntion with a database communication
         public List<Car> GetCarListDAL()
         {
@@ -24,7 +25,7 @@ namespace DAL.DataServices
             {
 
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 string messege = ex.Message;
             }
