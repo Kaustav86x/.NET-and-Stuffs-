@@ -1,9 +1,8 @@
 C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\bin\Debug\net7.0\BLL.deps.json
+C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\bin\Debug\net7.0\BLL.runtimeconfig.json
 C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\bin\Debug\net7.0\BLL.dll
 C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\bin\Debug\net7.0\BLL.pdb
-C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\bin\Debug\net7.0\BOL.dll
 C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\bin\Debug\net7.0\DAL.dll
-C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\bin\Debug\net7.0\BOL.pdb
 C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\bin\Debug\net7.0\DAL.pdb
 C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\obj\Debug\net7.0\BLL.csproj.AssemblyReference.cache
 C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\obj\Debug\net7.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
@@ -14,4 +13,5 @@ C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\obj\Debug\net7.0\BLL.csproj.CopyComplete
 C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\obj\Debug\net7.0\BLL.dll
 C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\obj\Debug\net7.0\refint\BLL.dll
 C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\obj\Debug\net7.0\BLL.pdb
+C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\obj\Debug\net7.0\BLL.genruntimeconfig.cache
 C:\Users\HP\.NET-and-Stuffs-\MVC\BLL\obj\Debug\net7.0\ref\BLL.dll

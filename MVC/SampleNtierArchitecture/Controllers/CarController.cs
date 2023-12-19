@@ -1,5 +1,6 @@
 ﻿using BLL.LogicServices;
-using BOL.DataBaseEntities;
+using DAL.Model;
+/*using BOL.DataBaseEntities;*/
 using Microsoft.AspNetCore.Mvc;
 
 namespace SampleNtierArchitecture.Controllers

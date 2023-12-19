@@ -1,6 +1,8 @@
 using BLL.LogicServices;
+using DAL.Data;
 /*using DAL.DataMapping;*/
 using DAL.DataServices;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +11,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ICarLogic, CarLogic>();
 builder.Services.AddSingleton<ICarDataDAL, CarDataDAL>();
 /*builder.Services.AddSingleton<IDapperORM, DapperORM>();*/
-/*builder.Services.AddDbContext<ApplicationDBContext>(options =>
+builder.Services.AddDbContext<CarDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("FlightDB"), b => b.MigrationsAssembly("FlightBookingSystem"));
-});*/
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CarDb"), b => b.MigrationsAssembly("SampleNtierArchitecture"));
+});
 
 var app = builder.Build();
 
