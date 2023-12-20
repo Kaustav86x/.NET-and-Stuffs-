@@ -16,6 +16,8 @@ builder.Services.AddDbContext<CarDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CarDb"), b => b.MigrationsAssembly("SampleNtierArchitecture"));
 });
 
+/*builder.Services.AddDbContext<CarDbContext>();*/
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

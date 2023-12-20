@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,9 +10,10 @@ namespace DAL.Model
 {
     public class Car
     {
-            public Guid CarId { get; set; }
+            [Key]
+            public BigInteger CarId { get; set; }
             [Required]
-            public string? Name { get; set; }
+            public string? Model { get; set; }
             [Required]
             public string? Type { get; set; }
             [Required]

@@ -1245,7 +1245,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "DAL": "1.0.0"
+          "DAL": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0"
         },
         "compile": {
           "bin/placeholder/BLL.dll": {}
@@ -3909,6 +3911,9 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "BLL >= 1.0.0",
+      "Entityframework >= 6.4.4",
+      "Microsoft.EntityFrameworkCore >= 7.0.0",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.0"
     ]
   },
@@ -3961,6 +3966,18 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "Entityframework": {
+            "target": "Package",
+            "version": "[6.4.4, )"
+          },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          },
+          "Microsoft.EntityFrameworkCore.SqlServer": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          },
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
