@@ -12,11 +12,6 @@ namespace DAL.DataServices
 {
     public class CarDataDAL : ICarDataDAL
     {
-        /*private readonly IDapperORM _dapperORM;
-        public CarDataDAL(IDapperORM dapperORM)
-        {
-            _dapperORM = dapperORM;*/
-        // fucntion with a database communication
         public List<Car> GetCarListDAL()
         {
             List<Car> cars = new List<Car>();
