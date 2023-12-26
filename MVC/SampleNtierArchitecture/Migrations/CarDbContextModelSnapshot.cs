@@ -24,9 +24,11 @@ namespace SampleNtierArchitecture.Migrations
 
             modelBuilder.Entity("DAL.Model.Car", b =>
                 {
-                    b.Property<Guid>("CarId")
+                    b.Property<long>("CarId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("CarId"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -36,7 +38,7 @@ namespace SampleNtierArchitecture.Migrations
                         .IsRequired()
                         .HasColumnType("float");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Model")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
