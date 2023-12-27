@@ -24,7 +24,6 @@ namespace DAL.DataServices
             {
                 string messege = ex.Message;
             }
-
             /*return new List<Car>();*/
             return cars;
         }
