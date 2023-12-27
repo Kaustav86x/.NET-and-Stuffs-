@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace SampleNtierArchitecture.Migrations
 {
     [DbContext(typeof(CarDbContext))]
-    [Migration("20231226123133_InitialCreate")]
+    [Migration("20231227100701_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
