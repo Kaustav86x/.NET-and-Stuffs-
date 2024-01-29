@@ -9,8 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<ICarLogic, CarLogic>();
-builder.Services.AddSingleton<ICarDataDAL, CarDataDAL>();
+/*builder.Services.AddSingleton<ICarLogic, CarLogic>();*/
+builder.Services.AddScoped<ICarLogic, CarLogic>();
+/*builder.Services.AddSingleton<ICarDataDAL, CarDataDAL>();*/
+builder.Services.AddScoped<ICarDataDAL, CarDataDAL>();
 /*builder.Services.AddSingleton<IDapperORM, DapperORM>();*/
 builder.Services.AddDbContext<CarDbContext>(options =>
 {
