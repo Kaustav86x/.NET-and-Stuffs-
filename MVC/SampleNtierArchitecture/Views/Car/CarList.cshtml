@@ -2,5 +2,45 @@
 
 @model List<DAL.Model.Car>
 
-<p>@Model[0].Model</p>
+@{ var val = @Model.Count; }
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Model</th>
+            <th>Type</th>
+            <th>Kms</th>
+            <th>Rating</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(var i=0; i<val; i++)
+        {
+           <tr>
+             <td>@Model[i].CarId</td>
+             <td>@Model[i].Model</td>
+             <td>@Model[i].Type</td>
+             <td>@Model[i].Kms</td>
+             <td>@Model[i].Rating</td>
+             <td>@Model[i].Description</td>
+           </tr>
+        } 
+    </tbody>
+    </table>
+
 
